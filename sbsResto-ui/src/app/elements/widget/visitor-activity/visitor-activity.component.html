@@ -1,0 +1,45 @@
+<div id="user-activity" class="card default-apex-cl">
+	<div class="card-header border-0 pb-0 d-sm-flex d-block">
+		<h4 class="card-title">Visitor Activity</h4>
+		<div class="card-action mb-sm-0 my-2">
+			<ul class="nav nav-tabs" role="tablist" ngbNav #nav="ngbNav" >
+				<li class="nav-item" ngbNavItem="Day">
+					<a class="nav-link" data-toggle="tab" href="#user" role="tab" ngbNavLink>
+						Day
+					</a>
+					<ng-template ngbNavContent>
+						<app-visitor-activity-day></app-visitor-activity-day>
+					</ng-template>
+				</li>
+				<li class="nav-item" ngbNavItem="Month">
+					<a class="nav-link" data-toggle="tab" href="#bounce" role="tab" ngbNavLink>
+						Month
+					</a>
+					<ng-template ngbNavContent>
+						<app-visitor-activity-month></app-visitor-activity-month>
+					</ng-template>
+				</li>
+				<li class="nav-item" ngbNavItem="Year">
+					<a class="nav-link" data-toggle="tab" href="#session-duration" role="tab" ngbNavLink>
+						Year
+					</a>
+					
+					<ng-template ngbNavContent>
+						<app-visitor-activity-year></app-visitor-activity-year>
+					</ng-template>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="card-body">
+		<div [ngbNavOutlet]="nav" class=""></div>
+	</div>
+	
+	<!-- <div class="card-body">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="user" role="tabpanel">
+				<canvas id="activity" class="chartjs"></canvas>
+			</div>
+		</div>
+	</div> -->
+</div>

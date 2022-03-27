@@ -1,0 +1,16 @@
+<div class="card-header border-0">
+    <div class="separator"></div>
+    <div class="mr-auto">
+        <h4 class="text-black fs-20  mb-1">Loyal Customers</h4>
+        <p class="fs-14 mb-0"> Lorem ipsum dolor</p>
+    </div>	
+</div>
+<div class="card-body height370 loyalCustomers-list py-0 dz-scroll" id="loyalCustomers" [perfectScrollbar]>	
+    <div class="media align-items-center mb-sm-4 mb-3" *ngFor = "let customers of data">		
+        <img class="mr-3 rounded" src="{{customers.image}}" width="73" alt="">
+        <div class="media-body">
+            <h5 class="text-black"><a href="javascript:void(0);" class="text-black">{{customers.user}}</a></h5>
+            <small class="text-primary mb-0"><strong class="font-w600">{{customers.order_count}}</strong>  Times order</small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div id="wrapper">
+  <div id="chart-months">
+    <apx-chart
+      [series]="chartMonths.series"
+      [chart]="chartMonths.chart"
+      [colors]="chartMonths.colors"
+      [yaxis]="chartMonths.yaxis"
+      [dataLabels]="commonOptions.dataLabels"
+      [fill]="commonOptions.fill"
+      [stroke]="commonOptions.stroke"
+      [xaxis]="commonOptions.xaxis"
+    ></apx-chart>
+  </div>
+
+  <h5 class="github-style">
+    <img
+      class="userimg"
+      src="https://picsum.photos/200/200/?image=1031"
+      data-hovercard-user-id="634573"
+      alt=""
+      width="38"
+      height="38"
+    />
+    <div class="userdetails">
+      <a class="username">coder</a>
+      <span class="cmeta"> <span class="commits"></span> commits </span>
+    </div>
+  </h5>
+
+  <div id="chart-years">
+    <apx-chart
+      [series]="chartYears.series"
+      [chart]="chartYears.chart"
+      [colors]="chartYears.colors"
+      [legend]="chartYears.legend"
+      [dataLabels]="commonOptions.dataLabels"
+      [fill]="commonOptions.fill"
+      [stroke]="commonOptions.stroke"
+      [xaxis]="commonOptions.xaxis"
+    ></apx-chart>
+  </div>
+</div>

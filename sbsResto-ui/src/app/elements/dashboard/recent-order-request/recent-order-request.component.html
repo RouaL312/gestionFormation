@@ -1,0 +1,69 @@
+<div class="card-header border-0 flex-wrap pb-0">
+    <div class="d-flex mb-3">
+        <div class="separator"></div>
+        <div class="mr-auto">
+            <h4 class="text-black fs-20">Recent Order Request</h4>
+            <p class="fs-13 mb-0">Lorem ipsum dolor</p>
+        </div>	
+    </div>
+    <mat-form-field appearance="fill" class="style-2 mb-3 dashboard-select">
+      <mat-select value="Newest">
+        <mat-option value="Newest">Newest</mat-option>
+        <mat-option value="Oldest">Oldest</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<div class="card-body p-0">
+    <div class="table-responsive">
+        <table class="table order-request">
+            <tbody class="loadmore-content" id="orderRequestContent">
+                <tr *ngFor = "let order of data">
+                    <td>
+                        <div class="media align-items-center">
+                            <img class="mr-3 " width="87" src="{{order.image}}" alt="DexignZone">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-2"><a class="text-black" [routerLink]="['/admin/ecom-product-detail']">{{order.title}}</a></h5>
+                                <p class="mb-0 text-primary">{{order.order_id}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 class="mb-2 text-black wspace-no">{{order.user}}</h5>
+                        <p class="mb-0">{{order.address}}</p>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <h4 class="mb-0 mr-3 fs-20 text-black d-inline-block">{{order.price}}</h4>
+                            <p class="mb-0 fs-20 d-inline-block">{{order.quantity}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a class="btn {{order.order_status_class}}" href="javascript:void(0);">{{order.order_status}}</a>
+                            <div class="dropdown ml-auto dropdown-no-icon" ngbDropdown>
+                                <a class="btn-link" data-toggle="dropdown" ngbDropdownToggle >
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right"  ngbDropdownMenu>
+                                    <a class="dropdown-item text-black" href="javascript:void(0);">
+                                        Accept order
+                                    </a>
+                                    <a class="dropdown-item text-black" href="javascript:void(0);">
+                                        Reject order
+                                    </a>
+                                    <a class="dropdown-item text-black" href="javascript:void(0);">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- <div [innerHTML]="itemHtml"></div> -->
+            </tbody>
+        </table>
+        <!-- <div class="card-footer border-0 pt-0 text-center">
+            <a href="javascript:void(0);" class="btn btn-outline-primary dz-load-more" id="orderRequest" (click)="addOrderItem()">View More</a>
+        </div> -->
+    </div>
+</div>

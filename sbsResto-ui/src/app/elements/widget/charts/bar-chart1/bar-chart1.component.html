@@ -1,0 +1,29 @@
+<div class="widget-stat card bg-warning overflow-hidden">
+	<div class="card-header border-0 ">
+		<h3 class="card-title text-white">New Students</h3>
+		<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 357</h5>
+	</div>
+	<div class="card-body text-center p-0">
+		<div class="ico-sparkline">
+			
+			
+			<!-- <div id="spark-bar-2"></div> -->
+			<apx-chart
+				[series]="chartOptions.series"
+				[chart]="chartOptions.chart"
+				[dataLabels]="chartOptions.dataLabels"
+				[plotOptions]="chartOptions.plotOptions"
+				[yaxis]="chartOptions.yaxis"
+				[legend]="chartOptions.legend"
+				[fill]="chartOptions.fill"
+				[stroke]="chartOptions.stroke"
+				[tooltip]="chartOptions.tooltip"
+				[xaxis]="chartOptions.xaxis"
+				[colors]="chartOptions.colors"
+				[grid]="chartOptions.grid"
+			  ></apx-chart>
+			
+			
+		</div>
+	</div>
+</div>

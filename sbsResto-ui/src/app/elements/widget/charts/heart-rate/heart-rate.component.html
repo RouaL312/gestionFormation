@@ -1,0 +1,30 @@
+<div class="card-header border-0 pb-0">
+	<div class="clearfix">
+		<h3 class="card-title">Heart Rate</h3>
+		<span class="text-danger">Above the normal</span>
+	</div>
+	<div class="clearfix text-center">
+		<h3 class="text-danger mb-0">107</h3>
+		<span>Per Min</span>
+	</div>
+</div>
+<div class="card-body text-center">
+	<div class="ico-sparkline">
+		<!-- <div id="composite-bar"></div> -->
+		
+		<apx-chart
+				[series]="chartOptions.series"
+				[chart]="chartOptions.chart"
+				[dataLabels]="chartOptions.dataLabels"
+				[plotOptions]="chartOptions.plotOptions"
+				[yaxis]="chartOptions.yaxis"
+				[legend]="chartOptions.legend"
+				[fill]="chartOptions.fill"
+				[stroke]="chartOptions.stroke"
+				[tooltip]="chartOptions.tooltip"
+				[xaxis]="chartOptions.xaxis"
+				[colors]="chartOptions.colors"
+				[grid]="chartOptions.grid"
+			  ></apx-chart>
+	</div>
+</div>

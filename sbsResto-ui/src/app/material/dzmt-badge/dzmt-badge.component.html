@@ -1,0 +1,72 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <div class="container-fluid default-mt-btn">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Material</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Badge</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xl-6 col-xxl-12">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h4 class="card-title">Badge overview</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <p>
+                            <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
+                        </p>
+                        
+                        <p>
+                            <span matBadge="1" matBadgeSize="large">Text with large badge</span>
+                        </p>
+                        
+                        <p>
+                            Button with a badge on the left
+                            <button mat-raised-button color="primary"
+                            matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+                                Action
+                            </button>
+                        </p>
+                        
+                        <p>
+                            Button toggles badge visibility
+                            <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+                                Hide
+                            </button>
+                        </p>
+                        
+                        <p>
+                            Icon with a badge
+                            <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+                            <!-- Include text description of the icon's meaning for screen-readers -->
+                            <span class="cdk-visually-hidden">
+                                Example with a home icon with overlaid badge showing the number 15
+                            </span>
+                        </p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->

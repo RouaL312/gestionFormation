@@ -1,0 +1,28 @@
+<div class="widget-stat card bg-secondary">
+	<div class="card-header pb-3 border-0 pb-0">
+		<h3 class="card-title text-white">Total Course</h3>
+		<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 547</h5>
+	</div>
+	<div class="card-body p-0">
+		<div class="px-4">
+			
+			<!-- <span class="bar1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgb(255, 255, 255)"]}'>6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span> -->
+			
+			<apx-chart
+				[series]="chartOptions.series"
+				[chart]="chartOptions.chart"
+				[dataLabels]="chartOptions.dataLabels"
+				[plotOptions]="chartOptions.plotOptions"
+				[yaxis]="chartOptions.yaxis"
+				[legend]="chartOptions.legend"
+				[fill]="chartOptions.fill"
+				[stroke]="chartOptions.stroke"
+				[tooltip]="chartOptions.tooltip"
+				[xaxis]="chartOptions.xaxis"
+				[colors]="chartOptions.colors"
+				[grid]="chartOptions.grid"
+			  ></apx-chart>
+			
+		</div>
+	</div>
+</div>

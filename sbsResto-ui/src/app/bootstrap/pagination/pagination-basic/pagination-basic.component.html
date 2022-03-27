@@ -1,0 +1,18 @@
+<p>Default pagination:</p>
+<div class="pagination-responsive">
+	<ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+</div>
+
+<p>No direction links:</p>
+<div class="pagination-responsive">
+	<ngb-pagination [collectionSize]="70" [(page)]="page" [directionLinks]="false"></ngb-pagination>
+</div>
+
+<p>With boundary links:</p>
+<div class="pagination-responsive">
+	<ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+</div>
+
+<hr>
+
+<pre>Current page: {{page}}</pre>

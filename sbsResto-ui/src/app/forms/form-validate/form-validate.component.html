@@ -1,0 +1,275 @@
+<!--**********************************
+	Content body start
+***********************************-->
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Validation</a></li>
+                </ol>
+            </div>
+        </div>
+		<!-- row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Form Validation</h4>
+                    </div>
+					<div class="card-body">
+						<div class="form-validation">
+							<form class="form-valide" action="#" method="post" [formGroup]="angForm" novalidate>
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="username">Username
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter a username..">
+												<div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['username'].errors.required">
+														Username is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+											
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="email">Email <span
+												class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="email" formControlName="email" placeholder="Your valid email..">
+												<div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="text-danger fs-13 mt-1">
+													<div *ngIf="angForm.controls['email'].errors.required">
+														Email is required.
+                                                    </div>
+													<div *ngIf="angForm.controls['email'].errors.pattern">
+														Email must be a valid email address.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="val-password">Password
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<div class="input-group">
+													<input #inputPassword type="password" class="form-control" formControlName="password"  id="password" placeholder="Choose a safe one..">
+													
+													<div class="input-group-append show-pass1 ">
+														<span class="input-group-text "> 
+															<i class="fa" [ngClass]="{'fa-eye-slash': toggleEye, 'fa-eye': !toggleEye}" (click)="toggleEyeIcon(inputPassword)"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+												
+												<div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['password'].errors.required">
+														Password is required.
+                                                    </div>
+													<div *ngIf="angForm.controls['password'].errors.minlength">
+														Password must be at least 6 characters.
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="suggestions">Suggestions <span
+												class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												
+												<textarea class="form-control" id="suggestions" rows="5" formControlName="suggestions" placeholder="What would you like to see?"></textarea>
+												
+												<div *ngIf="angForm.controls['suggestions'].invalid && (angForm.controls['suggestions'].dirty || angForm.controls['suggestions'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['suggestions'].errors.required">
+														Suggestions is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="skill">Best Skill
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<select class="form-control default-select" id="skill" formControlName="skill" >
+													<option value="">Please select</option>
+													<option value="html">HTML</option>
+													<option value="css">CSS</option>
+													<option value="javascript">JavaScript</option>
+													<option value="angular">Angular</option>
+													<option value="angular">React</option>
+													<option value="vuejs">Vue.js</option>
+													<option value="ruby">Ruby</option>
+													<option value="php">PHP</option>
+													<option value="asp">ASP.NET</option>
+													<option value="python">Python</option>
+													<option value="mysql">MySQL</option>
+                                                </select>
+												<div *ngIf="angForm.controls['skill'].invalid && (angForm.controls['skill'].dirty || angForm.controls['skill'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['skill'].errors.required">
+														Select skill.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-xl-6">
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="currency">Currency
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="currency" placeholder="$21.60" formControlName="currency">
+												
+												<div *ngIf="angForm.controls['currency'].invalid && (angForm.controls['currency'].dirty || angForm.controls['currency'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['currency'].errors.required">
+														Currency is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="website">Website
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="website" placeholder="https://example.com" formControlName="website">
+												
+												<div *ngIf="angForm.controls['website'].invalid && (angForm.controls['website'].dirty || angForm.controls['website'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['website'].errors.required">
+														Website is required.
+                                                    </div>
+													
+													<div *ngIf="angForm.controls['website'].errors.pattern">
+														Valid url is required.
+                                                    </div>
+                                                </div>
+												
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="phoneus">Phone (US)
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="phoneus" placeholder="212-999-0000" formControlName="phoneus">
+												<div *ngIf="angForm.controls['phoneus'].invalid && (angForm.controls['phoneus'].dirty || angForm.controls['phoneus'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['phoneus'].errors.required">
+														Phone is required.
+                                                    </div>
+													
+													
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="digits">Digits <span
+												class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="digits" placeholder="5" formControlName="digits">
+												<div *ngIf="angForm.controls['digits'].invalid && (angForm.controls['digits'].dirty || angForm.controls['digits'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['digits'].errors.required">
+														Digits is required.
+                                                    </div>
+													
+													
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="number">Number <span
+												class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="number" placeholder="5.0" formControlName="number">
+												
+												<div *ngIf="angForm.controls['number'].invalid && (angForm.controls['number'].dirty || angForm.controls['number'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['number'].errors.required">
+														Number is required.
+                                                    </div>
+													
+													
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label" for="range">Range [1, 5]
+												<span class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-6">
+												<input type="text" class="form-control" id="range" placeholder="4"  formControlName="range">
+												
+												<div *ngIf="angForm.controls['range'].invalid && (angForm.controls['range'].dirty || angForm.controls['range'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['range'].errors.required">
+														Range is required.
+                                                    </div>
+													
+													
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+											<label class="col-lg-4 col-form-label"><a
+												href="javascript:void()">Terms &amp; Conditions</a> <span
+												class="text-danger">*</span>
+                                            </label>
+											<div class="col-lg-8">
+												<label class="css-control css-control-primary css-checkbox" for="terms">
+													
+													<input type="checkbox" class="css-control-input mr-2" id="terms" value="1" formControlName="terms">
+													
+													<span class="css-control-indicator"></span> I agree to the
+                                                terms</label>
+												
+												<div *ngIf="angForm.controls['terms'].invalid && (angForm.controls['terms'].dirty || angForm.controls['terms'].touched)" class="text-danger fs-13 mt-1">
+													
+													<div *ngIf="angForm.controls['terms'].errors.required">
+														Terms & Conditions is required.
+                                                    </div>
+													
+													
+                                                </div>
+                                            </div>
+                                        </div> 
+										<div class="form-group row">
+											<div class="col-lg-8 ml-auto">
+												<button type="submit" class="btn btn-primary" [disabled]="angForm.pristine || angForm.invalid">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+	Content body end
+***********************************-->

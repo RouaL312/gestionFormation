@@ -1,0 +1,98 @@
+<div class="card-header border-0 pb-0 flex-wrap">
+                                <div class="d-flex mb-3">
+                                    <div class="separator"></div>
+                                    <div class="mr-auto">	
+                                        <h4 class="card-title mb-1">Most Favorites Items</h4>
+                                        <p class="fs-14 mb-0">Lorem ipsum dolor sit amet, consectetur</p>
+                                    </div>	
+                                </div>
+                                <div class="card-action card-tabs mb-3">
+                                    <ul class="nav nav-tabs" role="tablist" ngbNav #nav="ngbNav" >
+
+                                        <li class="nav-item" ngbNavItem="all-categories">
+                                            <a class="nav-link" data-toggle="tab" href="#all-categories" ngbNavLink>
+                                                All Categories
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                                
+                                                <div class="tab-pane" id="all-categories">
+                                                    <app-food-items [data]="allCategories"></app-food-items>
+                                                </div>
+                                                
+                                                
+                                                
+                                            </ng-template>
+                                        </li>
+                                        <li class="nav-item" ngbNavItem="main-course">
+                                            <a class="nav-link" data-toggle="tab" href="#main-course" ngbNavLink>
+                                                Main Course
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                                
+                                                <div class="tab-pane"  id="main-course">
+                                                        <app-food-items [data]="mainCourse"></app-food-items>
+                                                </div>
+                                                
+                                            </ng-template>
+                                        </li>
+                                        <li class="nav-item" ngbNavItem="pizza">
+                                            <a class="nav-link" data-toggle="tab" href="#pizza" ngbNavLink>
+                                                Pizza
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                                    <div class="tab-pane"  id="pizza">
+                                                        <app-food-items [data]="pizza"></app-food-items>
+                                                    </div>
+                                            </ng-template>
+                                        </li>
+                                        <li class="nav-item" ngbNavItem="drink">
+                                            <a class="nav-link" data-toggle="tab" href="#drink" ngbNavLink>
+                                                Drink
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                                    
+                                                     <div class="tab-pane "  id="drink">
+                                                        <app-food-items [data]="drink"></app-food-items>
+                                                    </div>
+                                                    
+                                                    
+                                            </ng-template>
+                                        </li>
+                                        <li class="nav-item" ngbNavItem="dessert">
+                                            <a class="nav-link" data-toggle="tab" href="#dessert" ngbNavLink>
+                                                Dessert
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                                    
+                                                    <div class="tab-pane"  id="dessert">
+                                                        <app-food-items [data]="dessert"></app-food-items>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    
+                                            </ng-template>
+                                        </li>
+                                        <li class="nav-item" ngbNavItem="more">
+                                            <a class="nav-link" data-toggle="tab" href="#more" ngbNavLink>
+                                                More
+                                            </a>
+                                            <ng-template ngbNavContent>
+                                            
+                                                    <div class="tab-pane "  id="more">
+                                                        <app-food-items [data]="more"></app-food-items>
+                                                    </div>
+                                            
+                                            
+                                            </ng-template>
+                                        </li>													
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            
+
+<div class="card-body most-favourite-items pb-0">
+    <div [ngbNavOutlet]="nav" class=""></div>
+</div>
+                            

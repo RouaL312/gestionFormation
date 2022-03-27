@@ -1,0 +1,101 @@
+<div class="authincation d-flex flex-column flex-lg-row flex-column-fluid">
+		<div class="login-aside text-center  d-flex flex-column flex-row-auto">
+			<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+				<div class="text-center mb-4 pt-5">
+					<img src="assets/images/logo-full.png" alt="">
+				</div>
+				<h3 class="mb-2">Welcome back!</h3>
+				<p>User Experience & Interface Design <br>Strategy SaaS Solutions</p>
+			</div>
+			<div class="aside-image" style="background-image:url(assets/images/background/pic1.svg);"></div>
+		</div>
+		<div class="container flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+			<div class="d-flex justify-content-center h-100 align-items-center">
+				<div class="authincation-content style-2">
+					<div class="row no-gutters">
+						<div class="col-xl-12 tab-content">
+							<div id="sign-up" class="auth-form tab-pane fade show active  form-validation" *ngIf="selectedDiv === 'sign-up'">
+								<form id="dz_login_signup_form" class="form-validate">
+									<h3 class="text-center mb-4 text-black">Sign up your account</h3>
+									<div class="form-group">
+										<label class="mb-1 text-black"   for="val-username"><strong>Username</strong></label>
+										<div>
+											<input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="mb-1 text-black"  for="val-email"><strong>Email</strong></label>
+										<div>
+											<input type="email" class="form-control" id="val-email" name="val-email" placeholder="hello@example.com">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="mb-1 text-black"  for="val-password"><strong>Password</strong></label>
+										<div>
+											<input type="password" class="form-control"  id="val-password" name="val-password" value="Password">
+										</div>
+									</div>
+									<div class="form-group text-center mt-4">
+										<button type="submit" class="btn btn-primary btn-block" id="dz-signup-submit" >Sign up</button>
+									</div>
+								</form>
+								<div class="new-account mt-3">
+									<p>Already have an account? <a class="text-primary" href="javascript:void(0);" data-toggle="tab" (click)="showForm('sign-in')">Sign in</a></p>
+								</div>
+							</div>
+                            
+                            
+							<div id="sign-in" class="auth-form1 tab-pane1 fade1  form-validation" *ngIf="selectedDiv == 'sign-in'">
+								<form   id="dz_login_signin_form"  class="form-validate">
+									<h3 class="text-center mb-4 text-black">Sign in your account</h3>
+									<div class="form-group">
+										<label class="mb-1"  for="val-email"><strong>Email</strong></label>
+										<div>
+											<input type="email" class="form-control"  id="val-email" name="val-email" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="mb-1"><strong>Password</strong></label>
+										<input type="password" class="form-control" value="Password">
+									</div>
+									<div class="form-row d-flex justify-content-between mt-4 mb-2">
+										<div class="form-group">
+										   <div class="custom-control custom-checkbox ml-1">
+												<input type="checkbox" class="custom-control-input" id="basic_checkbox_1">
+												<label class="custom-control-label" for="basic_checkbox_1">Remember my preference</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<a href="javascript:void(0);" data-toggle="tab" (click)="showForm('forgot-password')">Forgot Password?</a>
+										</div>
+									</div>
+									<div class="text-center form-group">
+										<button type="submit" class="btn btn-primary btn-block"  id="dz-signin-submit">Sign In</button>
+									</div>
+								</form>
+								<div class="new-account mt-3">
+									<p>Don't have an account? <a class="text-primary"  href="javascript:void(0);" data-toggle="tab" (click)="showForm('sign-up')">Sign up</a></p>
+								</div>
+							</div>
+                            
+                            
+							<div id="forgot-password" class="auth-form1 tab-pane1 fade1 form-validation" *ngIf="selectedDiv === 'forgot-password'">
+								<form id="dz_login_forgot_form">
+									<h3 class="text-center mb-4 text-black">Forgot Password</h3>
+									<div class="form-group">
+										<label class="mb-1"  for="val-password"><strong>Enter Password</strong></label>
+										<div>
+											<input type="password" class="form-control"  id="val-password" name="val-password" >
+										</div>
+									</div>
+									<div class="text-center form-group">
+										<button type="submit"  class="btn btn-primary btn-block">SUBMIT</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

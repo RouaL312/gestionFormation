@@ -1,0 +1,30 @@
+<div class="card-header border-0 pb-0">
+	<div class="clearfix">
+		<h3 class="card-title">Clolesterol</h3>
+		<span>In the normal</span>
+	</div>
+	<div class="clearfix text-center">
+		<h3 class="text-info mb-0">124</h3>
+		<span>mg/dl</span>
+	</div>
+</div>
+<div class="card-body text-center">
+	<div class="ico-sparkline">
+		<!-- <div id="sparkline9" class="height80;"></div> -->
+		
+		<apx-chart
+		[series]="chartOptions.series"
+		[chart]="chartOptions.chart"
+		[xaxis]="chartOptions.xaxis"
+		[stroke]="chartOptions.stroke"
+		[dataLabels]="chartOptions.dataLabels"
+		[yaxis]="chartOptions.yaxis"
+		[labels]="chartOptions.labels"
+		[legend]="chartOptions.legend"
+		[grid]="chartOptions.grid"
+		[colors]="chartOptions.colors"
+		[tooltip]="chartOptions.tooltip"
+	  ></apx-chart>
+	  
+	</div>
+</div>

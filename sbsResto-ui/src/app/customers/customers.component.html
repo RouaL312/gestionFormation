@@ -1,0 +1,125 @@
+<div class="content-body">
+            <!-- row -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="d-flex flex-wrap mb-3">
+							<a href="javascript:void(0);" data-toggle="modal"   (click)="open(addContactModal)" class="btn btn-outline-primary  mr-auto mb-2">Add New Customer</a>
+							<!-- Add Order -->
+                            
+                            
+                            <ng-template #addContactModal let-modal>
+								
+								<div class="modal-header">
+									<h4 class="modal-title" id="modal-basic-title">Add Contact</h4>
+									<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form>
+                                        <div class="form-group">
+                                            <label class="text-black font-w500">First Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-black font-w500">Last Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-black font-w500">Address</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-primary">SAVE</button>
+                                        </div>
+                                    </form>
+								</div>
+							</ng-template>
+                            
+                            <mat-form-field appearance="fill" class="style-2 mr-3 mb-3 dashboard-select">
+                                <mat-select value="Filter">
+                                    <mat-option value="Filter">Filter</mat-option>
+                                    <mat-option value="Date">Date</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="style-2 mb-3 dashboard-select">
+                                <mat-select value="Newest">
+                                    <mat-option value="Newest">Newest</mat-option>
+                                    <mat-option value="Oldest">Oldest</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+						</div>
+						<div class="table-responsive">
+							<table id="dataTable1" class="display table text-black dataTablesCard customer-list-tbl card-table  dataTable   mb-4 table-responsive-lg ">
+								<thead>
+									<tr class="bg-primary">
+										<th class="sorting_1  pr-0 text-center bg-none no-data-img ">
+											<div class="custom-control custom-checkbox ml-2">
+												<input type="checkbox" class="custom-control-input" id="checkAll" required="" [(ngModel)]="isMasterSel" name="list_name" value="h1" (change)="checkUncheckAll()">
+												<label class="custom-control-label" for="checkAll"></label>
+											</div>
+										</th>
+										<th><strong class="font-w600 wspace-no">Customer ID</strong></th>
+										<th><strong class="font-w600 wspace-no">Join Date</strong></th>
+										<th><strong class="font-w600 wspace-no">Customer Name</strong></th>
+										<th><strong class="font-w600 wspace-no">Location</strong></th>
+										<th><strong class="font-w600 wspace-no">Total Spent</strong></th>
+										<th><strong class="font-w600 wspace-no">Last Order</strong></th>
+										<th class="bg-none"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let customer of customers; let i= index">
+										<td class="sorting_1 pr-0 text-center">
+											<div class="custom-control custom-checkbox ml-2">
+												<input type="checkbox" class="custom-control-input" id="customCheckBox_{{i}}" [(ngModel)]="customer.isSelected">
+												<label class="custom-control-label" for="customCheckBox_{{i}}"></label>
+											</div>
+										</td>
+										<td>#{{ customer.cust_id }}</td>
+										<td>{{ customer.join_date }}</td>
+										<td>{{ customer.customer_name }}</td>
+										<td>{{ customer.location }}</td>
+										<td>{{ customer.total_spent }}</td>
+										<td><span class="font-w600">{{ customer.last_order }}</span></td>
+										<td>
+											<div class="dropdown ml-auto dropdown-no-icon" ngbDropdown display="dynamic">
+												<div class="btn-link" data-toggle="dropdown" aria-expanded="false" role="button" ngbDropdownToggle>
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+														<path d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+														<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</svg>
+												</div>
+												<div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+													<a class="dropdown-item text-black" href="#">
+													Accept order
+													</a>
+													<a class="dropdown-item text-black" href="#">
+													Reject order
+													</a>
+													<a class="dropdown-item text-black" href="#">
+													View Details
+													</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+                            <div class="d-flex justify-content-between p-2">
+                                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="updateCustomerListing()">
+                                </ngb-pagination>
+                                
+                                <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="updateCustomerListing()">
+                                    <option [ngValue]="5">5 items per page</option>
+                                    <option [ngValue]="10">10 items per page</option>
+                                    <option [ngValue]="20">20 items per page</option>
+                                </select>
+                            </div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>

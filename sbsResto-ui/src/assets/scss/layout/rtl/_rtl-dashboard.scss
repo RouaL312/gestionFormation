@@ -1,0 +1,27 @@
+[direction="rtl"] {
+	.default-accordion,.prevent-accordion{
+		.card-header button{
+			text-align:right;
+			padding-right:1.5rem;
+			padding-left:40px;
+			&:after{
+				right: auto;
+				left: 20px;
+			}
+		}
+	}
+	.default-calendar .ngb-dp-header{
+		direction:ltr;
+	}
+	ngb-toast .toast-header .close{
+		margin-left:unset;
+	}
+	.calendar-list .list-group-item{
+		border-left:0;
+		border-right:4px solid $primary;
+	}
+	.calendar-checkbox input[type=checkbox], .calendar-checkbox input[type=radio] {
+		margin-right: 0px;
+		margin-left: 6px;
+	}
+}

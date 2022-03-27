@@ -1,0 +1,37 @@
+<div class="card-body pb-0">
+	<h4 class="card-title text-uppercase font-weight-normal">Market Now</h4>
+	<h2 class="font-weight-normal text-danger">
+		<span><i class="fa fa-caret-up"></i></span>
+		<span>3454664</span>
+	</h2>
+	<div class="row mt-5">
+		<div class="col text-center">
+			<h5 class="font-weight-normal">APPL</h5>
+			<span class="text-success">+ 82.24 %</span>
+		</div>
+		<div class="col text-center">
+			<h5 class="font-weight-normal">FB</h5>
+			<span class="text-danger">- 12.24 %</span>
+		</div>
+		<div class="col text-center">
+			<h5 class="font-weight-normal">GOOG</h5>
+			<span class="text-success">+ 42.24 %</span>
+		</div>
+	</div>
+</div>
+<div class="chart-wrapper">
+	<apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [responsive]="chartOptions.responsive"
+    [xaxis]="chartOptions.xaxis"
+	[yaxis]="chartOptions.yaxis"
+    [legend]="chartOptions.legend"
+    [fill]="chartOptions.fill"
+    [grid]="chartOptions.grid"
+    [colors]="chartOptions.colors"
+  ></apx-chart>
+  
+</div>

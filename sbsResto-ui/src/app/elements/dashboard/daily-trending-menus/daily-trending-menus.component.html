@@ -1,0 +1,20 @@
+<div class="card-header border-0">
+    <div class="separator"></div>
+    <div class="mr-auto">	
+        <h4 class="text-black fs-20">Daily Trending Menus</h4>
+        <p class="fs-13 mb-0">Lorem ipsum dolor</p>
+    </div>	
+    
+</div>
+<div class="card-body" >
+    <div class="dz-scroll height500" id="tredingMenus"  [perfectScrollbar]>
+        <div class="d-flex pb-3 mb-3 tr-row align-items-center border-bottom" *ngFor = "let menus of data">
+            <span class="num">{{menus.count}}</span>
+            <div class="mr-auto pr-3">
+                <a routerLink="/{{menus.url}}"><h2 class="text-black fs-14 font-w500">{{menus.title}}</h2></a>
+                <span class="text-black font-w600 d-inline-block mr-3">{{menus.price}} </span> <span class="fs-14">Order {{menus.order}}</span>
+            </div>
+            <img src="{{menus.image}}" alt="">
+        </div>
+    </div>
+</div>

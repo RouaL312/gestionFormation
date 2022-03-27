@@ -1,0 +1,846 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Widget</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Statistics</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header border-0 pb-0">
+                        <h4 class="card-title">Timeline</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-timeline1></app-timeline1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header border-0 pb-0">
+                        <h4 class="card-title">Timeline 2</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-timeline2></app-timeline2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header  border-0 pb-0">
+                        <h4 class="card-title">Notifications</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-notifications1></app-notifications1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card border-0 pb-0">
+                    <div class="card-header border-0 pb-0">
+                        <h4 class="card-title">Notifications 2</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-notifications2></app-notifications2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card border-0 pb-0">
+                    <div class="card-header border-0 pb-0">
+                        <h4 class="card-title">Message</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-message></app-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-xxl-6 col-lg-6">
+                <div class="card border-0 pb-0">
+                    <div class="card-header border-0 pb-0">
+                        <h4 class="card-title">To Do List</h4>
+                    </div>
+                    <div class="card-body">
+                        <app-todolist></app-todolist>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+                                <svg id="icon-customers" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </span>
+                            <div class="media-body">
+                                <p class="mb-1">Patient</p>
+                                <h4 class="mb-0">3280</h4>
+                                <span class="badge badge-primary">+3.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <div class="media ai-icon">
+                            <span class="mr-3 bgl-warning text-warning">
+                                <svg id="icon-orders" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </span>
+                            <div class="media-body">
+                                <p class="mb-1">Bills</p>
+                                <h4 class="mb-0">2570</h4>
+                                <span class="badge badge-warning">+3.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body  p-4">
+                        <div class="media ai-icon">
+                            <span class="mr-3 bgl-danger text-danger">
+                                <svg id="icon-revenue" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </span>
+                            <div class="media-body">
+                                <p class="mb-1">Revenue</p>
+                                <h4 class="mb-0">364.50K</h4>
+                                <span class="badge badge-danger">-3.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <div class="media ai-icon">
+                            <span class="mr-3 bgl-success text-success">
+                                <svg id="icon-database-widget" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                </svg>
+                            </span>
+                            <div class="media-body">
+                                <p class="mb-1">Patient</p>
+                                <h4 class="mb-0">364.50K</h4>
+                                <span class="badge badge-success">-3.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-danger">
+                    <div class="card-body  p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="flaticon-381-calendar-1"></i>
+                            </span>
+                            <div class="media-body text-white text-right">
+                                <p class="mb-1">Appointment</p>
+                                <h3 class="text-white">76</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-success">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="flaticon-381-diamond"></i>
+                            </span>
+                            <div class="media-body text-white text-right">
+                                <p class="mb-1">Earning</p>
+                                <h3 class="text-white">$56K</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-info">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="flaticon-381-heart"></i>
+                            </span>
+                            <div class="media-body text-white text-right">
+                                <p class="mb-1">Total Patient</p>
+                                <h3 class="text-white">783K</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-primary">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="flaticon-381-user-7"></i>
+                            </span>
+                            <div class="media-body text-white text-right">
+                                <p class="mb-1">Chef</p>
+                                <h3 class="text-white">$76</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-primary">
+                    <div class="card-body  p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-users"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total Students</p>
+                                <h3 class="text-white">3280</h3>
+                                <div class="progress mb-2 bg-secondary">
+                                    <div class="progress-bar progress-animated bg-light" style="width: 80%"></div>
+                                </div>
+                                <small>80% Increase in 20 Days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-warning">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-user"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">New Students</p>
+                                <h3 class="text-white">245</h3>
+                                <div class="progress mb-2 bg-primary">
+                                    <div class="progress-bar progress-animated bg-light" style="width: 50%"></div>
+                                </div>
+                                <small>50% Increase in 25 Days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-secondary">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-graduation-cap"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total Course</p>
+                                <h3 class="text-white">28</h3>
+                                <div class="progress mb-2 bg-primary">
+                                    <div class="progress-bar progress-animated bg-light" style="width: 76%"></div>
+                                </div>
+                                <small>76% Increase in 20 Days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+                <div class="widget-stat card bg-danger ">
+                    <div class="card-body p-4">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-dollar"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Fees Collect</p>
+                                <h3 class="text-white">250$</h3>
+                                <div class="progress mb-2 bg-secondary">
+                                    <div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
+                                </div>
+                                <small>30% Increase in 30 Days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title">Total Students</h4>
+                        <h3>3280</h3>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-animated bg-primary" style="width: 80%"></div>
+                        </div>
+                        <small>80% Increase in 20 Days</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title">New Students</h4>
+                        <h3>245</h3>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-animated bg-warning" style="width: 50%"></div>
+                        </div>
+                        <small>50% Increase in 25 Days</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title">Total Course</h4>
+                        <h3>28</h3>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-animated bg-red" style="width: 76%"></div>
+                        </div>
+                        <small>76% Increase in 20 Days</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="widget-stat card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title">Fees Collection</h4>
+                        <h3>25160$</h3>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-animated bg-success" style="width: 30%"></div>
+                        </div>
+                        <small>30% Increase in 30 Days</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-12 col-lg-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-sm-6">
+                        <app-pie-chart1></app-pie-chart1>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-sm-6">
+                        <app-bar-chart1></app-bar-chart1>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-sm-6">
+                        <app-bar-chart2></app-bar-chart2>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-sm-6">
+                        <app-area-chart1></app-area-chart1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header border-0 pb-0">
+                        <h2 class="card-title">about me</h2>
+                    </div>
+                    <div class="card-body pb-0">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex px-0 justify-content-between">
+                                <strong>Gender</strong>
+                                <span class="mb-0">Male</span>
+                            </li>
+                            <li class="list-group-item d-flex px-0 justify-content-between">
+                                <strong>Education</strong>
+                                <span class="mb-0">PHD</span>
+                            </li>
+                            <li class="list-group-item d-flex px-0 justify-content-between">
+                                <strong>Designation</strong>
+                                <span class="mb-0">Se. Professor</span>
+                            </li>
+                            <li class="list-group-item d-flex px-0 justify-content-between">
+                                <strong>Operation Done</strong>
+                                <span class="mb-0">120</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer pt-0 pb-0 text-center">
+                        <div class="row">
+                            <div class="col-4 pt-3 pb-3 border-right">
+                                <h3 class="mb-1 text-primary">150</h3>
+                                <span>Projects</span>
+                            </div>
+                            <div class="col-4 pt-3 pb-3 border-right">
+                                <h3 class="mb-1 text-primary">140</h3>
+                                <span>Uploads</span>
+                            </div>
+                            <div class="col-4 pt-3 pb-3">
+                                <h3 class="mb-1 text-primary">45</h3>
+                                <span>Tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-8 col-xxl-8 col-lg-12 col-sm-12">
+                <app-visitor-activity></app-visitor-activity>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-sm-6">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <div class="profile-photo">
+                                <img src="assets/images/profile/profile.png" width="100" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <h3 class="mt-4 mb-1">Deangelo Sena</h3>
+                            <p class="text-muted">Senior Manager</p>
+                            <a class="btn btn-outline-primary btn-rounded mt-3 px-5" href="javascript:void(0)">Folllow</a>
+                        </div>
+                    </div>
+
+                    <div class="card-footer pt-0 pb-0 text-center">
+                        <div class="row">
+                            <div class="col-4 pt-3 pb-3 border-right">
+                                <h3 class="mb-1">150</h3><span>Follower</span>
+                            </div>
+                            <div class="col-4 pt-3 pb-3 border-right">
+                                <h3 class="mb-1">140</h3><span>Place Stay</span>
+                            </div>
+                            <div class="col-4 pt-3 pb-3">
+                                <h3 class="mb-1">45</h3><span>Reviews</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-sm-6">
+                <app-chartjs-active-users></app-chartjs-active-users>
+            </div>
+
+            <div class="col-xl-4 col-lg-12 col-sm-12">
+                <div class="card overflow-hidden">
+                    <div class="text-center p-3 overlay-box " style="background-image: url(assets/images/big/img1.jpg);">
+                        <div class="profile-photo">
+                            <img src="assets/images/profile/profile.png" width="100" class="img-fluid rounded-circle" alt="">
+                        </div>
+                        <h3 class="mt-3 mb-1 text-white">Deangelo Sena</h3>
+                        <p class="text-white mb-0">Senior Manager</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Patient Gender</span> <strong class="text-muted">Female	</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Years Old</span> 		<strong class="text-muted">Age: 24	</strong></li>
+                    </ul>
+                    <div class="card-footer border-0 mt-0">
+                        <button class="btn btn-primary btn-lg btn-block">
+                            <i class="fa fa-bell-o"></i> Reminder Alarm
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-xxl-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Recent Payments Queue</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive recentOrderTable">
+                            <table class="table verticle-middle table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Ward No.</th>
+                                        <th scope="col">Patient</th>
+                                        <th scope="col">Dr Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Bills</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Mr. Bobby</td>
+                                        <td>Dr. Jackson</td>
+                                        <td>01 August 2020</td>
+                                        <td><span class="badge badge-rounded badge-primary">Checkin</span></td>
+                                        <td>$120</td>
+                                        <td>
+                                            <div class="dropdown dropdown-no-icon custom-dropdown mb-0"  display="dynamic" placement="bottom-right" ngbDropdown>
+                                                <div class="btn sharp btn-primary tp-btn" ngbDropdownToggle>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="12" cy="5" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="12" cy="19" r="2"/></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 </td>
+                                        <td>Mr. Dexter</td>
+                                        <td>Dr. Charles</td>
+                                        <td>31 July 2020</td>
+                                        <td><span class="badge badge-rounded badge-warning">Panding</span></td>
+                                        <td>$540</td>
+                                        <td>
+                                            <div class="dropdown dropdown-no-icon custom-dropdown mb-0" ngbDropdown display="dynamic" placement="bottom-right">
+                                                <div class="btn sharp btn-primary tp-btn" ngbDropdownToggle>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="12" cy="5" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="12" cy="19" r="2"/></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>03 </td>
+                                        <td>Mr. Nathan</td>
+                                        <td>Dr. Frederick</td>
+                                        <td>30 July 2020</td>
+                                        <td><span class="badge badge-rounded badge-danger">Canceled</span></td>
+                                        <td>$301</td>
+                                        <td>
+                                            <div class="dropdown dropdown-no-icon custom-dropdown mb-0" ngbDropdown display="dynamic" placement="bottom-right">
+                                                <div class="btn sharp btn-primary tp-btn" ngbDropdownToggle>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="12" cy="5" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="12" cy="19" r="2"/></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>05</td>
+                                        <td>Mr. Aurora</td>
+                                        <td>Dr. Roman</td>
+                                        <td>29 July 2020</td>
+                                        <td><span class="badge badge-rounded badge-success">Checkin</span></td>
+                                        <td>$099</td>
+                                        <td>
+                                            <div class="dropdown dropdown-no-icon custom-dropdown mb-0" ngbDropdown display="dynamic" placement="bottom-right">
+                                                <div class="btn sharp btn-primary tp-btn" ngbDropdownToggle>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="12" cy="5" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="12" cy="19" r="2"/></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>06</td>
+                                        <td>Mr. Matthew</td>
+                                        <td>Dr. Samantha</td>
+                                        <td>28 July 2020</td>
+                                        <td><span class="badge badge-rounded badge-success">Checkin</span></td>
+                                        <td>$520</td>
+                                        <td>
+                                            <div class="dropdown dropdown-no-icon custom-dropdown mb-0" ngbDropdown display="dynamic" placement="bottom-right">
+                                                <div class="btn sharp btn-primary tp-btn" ngbDropdownToggle>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="12" cy="5" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="12" cy="19" r="2"/></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-xxl-4 col-sm-6">
+                <div class="card text-white bg-primary">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Blood type :</span><strong>O+</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Allergies :</span><strong>Penicilin, peanuts </strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Pressure :</span><strong>120/100 mmHG</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Diseases :</span><strong>Diabetes</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Temperture :</span><strong>34 Degree</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-xxl-4 col-sm-6">
+                <div class="card text-white bg-warning text-black">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Regular Checkups</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Dr Theodore Handle :</span><strong>Dentist</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Dr Valentino Morose :</span><strong>Surgeon</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Dr Fleece Marigold :</span><strong>Clinical</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Dr Eric Widget :</span><strong>Cardiology</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-12 col-xxl-4 col-sm-12">
+                <div class="card">
+                    <div class="card-body text-center ai-icon  text-primary">
+                        <svg id="rocket-icon" class="my-2" viewBox="0 0 24 24" width="80" height="80" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <h4 class="my-2">You don’t have badges yet</h4>
+                        <a href="javascript:void(0);" class="btn my-2 btn-primary btn-lg px-4"><i class="fa fa-usd"></i> Earn Budges</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-12 col-xxl-8 col-sm-12">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <app-blood-pressure></app-blood-pressure>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <app-heart-rate></app-heart-rate>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <app-glucose-rate></app-glucose-rate>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <app-clolesterol></app-clolesterol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-12 col-sm-12">
+                <div class="card overflow-hidden">
+                    <div class="text-center p-5 overlay-box" style="background-image: url(assets/images/big/img5.jpg);">
+                        <img src="assets/images/profile/profile.png" width="100" class="img-fluid rounded-circle" alt="">
+                        <h3 class="mt-3 mb-0 text-white">Deangelo Sena</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="bgl-primary rounded p-3">
+                                    <h4 class="mb-0">Female</h4>
+                                    <small>Patient Gender</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bgl-primary rounded p-3">
+                                    <h4 class="mb-0">Age: 24</h4>
+                                    <small>Years Old</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer mt-0">
+                        <button class="btn btn-primary btn-lg btn-block">View Profile</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-xxl-6 col-sm-6">
+                <div class="card bg-primary">
+                    <app-bar-chart3></app-bar-chart3>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-xxl-6 col-sm-6">
+                <div class="card bg-success">
+                    <app-area-chart2></app-area-chart2>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-xxl-6 col-sm-6">
+                <div class="card">
+                    <app-bar-chart4></app-bar-chart4>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-xxl-6 col-sm-12">
+                <div class="card">
+                    <app-bar-chart5></app-bar-chart5>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-xxl-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <app-area-chart3></app-area-chart3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <app-bar-chart6></app-bar-chart6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card">
+                    <app-market-now></app-market-now>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card">
+                    <app-sales-analysis></app-sales-analysis>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="card">
+                    <app-top-products1></app-top-products1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="card">
+                    <app-top-products2></app-top-products2>
+                </div>
+            </div>
+            <div class="col-xl-6 col-xxl-8 col-lg-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <app-weekly-sales></app-weekly-sales>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <app-all-sales1></app-all-sales1>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <app-all-sales2></app-all-sales2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-xxl-4 col-lg-12">
+                <div class="card">
+                    <app-sales-status></app-sales-status>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="card">
+                    <div class="social-graph-wrapper widget-facebook">
+                        <span class="s-icon"><i class="fa fa-facebook"></i></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">89</span> k</h4>
+                                <p class="m-0">Friends</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">119</span> k</h4>
+                                <p class="m-0">Followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="card">
+                    <div class="social-graph-wrapper widget-linkedin">
+                        <span class="s-icon"><i class="fa fa-linkedin"></i></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">89</span> k</h4>
+                                <p class="m-0">Friends</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">119</span> k</h4>
+                                <p class="m-0">Followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="card">
+                    <div class="social-graph-wrapper widget-googleplus">
+                        <span class="s-icon"><i class="fa fa-google-plus"></i></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">89</span> k</h4>
+                                <p class="m-0">Friends</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">119</span> k</h4>
+                                <p class="m-0">Followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="card">
+                    <div class="social-graph-wrapper widget-twitter">
+                        <span class="s-icon"><i class="fa fa-twitter"></i></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">89</span> k</h4>
+                                <p class="m-0">Friends</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                <h4 class="m-1"><span class="counter">119</span> k</h4>
+                                <p class="m-0">Followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->

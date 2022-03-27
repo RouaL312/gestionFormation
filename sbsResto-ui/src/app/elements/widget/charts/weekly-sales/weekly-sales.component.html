@@ -1,0 +1,36 @@
+<div class="row no-gutters">
+	<div class="col-5 p-0">
+		<div class="card-body">
+			<h6 class="font-weight-normal text-uppercase">Weekly sales</h6>
+			<h4>$ 14000</h4>
+			<div>
+				<span class="badge badge-light">60%</span>
+				<span>Higher</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-7 p-0">
+		<div class="chart-wrapper">
+			<!-- <canvas id="chart_widget_11"></canvas> -->
+			
+			<apx-chart
+			[series]="chartOptions.series"
+			[chart]="chartOptions.chart"
+			[xaxis]="chartOptions.xaxis"
+			[stroke]="chartOptions.stroke"
+			[dataLabels]="chartOptions.dataLabels"
+			[yaxis]="chartOptions.yaxis"
+			[labels]="chartOptions.labels"
+			[legend]="chartOptions.legend"
+			[title]="chartOptions.title"
+			[subtitle]="chartOptions.subtitle"
+			[grid]="chartOptions.grid"
+			[colors]="chartOptions.colors"
+			[tooltip]="chartOptions.tooltip"
+			[fill]="chartOptions.fill"
+		  ></apx-chart>
+			
+			
+		</div>
+	</div>
+</div>

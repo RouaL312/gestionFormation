@@ -1,0 +1,48 @@
+<div class="card active_users">
+	<div class="card-header bg-success border-0 pb-0">
+		<h4 class="card-title text-white">Active Users</h4>
+		<span id="counter"></span>
+	</div>
+	<div class="bg-success">
+		<!-- <canvas id="activeUser"></canvas> -->
+		<div class="chart-wrapper">
+			<canvas baseChart 
+			[datasets]="barChartData"
+			[labels]="barChartLabels"
+			[options]="barChartOptions"
+			[plugins]="barChartPlugins"
+			[legend]="barChartLegend"
+			[colors]="barChartColors"
+			[chartType]="barChartType">
+		  </canvas>
+		</div>
+	</div>
+	<div class="card-body pt-0">
+		<div class="list-group-flush mt-4">
+			<div class="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 font-weight-semi-bold border-top-0">
+				<p class="mb-0">Top Active Pages</p>
+				<p class="mb-0">Active Users</p>
+			</div>
+			<div class="list-group-item bg-transparent d-flex justify-content-between px-0 py-1">
+				<p class="mb-0">/bootstrap-themes/</p>
+				<p class="mb-0">3</p>
+			</div>
+			<div class="list-group-item bg-transparent d-flex justify-content-between px-0 py-1">
+				<p class="mb-0">/tags/html5/</p>
+				<p class="mb-0">3</p>
+			</div>
+			<div class="list-group-item bg-transparent d-xxl-flex justify-content-between px-0 py-1 d-none">
+				<p class="mb-0">/</p>
+				<p class="mb-0">2</p>
+			</div>
+			<div class="list-group-item bg-transparent d-xxl-flex justify-content-between px-0 py-1 d-none">
+				<p class="mb-0">/preview/falcon/dashboard/</p>
+				<p class="mb-0">2</p>
+			</div>
+			<div class="list-group-item bg-transparent d-flex justify-content-between px-0 py-1">
+				<p class="mb-0">/100-best-themes...all-time/</p>
+				<p class="mb-0">1</p>
+			</div>
+		</div>
+	</div>
+</div>

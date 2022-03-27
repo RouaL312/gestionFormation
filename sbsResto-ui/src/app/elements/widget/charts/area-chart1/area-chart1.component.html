@@ -1,0 +1,26 @@
+<div class="widget-stat card bg-danger overflow-hidden">
+	<div class="card-header pb-3 border-0 pb-0">
+		<h3 class="card-title text-white">Fees Collection</h3>
+		<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 3280$</h5>
+	</div>
+	<div class="card-body p-0">
+		<!-- <span class="peity-line-2" data-width="100%">7,6,8,7,3,8,3,3,6,5,9,2,8</span> -->
+		
+		<apx-chart
+		[series]="chartOptions.series"
+		[chart]="chartOptions.chart"
+		[xaxis]="chartOptions.xaxis"
+		[stroke]="chartOptions.stroke"
+		[dataLabels]="chartOptions.dataLabels"
+		[yaxis]="chartOptions.yaxis"
+		[labels]="chartOptions.labels"
+		[legend]="chartOptions.legend"
+		[title]="chartOptions.title"
+		[subtitle]="chartOptions.subtitle"
+		[grid]="chartOptions.grid"
+		[colors]="chartOptions.colors"
+		[tooltip]="chartOptions.tooltip"
+	  ></apx-chart>
+		
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-xl-6 pb-3 mb-3 border-bottom" *ngFor = "let item of data">
+        <div class="media favourite-item-list">
+            <img class="rounded mr-3 food-img" src="{{item.image}}" width="125" alt="">
+            <div class="media-body">
+                <h5 class="mb-sm-4 mb-3"><a class="text-black" routerLink="/{{item.url}}">{{item.title}}</a></h5>
+                <div class="d-flex mb-2">
+                    <svg class="mr-2 card-ico" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="2.04545" height="15" rx="1.02273" fill="#FF720D"/>
+                        <rect x="4.09082" y="4.0909" width="2.04545" height="10.9091" rx="1.02273" fill="#FF720D"/>
+                        <rect x="8.18164" y="10.2273" width="2.04545" height="4.77273" rx="1.02273" fill="#FF720D"/>
+                        <rect x="12.2725" y="2.04546" width="2.04545" height="12.9545" rx="1.02273" fill="#FF720D"/>
+                    </svg>
+                    <span class="fs-14 text-black"><strong class="mr-1">{{item.total_sales}}</strong> Total Sales</span>
+                </div>
+                <div class="d-flex align-items-center flex-wrap fs-12">
+                    <div class="mb-2 star-review2">
+                        <i *ngFor="let ratings of item.ratings_class " class="{{ratings.icon_class}}"></i>
+                        <!-- <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star op5"></i>
+                        <i class="fa fa-star op5"></i> -->
+                    </div>
+                    <span class="ml-3 text-dark mb-2">({{item.reviews}} reviews)</span>
+                </div>
+            </div>
+            <div class="d-inline-block relative donut-chart-sale">
+                
+                <!-- <apx-chart
+                    [series]="[item.graph]"
+                    [chart]="chartOptions.chart"
+                    [plotOptions]="chartOptions.plotOptions"
+                    [labels]="chartOptions.labels"
+                    [fill]="chartOptions.fill"
+                    [stroke]="chartOptions.stroke"
+                    [stroke]="chartOptions.stroke"
+                  ></apx-chart> -->
+                
+                
+            </div>
+        </div>
+    </div>
+</div>

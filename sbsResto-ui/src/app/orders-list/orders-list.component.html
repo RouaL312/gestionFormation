@@ -1,0 +1,243 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card bg-transparent shadow-none">
+                    <div class="card-header flex-wrap border-0 p-0 justify-content-start">
+                        <div class="table-tabs mr-2 mb-3 mr-auto">
+                            <ul class="nav nav-tabs" ngbNav #nav="ngbNav" role="tablist">
+                                <li class="nav-item" ngbNavItem="AllStatus">
+                                    <a class="nav-link" data-toggle="tab" href="#AllStatus" aria-expanded="false" ngbNavLink>
+                                        All Status	
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-pane fade active show" id="AllStatus">
+                                            <div class="table-responsive rounded table-hover">
+                                                <table class="table text-black card-table dataTable mb-4 table-responsive-lg dataTablesCard" id="dataTable1">
+                                                    <thead class="bg-primary">
+                                                        <tr>
+                                                            <th>Order ID</th>
+                                                            <th>Date</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Location</th>
+                                                            <th>Amount</th>
+                                                            <th>Status Order</th>
+                                                            <th style="background-image:none;"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="alert alert-dismissible border-0" *ngFor = "let order of allOrders">
+                                                            <td>{{order.order_id}}</td>
+                                                            <td>{{order.date}}</td>
+                                                            <td>{{order.user}}</td>
+                                                            <td>{{order.address}}</td>
+                                                            <td>{{order.price}}</td>
+                                                            <td>
+                                                                <a class="btn {{order.order_status_class}}" href="javascript:void(0);">{{order.order_status}}</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown dropdown-no-icon" ngbDropdown>
+                                                                    <a class="btn-link" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
+                                                                    </a>
+                                                                    <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                                        <a class="dropdown-item text-info" href="javascript:void(0);">Accept Order</a>
+                                                                        <a href="javascript:void(0);" data-dismiss="alert" aria-label="Close" class="dropdown-item">Reject Order</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li class="nav-item" ngbNavItem="NewOrder">
+                                    <a class="nav-link" data-toggle="tab" href="#NewOrder" aria-expanded="false" ngbNavLink>
+                                        New Order	
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-pane" id="NewOrder">
+                                            <div class="table-responsive rounded table-hover">
+                                                <table class="table text-black card-table dataTable  mb-4 table-responsive-lg dataTablesCard" id="dataTable2">
+                                                    <thead class="bg-primary">
+                                                        <tr>
+                                                            <th>Order ID</th>
+                                                            <th>Date</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Location</th>
+                                                            <th>Amount</th>
+                                                            <th>Status Order</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="alert alert-dismissible border-0" *ngFor = "let order of newOrders">
+                                                            <td>{{order.order_id}}</td>
+                                                            <td>{{order.date}}</td>
+                                                            <td>{{order.user}}</td>
+                                                            <td>{{order.address}}</td>
+                                                            <td>{{order.price}}</td>
+                                                            <td>
+                                                                <a class="btn {{order.order_status_class}}" href="javascript:void(0);">{{order.order_status}}</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown dropdown-no-icon" ngbDropdown>
+                                                                    <a class="btn-link" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
+                                                                    </a>
+                                                                    <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                                        <a class="dropdown-item text-info" href="javascript:void(0);">Accept Order</a>
+                                                                        <a href="javascript:void(0);" data-dismiss="alert" aria-label="Close" class="dropdown-item">Reject Order</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                    </ng-template>
+                                </li>
+                                <li class="nav-item" ngbNavItem="OnProgress">
+                                    <a class="nav-link " data-toggle="tab" href="#OnProgress" aria-expanded="false" ngbNavLink>
+                                        On Progress
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        
+                                        <div class="tab-pane" id="OnProgress">
+                                            <div class="table-responsive rounded table-hover">
+                                                <table class="table text-black card-table dataTable mb-4 table-responsive-lg dataTablesCard" id="dataTable3">
+                                                    <thead class="bg-primary">
+                                                        <tr>
+                                                            <th>Order ID</th>
+                                                            <th>Date</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Location</th>
+                                                            <th>Amount</th>
+                                                            <th>Status Order</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="alert alert-dismissible border-0" *ngFor = "let order of onProgress">
+                                                            <td>{{order.order_id}}</td>
+                                                            <td>{{order.date}}</td>
+                                                            <td>{{order.user}}</td>
+                                                            <td>{{order.address}}</td>
+                                                            <td>{{order.price}}</td>
+                                                            <td>
+                                                                <a class="btn {{order.order_status_class}}" href="javascript:void(0);">{{order.order_status}}</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown dropdown-no-icon" ngbDropdown>
+                                                                    <a class="btn-link" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
+                                                                    </a>
+                                                                    <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                                        <a class="dropdown-item text-info" href="javascript:void(0);">Accept Order</a>
+                                                                        <a href="javascript:void(0);" data-dismiss="alert" aria-label="Close" class="dropdown-item">Reject Order</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                    </ng-template>
+                                </li>
+                                <li class="nav-item" ngbNavItem="Delivered">
+                                    <a class="nav-link" data-toggle="tab" href="#Delivered" aria-expanded="false" ngbNavLink>
+                                        Delivered
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        
+                                        <div class="tab-pane" id="Delivered">
+                                            <div class="table-responsive rounded table-hover">
+                                                <table class="table text-black card-table dataTable mb-4 table-responsive-lg dataTablesCard" id="dataTable4">
+                                                    <thead class="bg-primary">
+                                                        <tr>
+                                                            <th>Order ID</th>
+                                                            <th>Date</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Location</th>
+                                                            <th>Amount</th>
+                                                            <th>Status Order</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="alert alert-dismissible border-0" *ngFor = "let order of delivered">
+                                                            <td>{{order.order_id}}</td>
+                                                            <td>{{order.date}}</td>
+                                                            <td>{{order.user}}</td>
+                                                            <td>{{order.address}}</td>
+                                                            <td>{{order.price}}</td>
+                                                            <td>
+                                                                <a class="btn {{order.order_status_class}}" href="javascript:void(0);">{{order.order_status}}</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown dropdown-no-icon" ngbDropdown>
+                                                                    <a class="btn-link" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
+                                                                    </a>
+                                                                    <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                                                        <a class="dropdown-item text-info" href="javascript:void(0);">Accept Order</a>
+                                                                        <a href="javascript:void(0);" data-dismiss="alert" aria-label="Close" class="dropdown-item">Reject Order</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                    </ng-template>
+                                </li>
+                            </ul>
+                        </div>
+                        <mat-form-field appearance="fill" class="style-2 mr-3 mb-3 dashboard-select">
+                            <mat-select value="Filter">
+                                <mat-option value="Filter">Filter</mat-option>
+                                <mat-option value="Date">Date</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="style-2 mb-3 dashboard-select">
+                            <mat-select value="Newest">
+                                <mat-option value="Newest">Newest</mat-option>
+                                <mat-option value="Oldest">Oldest</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- <select class="form-control style-2 mr-3 mb-3 default-select ">
+                            <option>Filter</option>
+                            <option>Date</option>
+                            </select>
+                            <select class="form-control style-2 mb-3 default-select ">
+                            <option>Newest</option>
+                            <option>Oldest</option>
+                        </select> -->
+                    </div>
+                    
+                    
+                    <div [ngbNavOutlet]="nav" class=""></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->

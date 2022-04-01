@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
@@ -725,6 +725,7 @@ import {AuthGuard} from "./shared/guard/auth-guard.service";
 import {AuthService} from "./shared/service/auth.service";
 import {LoginGuardService} from "./shared/guard/login-guard.service";
 import {LocalStorageService} from "ngx-webstorage";
+import {HttpClientInterceptor} from "./shared/http-client-interceptor";
 
 const customLayouts: IKeyboardLayouts = {
   ...keyboardLayouts,
@@ -1434,6 +1435,7 @@ const customLayouts: IKeyboardLayouts = {
     MatKeyboardModule,
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},
     SharedService,
     AuthGuard,
     AuthService,

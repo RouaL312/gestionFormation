@@ -13,12 +13,12 @@ import {Role} from "../../model/Role";
 @Injectable({
   providedIn: 'root'})
 export class AuthService {
-  token: string | undefined;
+  token: string|null|undefined;
   username: string | undefined;
   private baseUrl = environment.baseUrl;
   refreshTokenRequest = new RefreshTokenRequest();
 
-  authResponse: any;
+  authResponse!: AuthResponse;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -45,7 +45,8 @@ export class AuthService {
   }
 
   getToken() {
-    return this.localStorageService.retrieve('token');
+    this.token = localStorage.getItem('token');
+    return this.token
   }
 
   logout(): Promise<any> {
@@ -67,4 +68,13 @@ export class AuthService {
   //     }
   //   }
   // }
+
+  refreshToken() {
+    let refreshToken = new RefreshTokenRequest()
+    if (this.localStorageService.retrieve('refreshtoken') !== null) {
+      refreshToken = this.localStorageService.retrieve('refreshtoken')
+    }
+    return this.http.post<AuthResponse>(this.baseUrl + 'auth/refresh', refreshToken).pipe(map(data => {
+    }));
+  }
 }

@@ -6,7 +6,7 @@ export class User {
   email: string | undefined;
   firstName: string | undefined;
   lastName: string | undefined;
-  login: string | undefined;
+  username: string | undefined;
   password: string | undefined;
   equipe: Equipe | undefined;
   authorities: Array<Role> | undefined;

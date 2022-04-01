@@ -3,6 +3,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {User} from "../model/User";
 import {UserService} from "../shared/service/user.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {LocalStorageService} from "ngx-webstorage";
 
 
 
@@ -19,7 +20,7 @@ export class UsersComponent implements OnInit {
   isMasterSel:boolean;
   checkSingleItem:boolean=true;
 
-  constructor(private modalService: NgbModal,private userService:UserService) {
+  constructor(private modalService: NgbModal,private userService:UserService,private localStorageService:LocalStorageService) {
 
     this.isMasterSel = false;
 

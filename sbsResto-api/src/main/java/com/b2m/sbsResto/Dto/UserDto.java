@@ -16,6 +16,7 @@ public class UserDto extends AbstractDto {
     String password;
     String email;
     Equipe equipe;
+    Boolean activated;
 
     private Set<Role> authorities = new HashSet<>();
 
@@ -81,5 +82,13 @@ public class UserDto extends AbstractDto {
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
+    }
+
+    public Boolean getActivated() {
+        return activated;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
 }

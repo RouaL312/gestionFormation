@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.models;
+package com.b2m.sbsresto.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
@@ -17,11 +17,6 @@ public class Equipe  implements Serializable {
 
     @Column(name = "code_equipe")
     private String codeEquipe;
-
-    @OneToOne
-    @JoinColumn(name = "fk_equipe_periode", referencedColumnName = "id_equipe_periode")
-    private EquipePeriode equipePeriode;
-
 
     @JsonIgnore
     @OneToMany(mappedBy="equipe",cascade = CascadeType.ALL)
@@ -43,10 +38,6 @@ public class Equipe  implements Serializable {
     public void setCodeEquipe(String codeEquipe) {
         this.codeEquipe = codeEquipe;
     }
-
-    public EquipePeriode getEquipePeriode() { return equipePeriode; }
-
-    public void setEquipePeriode(EquipePeriode equipePeriode) { this.equipePeriode = equipePeriode; }
 
     public Set<User> getUsers() {
         return users;

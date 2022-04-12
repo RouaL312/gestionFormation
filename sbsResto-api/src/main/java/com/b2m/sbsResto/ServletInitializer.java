@@ -1,4 +1,4 @@
-package com.b2m.sbsResto;
+package com.b2m.sbsresto;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

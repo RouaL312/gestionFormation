@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from '../shared.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  title = 'uena';
+  title = 'admin';
   navSidebarClass: boolean = true;
   hamburgerClass: boolean = false;
 
-    constructor(public sharedService: SharedService) {
-      
-    }
+    constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

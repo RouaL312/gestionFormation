@@ -1,8 +1,8 @@
-package com.b2m.sbsResto.services.impl;
+package com.b2m.sbsresto.services.impl;
 
-import com.b2m.sbsResto.models.Equipe;
-import com.b2m.sbsResto.repository.EquipeRepository;
-import com.b2m.sbsResto.services.EquipeService;
+import com.b2m.sbsresto.models.Equipe;
+import com.b2m.sbsresto.repository.EquipeRepository;
+import com.b2m.sbsresto.services.EquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,6 @@ public class EquipeServiceImpl implements EquipeService {
     @Override
     public void deleteEquipe(long idEquipe) {
         Equipe equipe = equipeRepository.getById(idEquipe);
-        equipe.setEquipePeriode(null);
         equipeRepository.saveAndFlush(equipe);
         equipeRepository.deleteById(idEquipe);
     }

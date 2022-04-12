@@ -1,17 +1,17 @@
-package com.b2m.sbsResto.Dto;
+package com.b2m.sbsresto.dto;
 
 import org.bongiorno.dto.support.AbstractDto;
 
 public class RoleDto extends AbstractDto {
-    private String nameRole;
+    private String name;
     private long id;
 
-    public String getNameRole() {
-        return nameRole;
+    public String getName() {
+        return name;
     }
 
-    public void setNameRole(String nameRole) {
-        this.nameRole = nameRole;
+    public void setName(String name) {
+        this.name= name;
     }
 
     public long getId() {

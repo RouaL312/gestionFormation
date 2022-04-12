@@ -1,10 +1,10 @@
-package com.b2m.sbsResto.services;
+package com.b2m.sbsresto.services;
 
 
-import com.b2m.sbsResto.Dto.AjoutResponse;
-import com.b2m.sbsResto.Dto.LoginDto;
-import com.b2m.sbsResto.Dto.UserDto;
-import com.b2m.sbsResto.models.User;
+import com.b2m.sbsresto.dto.AjoutResponse;
+import com.b2m.sbsresto.dto.LoginDto;
+import com.b2m.sbsresto.dto.UserDto;
+import com.b2m.sbsresto.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

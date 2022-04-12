@@ -1,9 +1,9 @@
-package com.b2m.sbsResto.controllers;
+package com.b2m.sbsresto.controllers;
 
-import com.b2m.sbsResto.Dto.EquipeDto;
-import com.b2m.sbsResto.models.Equipe;
-import com.b2m.sbsResto.repository.EquipeRepository;
-import com.b2m.sbsResto.services.EquipeService;
+import com.b2m.sbsresto.dto.EquipeDto;
+import com.b2m.sbsresto.models.Equipe;
+import com.b2m.sbsresto.repository.EquipeRepository;
+import com.b2m.sbsresto.services.EquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,6 @@ public class EquipeController {
         for (Equipe equipe:equipeList ){
             EquipeDto equipeDTO = new EquipeDto();
             equipeDTO.setUsers(equipe.getUsers());
-            equipeDTO.setEquipePeriode(equipe.getEquipePeriode());
             equipeDTO.setCodeEquipe(equipe.getCodeEquipe());
             equipeDTO.setId(equipe.getId());
             equipeDTOList.add(equipeDTO);
@@ -37,7 +36,6 @@ public class EquipeController {
     public Equipe addEquipe (@RequestBody EquipeDto equipeDTO) {
         Equipe equipe= new Equipe();
         equipe.setId(equipeDTO.getId());
-        equipe.setEquipePeriode(equipeDTO.getEquipePeriode());
         equipe.setCodeEquipe(equipeDTO.getCodeEquipe());
         return equipeRepository.save(equipe);
     }
@@ -52,7 +50,6 @@ public class EquipeController {
         Equipe equipe = new Equipe();
         equipe.setId(equipeDTO.getId());
         equipe.setCodeEquipe(equipeDTO.getCodeEquipe());
-        equipe.setEquipePeriode(equipeDTO.getEquipePeriode());
         equipeRepository.saveAndFlush(equipe);
     }
 
@@ -62,7 +59,6 @@ public class EquipeController {
         EquipeDto equipeDTO = new EquipeDto();
         equipeDTO.setId(equipe.getId());
         equipeDTO.setCodeEquipe(equipe.getCodeEquipe());
-        equipeDTO.setEquipePeriode(equipe.getEquipePeriode());
         equipeDTO.setUsers(equipe.getUsers());
         return equipeDTO;
     }

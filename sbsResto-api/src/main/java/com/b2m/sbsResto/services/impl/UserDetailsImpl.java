@@ -1,10 +1,10 @@
-package com.b2m.sbsResto.services.impl;
+package com.b2m.sbsresto.services.impl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import com.b2m.sbsResto.models.User;
+import com.b2m.sbsresto.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

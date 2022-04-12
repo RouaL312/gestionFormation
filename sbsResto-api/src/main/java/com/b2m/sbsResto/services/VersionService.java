@@ -1,7 +1,7 @@
-package com.b2m.sbsResto.services;
+package com.b2m.sbsresto.services;
 
 
-import com.b2m.sbsResto.models.Version;
+import com.b2m.sbsresto.models.Version;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -2,12 +2,15 @@ import {Role} from './Role';
 import {Equipe} from './Equipe';
 
 export class User {
-  id: number | undefined;
-  email: string | undefined;
-  firstName: string | undefined;
-  lastName: string | undefined;
-  username: string | undefined;
-  password: string | undefined;
-  equipe: Equipe | undefined;
-  authorities: Array<Role> | undefined;
+  id?: number ;
+  email!: string ;
+  firstName!: string ;
+  lastName!: string ;
+  username!: string;
+  password!: string;
+  equipe?: Equipe ;
+  authorities!: Array<Role>;
+  codePin!: Boolean;
+  numTelephone!:string
+
 }

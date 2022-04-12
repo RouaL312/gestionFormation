@@ -1,4 +1,4 @@
-package com.b2m.sbsResto;
+package com.b2m.sbsresto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

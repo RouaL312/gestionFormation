@@ -1,11 +1,11 @@
-package com.b2m.sbsResto.services.impl;
+package com.b2m.sbsresto.services.impl;
 
-import com.b2m.sbsResto.Dto.AjoutResponse;
-import com.b2m.sbsResto.Dto.LoginDto;
-import com.b2m.sbsResto.Dto.UserDto;
-import com.b2m.sbsResto.models.User;
-import com.b2m.sbsResto.repository.UserRepository;
-import com.b2m.sbsResto.services.UserService;
+import com.b2m.sbsresto.dto.AjoutResponse;
+import com.b2m.sbsresto.dto.LoginDto;
+import com.b2m.sbsresto.dto.UserDto;
+import com.b2m.sbsresto.models.User;
+import com.b2m.sbsresto.repository.UserRepository;
+import com.b2m.sbsresto.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,6 +58,9 @@ public class UserServiceImpl implements UserService {
             }
             if (userDto.getEquipe() != null){
                 user.setEquipe(userDto.getEquipe());
+            }
+            if (userDto.getNumTelephone() != null){
+                user.setNumTelephone(userDto.getNumTelephone());
             }
 
             userRepository.save(user);

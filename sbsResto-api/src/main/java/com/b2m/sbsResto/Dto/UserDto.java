@@ -1,10 +1,11 @@
-package com.b2m.sbsResto.Dto;
+package com.b2m.sbsresto.dto;
 
-import com.b2m.sbsResto.models.Equipe;
-import com.b2m.sbsResto.models.Role;
-import com.b2m.sbsResto.models.User;
+import com.b2m.sbsresto.models.Equipe;
+import com.b2m.sbsresto.models.Role;
+import com.b2m.sbsresto.models.User;
 import org.bongiorno.dto.support.AbstractDto;
 
+import javax.persistence.Column;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class UserDto extends AbstractDto {
     String lastName;
     String username;
     String password;
+    String numTelephone;
     String email;
     Equipe equipe;
     Boolean activated;
@@ -90,5 +92,13 @@ public class UserDto extends AbstractDto {
 
     public void setActivated(Boolean activated) {
         this.activated = activated;
+    }
+
+    public String getNumTelephone() {
+        return numTelephone;
+    }
+
+    public void setNumTelephone(String numTelephone) {
+        this.numTelephone = numTelephone;
     }
 }

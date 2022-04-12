@@ -1,6 +1,6 @@
-package com.b2m.sbsResto.repository;
+package com.b2m.sbsresto.repository;
 
-import com.b2m.sbsResto.models.User;
+import com.b2m.sbsresto.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

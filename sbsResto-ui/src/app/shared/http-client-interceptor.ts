@@ -2,9 +2,9 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {catchError, filter, switchMap, take} from 'rxjs/operators';
-import {LocalStorageService} from 'ngx-webstorage';
 import {AuthService} from "./service/auth.service";
-import {AuthResponse} from "../model/AuthResponse";
+import {JwtAuthResponse} from "../model/jwt-auth-response";
+import {User} from "../model/User";
 
 @Injectable()
 export class HttpClientInterceptor implements HttpInterceptor {
@@ -12,7 +12,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
 
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  constructor(public authService: AuthService, private localStorageService: LocalStorageService) { }
+  constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   this.token = this.authService.getToken();
@@ -40,7 +40,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
     });
   }
   private addBody(request: HttpRequest<any>) {
-    const loginSbs = this.localStorageService.retrieve('loginSBS')
+    const loginSbs = localStorage.retrieve('loginSBS')
     return request.clone({
       body: {...loginSbs}
     });
@@ -55,7 +55,14 @@ export class HttpClientInterceptor implements HttpInterceptor {
       return this.authService.refreshToken().pipe(switchMap((token: any) => {
           this.isRefreshing = false;
           if (token === null) {
-            token = new AuthResponse()
+            token = new class implements JwtAuthResponse{
+              authorities!: [] ;
+              expiresAt: number | undefined;
+              login: string | undefined;
+              refreshToken: string | undefined;
+              user: User | undefined;
+              authenticationToken: string | undefined;
+            }
             token.authenticationToken = this.authService.getToken();
           }
           if (token.authenticationToken === null) {
@@ -76,11 +83,11 @@ export class HttpClientInterceptor implements HttpInterceptor {
   }
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-      // return this.authService.loginSBS().pipe(
-      //   switchMap((token: any) => {
-      //     this.refreshTokenSubject.next(this.token);
-      //     request = this.addBody(request)
-      //     return next.handle(this.addToken(request, this.token));
-      //   }));
+      return this.authService.loginSBS().pipe(
+        switchMap((token: any) => {
+          this.refreshTokenSubject.next(this.token);
+          request = this.addBody(request)
+          return next.handle(this.addToken(request, this.token));
+        }));
   }
 }

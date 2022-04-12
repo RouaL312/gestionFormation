@@ -1,0 +1,102 @@
+<p-toast position="top-right"></p-toast>
+
+<form class="example-form" [formGroup]="addUserGroup" (ngSubmit)="addUser()" style="padding-bottom:40px">
+
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput
+               [formControl]="nameControl">
+        <mat-error *ngIf="nameControl.hasError('required')">Nom est <strong>obligatoire</strong> </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Prénom</mat-label>
+        <input matInput
+               [formControl]="prenomControl">
+        <mat-error *ngIf="prenomControl.hasError('required')">Prénom est <strong>obligatoire</strong> </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nom d'utilisateur</mat-label>
+      <input matInput
+             [formControl]="usernameControl">
+      <mat-error *ngIf="usernameControl.hasError('required')">Nom d'utilisateur est <strong>obligatoire</strong> </mat-error>
+    </mat-form-field>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email est <strong>obligatoire</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Roles</mat-label>
+        <mat-select [formControl]="roles" multiple>
+          <mat-option *ngFor="let role of roleList" [value]="role">{{role.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="roles.hasError('required')">Role est <strong>obligatoire</strong> </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      Type d'authentification
+    </div>
+    <div class="col-sm-3">
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [formControl]="typeAuthControl">
+        <mat-radio-button class="example-radio-button" *ngFor="let type of authentication" [value]="type">
+          {{type}} &nbsp;
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Equipe</mat-label>
+        <mat-select [formControl]="equipes">
+          <mat-option *ngFor="let equipe of equipeList" [value]="equipe">{{equipe.codeEquipe}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="equipes.hasError('required')">Equipe est <strong>obligatoire</strong> </mat-error>
+
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 ">
+      <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
+        <mat-label>{{typeAuthControl.value}}</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" maxlength="4" [formControl]="passwordControl">
+        <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa" [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i></mat-icon>
+        <mat-error *ngIf="passwordControl.hasError('required')">mot de passe est <strong>obligatoire</strong> </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+216 &nbsp;</span>
+        <input type="tel" matInput >
+        <mat-error *ngIf="numTelephoneControl.hasError('required')">num tel est <strong>obligatoire</strong> </mat-error>
+
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+  <p-button  icon="pi pi-check" (click)="addUser()" label="Ok" styleClass="pull-right p-button-text"></p-button>
+  </div>
+</form>
+

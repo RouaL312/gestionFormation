@@ -1,6 +1,6 @@
-package com.b2m.sbsResto.repository;
+package com.b2m.sbsresto.repository;
 
-import com.b2m.sbsResto.models.Equipe;
+import com.b2m.sbsresto.models.Equipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository

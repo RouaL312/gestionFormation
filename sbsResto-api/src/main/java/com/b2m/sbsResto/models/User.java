@@ -1,9 +1,8 @@
-package com.b2m.sbsResto.models;
+package com.b2m.sbsresto.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.dom4j.tree.AbstractEntity;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -38,6 +37,10 @@ public class User extends AbstractEntity implements Serializable {
     private String email;
     @Column(nullable = false)
     private boolean activated = false;
+    @Column(nullable = false)
+    private boolean isCodePin = false;
+    @Column(name = "num_telephone")
+    private String numTelephone;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
@@ -142,4 +145,19 @@ public class User extends AbstractEntity implements Serializable {
         return activated;
     }
 
+    public boolean isCodePin() {
+        return isCodePin;
+    }
+
+    public void setCodePin(boolean codePin) {
+        isCodePin = codePin;
+    }
+
+    public String getNumTelephone() {
+        return numTelephone;
+    }
+
+    public void setNumTelephone(String numTelephone) {
+        this.numTelephone = numTelephone;
+    }
 }

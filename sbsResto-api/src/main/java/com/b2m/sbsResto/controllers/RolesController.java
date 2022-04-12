@@ -1,9 +1,9 @@
-package com.b2m.sbsResto.controllers;
+package com.b2m.sbsresto.controllers;
 
-import com.b2m.sbsResto.Dto.RoleDto;
-import com.b2m.sbsResto.models.Role;
-import com.b2m.sbsResto.repository.RoleRepository;
-import com.b2m.sbsResto.services.RoleService;
+import com.b2m.sbsresto.dto.RoleDto;
+import com.b2m.sbsresto.models.Role;
+import com.b2m.sbsresto.repository.RoleRepository;
+import com.b2m.sbsresto.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class RolesController  {
         List<RoleDto> roleDtoList = new ArrayList<>();
         for (Role role:roleList ){
             RoleDto roleDTO = new RoleDto();
-            roleDTO.setNameRole(role.getName());
+            roleDTO.setName(role.getName());
             roleDTO.setId(role.getId());
             roleDtoList.add(roleDTO);
         }
@@ -35,7 +35,7 @@ public class RolesController  {
     public Role addRole (@RequestBody RoleDto roleDTO) {
         Role role= new Role();
         role.setId(roleDTO.getId());
-        role.setName(roleDTO.getNameRole());
+        role.setName(roleDTO.getName());
         return roleRepository.save(role);
     }
 
@@ -48,7 +48,7 @@ public class RolesController  {
     public void updateRole (@RequestBody RoleDto roleDTO) {
         Role role = new Role();
         role.setId(roleDTO.getId());
-        role.setName(roleDTO.getNameRole());
+        role.setName(roleDTO.getName());
         roleRepository.saveAndFlush(role);
     }
 

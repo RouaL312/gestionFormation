@@ -1,12 +1,12 @@
-package com.b2m.sbsResto.controllers;
+package com.b2m.sbsresto.controllers;
 
-import com.b2m.sbsResto.Dto.AjoutResponse;
-import com.b2m.sbsResto.Dto.CheckPwd;
-import com.b2m.sbsResto.Dto.LoginDto;
-import com.b2m.sbsResto.Dto.UserDto;
-import com.b2m.sbsResto.models.User;
-import com.b2m.sbsResto.repository.UserRepository;
-import com.b2m.sbsResto.services.UserService;
+import com.b2m.sbsresto.dto.AjoutResponse;
+import com.b2m.sbsresto.dto.CheckPwd;
+import com.b2m.sbsresto.dto.LoginDto;
+import com.b2m.sbsresto.dto.UserDto;
+import com.b2m.sbsresto.models.User;
+import com.b2m.sbsresto.repository.UserRepository;
+import com.b2m.sbsresto.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api/user")
-public class UserController extends AbstractController<UserDto, User> {
+public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
@@ -38,18 +36,6 @@ public class UserController extends AbstractController<UserDto, User> {
         return listUser;
     }
 
-
-//    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<List<UserDto>> getAllUsers(@RequestParam(name = "login", required = true) String login) {
-//        List<User> userList = userService.getAllUsers(login);
-//        List<UserDto> userListDtos = new ArrayList<>();
-//        for (User user : userList) {
-//            UserDto userDto = new UserDto();
-//            modelMapper.map(user, userDto);
-//            userListDtos.add(userDto);
-//        }
-//        return new ResponseEntity<>(userListDtos, HttpStatus.OK);
-//    }
     @PostMapping("/addUser")
     public ResponseEntity addUser(@RequestBody UserDto userDto) {
         AjoutResponse ajoutResponse = new AjoutResponse();

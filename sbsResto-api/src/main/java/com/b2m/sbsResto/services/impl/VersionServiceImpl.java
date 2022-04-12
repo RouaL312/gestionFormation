@@ -1,8 +1,8 @@
-package com.b2m.sbsResto.services.impl;
+package com.b2m.sbsresto.services.impl;
 
-import com.b2m.sbsResto.models.Version;
-import com.b2m.sbsResto.repository.VersionRepository;
-import com.b2m.sbsResto.services.VersionService;
+import com.b2m.sbsresto.models.Version;
+import com.b2m.sbsresto.repository.VersionRepository;
+import com.b2m.sbsresto.services.VersionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

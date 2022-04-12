@@ -1,6 +1,6 @@
-package com.b2m.sbsResto.services.impl;
+package com.b2m.sbsresto.services.impl;
 
-import com.b2m.sbsResto.services.RoleService;
+import com.b2m.sbsresto.services.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

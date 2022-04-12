@@ -1,4 +1,4 @@
-package com.b2m.sbsResto;
+package com.b2m.sbsresto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

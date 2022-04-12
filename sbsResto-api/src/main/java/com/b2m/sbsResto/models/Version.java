@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.models;
+package com.b2m.sbsresto.models;
 
 
 import javax.persistence.*;

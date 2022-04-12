@@ -1,4 +1,4 @@
-export class CheckPwd {
+export interface CheckPwd {
   pwdUser: string | undefined;
-  passwordToCheck: string |undefined;
+  passwordToCheck: string | undefined;
 }

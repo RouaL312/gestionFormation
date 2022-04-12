@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.Dto;
+package com.b2m.sbsresto.dto;
 
 public class CheckPwd {
     String pwdUser;

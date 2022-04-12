@@ -1,0 +1,496 @@
+<div [ngClass]="{'': toggleswitcher, 'show': !toggleswitcher}"  class="sidebar-right" >
+   <div class="bg-overlay" (click)="toggleswitcherwindow()"></div>
+    <a class="sidebar-right-trigger wave-effect wave-effect-x" href="javascript:void(0);" (click)="toggleswitcherwindow()">
+        <span><i class="fa fa-cog fa-spin"></i></span>
+    </a>
+    <a class="sidebar-close-trigger" href="javascript:void(0);" (click)="toggleswitcherwindow()">
+        <span><i class="la-times las"></i></span>
+    </a>
+    
+   <div class="sidebar-right-inner">
+      <h4>Pick your style</h4>
+      <div class="card-tabs">
+         <ul class="nav nav-tabs" ngbNav #nav="ngbNav" role="tablist">
+            <li class="nav-item" ngbNavItem="Theme">
+                <a class="nav-link" data-toggle="tab" href="#Theme" aria-expanded="false" ngbNavLink>
+                    Theme
+                </a>
+                <ng-template ngbNavContent>
+                    <div class="fade tab-pane active show" id="Theme">
+                        <div class="admin-settings">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <p>Background</p>
+                                 <select class="default-select form-control" id="theme_version" name="theme_version" (change)="themeSettings('data-theme-version',$event)" >
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Primary Color</p>
+                                 <div>
+                                        <span data-placement="top" data-toggle="tooltip" title="Color 1">
+                                            <input class="chk-col-primary filled-in" id="primary_color_1" name="primary_bg" type="radio" value="color_1" (click)="themeSettings('data-primary','color_1')"/> 
+                                            <label for="primary_color_1" class="bg-label-pattern"></label> 
+                                        </span>
+                                        <span>
+                                                <input class="chk-col-primary filled-in" id="primary_color_2" name="primary_bg" type="radio" value="color_2" (click)="themeSettings('data-primary','color_2')">
+                                                <label for="primary_color_2"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_3" name="primary_bg" type="radio" value="color_3" (click)="themeSettings('data-primary','color_3')">
+                                            <label for="primary_color_3"></label>
+                                        </span>
+                                        <span>
+                                                <input class="chk-col-primary filled-in" id="primary_color_4" name="primary_bg" type="radio" value="color_4" (click)="themeSettings('data-primary','color_4')">
+                                                <label for="primary_color_4"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_5" name="primary_bg" type="radio" value="color_5" (click)="themeSettings('data-primary','color_5')">
+                                            <label for="primary_color_5"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_6" name="primary_bg" type="radio" value="color_6" (click)="themeSettings('data-primary','color_6')">
+                                            <label for="primary_color_6"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_7" name="primary_bg" type="radio" value="color_7" (click)="themeSettings('data-primary','color_7')">
+                                            <label for="primary_color_7"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_8" name="primary_bg" type="radio" value="color_8" (click)="themeSettings('data-primary','color_8')">
+                                            <label for="primary_color_8"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_9" name="primary_bg" type="radio" value="color_9" (click)="themeSettings('data-primary','color_9')">
+                                            <label for="primary_color_9"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_10" name="primary_bg" type="radio" value="color_10" (click)="themeSettings('data-primary','color_10')">
+                                            <label for="primary_color_10"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_11" name="primary_bg" type="radio" value="color_11" (click)="themeSettings('data-primary','color_11')">
+                                            <label for="primary_color_11"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_12" name="primary_bg" type="radio" value="color_12" (click)="themeSettings('data-primary','color_12')">
+                                            <label for="primary_color_12"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_13" name="primary_bg" type="radio" value="color_13" (click)="themeSettings('data-primary','color_13')">
+                                            <label for="primary_color_13"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_14" name="primary_bg" type="radio" value="color_14" (click)="themeSettings('data-primary','color_14')">
+                                            <label for="primary_color_14"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="primary_color_15" name="primary_bg" type="radio" value="color_15" (click)="themeSettings('data-primary','color_15')">
+                                            <label for="primary_color_15"></label>
+                                        </span>
+                                    </div>
+                              </div>
+                                <div class="col-sm-6">
+                                     <p>Navigation Header</p>
+                                     <div> 
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_1" name="navigation_header" type="radio" value="color_1" (click)="themeSettings('data-nav-headerbg','color_1')">
+                                            <label for="nav_header_color_1" class="bg-label-pattern"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_2" name="navigation_header" type="radio" value="color_2" (click)="themeSettings('data-nav-headerbg','color_2')">
+                                            <label for="nav_header_color_2"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_3" name="navigation_header" type="radio" value="color_3" (click)="themeSettings('data-nav-headerbg','color_3')">
+                                            <label for="nav_header_color_3"></label>
+                                        </span>
+                                        <span> 
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_4" name="navigation_header" type="radio" value="color_4" (click)="themeSettings('data-nav-headerbg','color_4')"> 
+                                            <label for="nav_header_color_4"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_5" name="navigation_header" type="radio" value="color_5" (click)="themeSettings('data-nav-headerbg','color_5')"> 
+                                            <label for="nav_header_color_5"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_6" name="navigation_header" type="radio" value="color_6" (click)="themeSettings('data-nav-headerbg','color_6')"> 
+                                            <label for="nav_header_color_6"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_7" name="navigation_header" type="radio" value="color_7" (click)="themeSettings('data-nav-headerbg','color_7')"> 
+                                            <label for="nav_header_color_7"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_8" name="navigation_header" type="radio" value="color_8" (click)="themeSettings('data-nav-headerbg','color_8')"> 
+                                            <label for="nav_header_color_8"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_9" name="navigation_header" type="radio" value="color_9" (click)="themeSettings('data-nav-headerbg','color_9')"> 
+                                            <label for="nav_header_color_9"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_10" name="navigation_header" type="radio" value="color_10" (click)="themeSettings('data-nav-headerbg','color_10')"> 
+                                            <label for="nav_header_color_10"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_11" name="navigation_header" type="radio" value="color_11" (click)="themeSettings('data-nav-headerbg','color_11')"> 
+                                            <label for="nav_header_color_11"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_12" name="navigation_header" type="radio" value="color_12" (click)="themeSettings('data-nav-headerbg','color_12')"> 
+                                            <label for="nav_header_color_12"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_13" name="navigation_header" type="radio" value="color_13" (click)="themeSettings('data-nav-headerbg','color_13')"> 
+                                            <label for="nav_header_color_13"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_14" name="navigation_header" type="radio" value="color_14" (click)="themeSettings('data-nav-headerbg','color_14')"> 
+                                            <label for="nav_header_color_14"></label>
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="nav_header_color_15" name="navigation_header" type="radio" value="color_15" (click)="themeSettings('data-nav-headerbg','color_15')"> 
+                                            <label for="nav_header_color_15"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                              <div class="col-sm-6">
+                                 <p>Header</p>
+                                 <div>
+                                    <span>
+                                        <input class="chk-col-primary filled-in" id="header_color_1" name="header_bg" type="radio" value="color_1" (click)="themeSettings('data-headerbg','color_1')">
+                                        <label for="header_color_1" class="bg-label-pattern"></label>
+                                    </span>
+                                     <span>
+                                        <input class="chk-col-primary filled-in" id="header_color_2" name="header_bg" type="radio" value="color_2" (click)="themeSettings('data-headerbg','color_2')">
+                                        <label for="header_color_2"></label>
+                                    </span>
+                                     <span>
+                                        <input class="chk-col-primary filled-in" id="header_color_3" name="header_bg" type="radio" value="color_3" (click)="themeSettings('data-headerbg','color_3')">
+                                        <label for="header_color_3"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_4" name="header_bg" type="radio" value="color_4" (click)="themeSettings('data-headerbg','color_4')">
+                                         <label for="header_color_4"></label>
+                                     </span>
+                                     <span>
+                                        <input class="chk-col-primary filled-in" id="header_color_5" name="header_bg" type="radio" value="color_5" (click)="themeSettings('data-headerbg','color_5')">
+                                        <label for="header_color_5"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_6" name="header_bg" type="radio" value="color_6" (click)="themeSettings('data-headerbg','color_6')">
+                                         <label for="header_color_6"></label>
+                                    </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_7" name="header_bg" type="radio" value="color_7" (click)="themeSettings('data-headerbg','color_7')">
+                                         <label for="header_color_7"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_8" name="header_bg" type="radio" value="color_8" (click)="themeSettings('data-headerbg','color_8')">
+                                         <label for="header_color_8"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_9" name="header_bg" type="radio" value="color_9" (click)="themeSettings('data-headerbg','color_9')">
+                                         <label for="header_color_9"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_10" name="header_bg" type="radio" value="color_10" (click)="themeSettings('data-headerbg','color_10')">
+                                         <label for="header_color_10"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_11" name="header_bg" type="radio" value="color_11" (click)="themeSettings('data-headerbg','color_11')">
+                                         <label for="header_color_11"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_12" name="header_bg" type="radio" value="color_12" (click)="themeSettings('data-headerbg','color_12')">
+                                         <label for="header_color_12"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_13" name="header_bg" type="radio" value="color_13" (click)="themeSettings('data-headerbg','color_13')">
+                                         <label for="header_color_13"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_14" name="header_bg" type="radio" value="color_14" (click)="themeSettings('data-headerbg','color_14')">
+                                         <label for="header_color_14"></label>
+                                     </span>
+                                     <span>
+                                         <input class="chk-col-primary filled-in" id="header_color_15" name="header_bg" type="radio" value="color_15" (click)="themeSettings('data-headerbg','color_15')">
+                                         <label for="header_color_15"></label>
+                                    </span>
+                                 </div>
+                              </div>
+                                <div class="col-sm-6">
+                                    <p>Sidebar</p>
+                                    <div>
+                                        <span> <input class="chk-col-primary filled-in" id="sidebar_color_1" name="sidebar_bg" type="radio" value="color_1" (click)="themeSettings('data-sibebarbg','color_1')">
+                                            <label for="sidebar_color_1" class="bg-label-pattern"></label>
+                                        </span>
+                                        <span> 
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_2" name="sidebar_bg" type="radio" value="color_2" (click)="themeSettings('data-sibebarbg','color_2')">
+                                            <label for="sidebar_color_2"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_3" name="sidebar_bg" type="radio" value="color_3" (click)="themeSettings('data-sibebarbg','color_3')">
+                                            <label for="sidebar_color_3"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_4" name="sidebar_bg" type="radio" value="color_4" (click)="themeSettings('data-sibebarbg','color_4')">
+                                            <label for="sidebar_color_4"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_5" name="sidebar_bg" type="radio" value="color_5" (click)="themeSettings('data-sibebarbg','color_5')">
+                                            <label for="sidebar_color_5"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_6" name="sidebar_bg" type="radio" value="color_6" (click)="themeSettings('data-sibebarbg','color_6')">
+                                            <label for="sidebar_color_6"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_7" name="sidebar_bg" type="radio" value="color_7" (click)="themeSettings('data-sibebarbg','color_7')">
+                                            <label for="sidebar_color_7"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_8" name="sidebar_bg" type="radio" value="color_8" (click)="themeSettings('data-sibebarbg','color_8')">
+                                            <label for="sidebar_color_8"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_9" name="sidebar_bg" type="radio" value="color_9" (click)="themeSettings('data-sibebarbg','color_9')">
+                                            <label for="sidebar_color_9"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_10" name="sidebar_bg" type="radio" value="color_10" (click)="themeSettings('data-sibebarbg','color_10')">
+                                            <label for="sidebar_color_10"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_11" name="sidebar_bg" type="radio" value="color_11" (click)="themeSettings('data-sibebarbg','color_11')">
+                                            <label for="sidebar_color_11"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_12" name="sidebar_bg" type="radio" value="color_12" (click)="themeSettings('data-sibebarbg','color_12')">
+                                            <label for="sidebar_color_12"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_13" name="sidebar_bg" type="radio" value="color_13" (click)="themeSettings('data-sibebarbg','color_13')">
+                                            <label for="sidebar_color_13"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_14" name="sidebar_bg" type="radio" value="color_14" (click)="themeSettings('data-sibebarbg','color_14')">
+                                            <label for="sidebar_color_14"></label> 
+                                        </span>
+                                        <span>
+                                            <input class="chk-col-primary filled-in" id="sidebar_color_15" name="sidebar_bg" type="radio" value="color_15" (click)="themeSettings('data-sibebarbg','color_15')">
+                                            <label for="sidebar_color_15"></label> 
+                                        </span>
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                     </div>
+                </ng-template>
+            </li>
+            <li class="nav-item" ngbNavItem="Header">
+                <a class="nav-link" data-toggle="tab" href="#Header" aria-expanded="false" ngbNavLink>
+                    Header
+                </a>
+                <ng-template ngbNavContent>
+                    <div class="tab-pane" id="Header">
+                        <div class="admin-settings">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <p>Layout</p>
+                                 <select class="default-select form-control" id="theme_layout" name="theme_layout" (change)="themeSettings('data-layout',$event)">
+                                    <option value="vertical">Vertical</option>
+                                    <option value="horizontal">Horizontal</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Header position</p>
+                                 <select class="default-select form-control" id="header_position" name="header_position" (change)="themeSettings('data-header-position',$event)">
+                                    <option value="static">Static</option>
+                                    <option value="fixed">Fixed</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Sidebar</p>
+                                 <select class="default-select form-control" id="sidebar_style" name="sidebar_style" (change)="themeSettings('data-sidebar-style',$event)">
+                                    <option value="full">Full</option>
+                                    <option value="mini">Mini</option>
+                                    <option value="compact">Compact</option>
+                                    <option value="modern">Modern</option>
+                                    <option value="overlay">Overlay</option>
+                                    <option value="icon-hover">Icon-hover</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Sidebar position</p>
+                                 <select class="default-select form-control" id="sidebar_position" name="sidebar_position" (change)="themeSettings('data-sidebar-position',$event)">
+                                    <option value="static">Static</option>
+                                    <option value="fixed">Fixed</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                </ng-template>
+            </li>
+            <li class="nav-item" ngbNavItem="Content">
+                <a class="nav-link" data-toggle="tab" href="#Content" aria-expanded="false" ngbNavLink>
+                    Content
+                </a>
+                <ng-template ngbNavContent>
+                    <div class="tab-pane" id="Content">
+                        <div class="admin-settings">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <p>Container</p>
+                                 <select class="default-select form-control" id="container_layout" name="container_layout" (change)="themeSettings('data-container',$event)">
+                                    <option value="wide">Wide</option>
+                                    <option value="boxed">Boxed</option>
+                                    <option value="wide-boxed">Wide Boxed</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Direction</p>
+                                 <select class="default-select form-control" id="theme_direction" name="theme_direction" (change)="themeSettings('direction',$event)">
+                                    <option value="ltr">LTR</option>
+                                    <option value="rtl">RTL</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <p>Body Font</p>
+                                 <select class="default-select form-control" id="typography" name="typography" (change)="themeSettings('data-typography',$event)">
+                                    <option value="roboto">Roboto</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="opensans">Open Sans</option>
+                                    <option value="HelveticaNeue">HelveticaNeue</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                </ng-template>
+            </li>
+         </ul>
+      </div>
+    <div [ngbNavOutlet]="nav" class=""></div>
+   </div>
+</div>
+
+
+<div  class="dz-demo-panel" [ngClass]="{'': togglesthemedemo, 'show': !togglesthemedemo}" >
+   <div class="bg-close" (click)="togglesthemedemowindow()"></div>
+   <a class="dz-demo-trigger" href="javascript:void(0)" (click)="togglesthemedemowindow()"><span><i class="las la-tint"></i></span></a>
+   <div class="dz-demo-inner" [perfectScrollbar]>
+       <!-- <a href="javascript:void(0);" class="btn btn-primary btn-sm px-2 py-1 mb-3" onclick="deleteAllCookie()">Delete All Cookie</a> -->
+      <div class="dz-demo-header">
+         <h4>Select A Demo</h4>
+         <a class="dz-demo-close" href="javascript:void(0)" (click)="togglesthemedemowindow()"><span><i class="las la-times"></i></span></a>
+      </div>
+      <div class="dz-demo-content">
+         <div class="dz-wrapper">
+            <div class="overlay-bx rounded-lg dz-demo-bx demo-active">
+               <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic1.jpg" alt="" class="w-100"></div>
+               <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="1" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet1', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="1" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet1', 'rtl')">RTL Version</a></div>
+            </div>
+            <h5 class="text-black">Demo 1</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic5.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                   <a href="javascript:void(0);" data-theme="5" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet2', 'ltr')">Default</a>
+                   <a href="javascript:void(0);" data-theme="5" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet2', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 2</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+               <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic4.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="4" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet3', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="4" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet3', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 3</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic2.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="2" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet4', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="2" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet4', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 4</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic3.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                   <a href="javascript:void(0);" data-theme="3" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet5', 'ltr')">Default</a>
+                   <a href="javascript:void(0);" data-theme="3" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet5', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 5</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic6.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="6" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet6', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="6" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet6', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 6</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic7.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="7" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet7', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="7" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet7', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 7</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic8.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="8" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet8', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="8" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet8', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 8</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+               <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic9.jpg" alt="" class="w-100"></div>
+               <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="9" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet9', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="9" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet9', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 9</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic10.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="10" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet10', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="10" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet10', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 10</h5>
+            <hr>
+            <div class="overlay-bx rounded-lg dz-demo-bx">
+                <div class="overlay-wrapper rounded-lg"><img src="assets/images/demo/pic11.jpg" alt="" class="w-100"></div>
+                <div class="overlay-layer">
+                    <a href="javascript:void(0);" data-theme="11" class="btn dz_theme_demo btn-secondary btn-sm mr-2" (click)="themeDemoSettings('dezThemeSet11', 'ltr')">Default</a>
+                    <a href="javascript:void(0);" data-theme="11" class="btn dz_theme_demo_rtl btn-info btn-sm" (click)="themeDemoSettings('dezThemeSet11', 'rtl')">RTL Version</a>
+                </div>
+            </div>
+            <h5 class="text-black">Demo 11</h5>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+

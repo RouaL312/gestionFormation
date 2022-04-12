@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.config;
+package com.b2m.sbsresto.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

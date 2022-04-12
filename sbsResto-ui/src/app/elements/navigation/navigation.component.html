@@ -17,14 +17,14 @@
                 </ul>
             </li>
           <li [ngClass]="{'mm-active': parametreArray.indexOf(currentHref) > -1}">
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">Paramétre</span>
-                </a>
-                <ul aria-expanded="false"  [ngClass]="{'mm-show': parametreArray.indexOf(currentHref) > -1}">
-                    <li><a class="{{(currentHref == '/admin/parametre' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/parametre']">Paramétre</a></li>
-                </ul>
-            </li>
+            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+              <i class="flaticon-025-dashboard"></i>
+              <span class="nav-text">Paramétre</span>
+            </a>
+            <ul aria-expanded="false"  [ngClass]="{'mm-show': parametreArray.indexOf(currentHref) > -1}">
+              <li><a class="{{(currentHref == '/admin/parametre' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/parametre']">Paramétre</a></li>
+            </ul>
+          </li>
             <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-050-info"></i>
@@ -215,8 +215,8 @@
 
 
         <div class="copyright">
-            <p><strong>Uena  Admin  Dashboard</strong> © 2021 All Rights Reserved</p>
-            <p class="fs-12">Made with <span [ngClass]="{'': toggleIcon, 'heart-blast': !toggleIcon}" class="heart" (click)="toggleLoveIcon()"></span> by DexignZone</p>
+            <p><strong>SBS-Resto  Admin  Dashboard</strong> © 2022 All Rights Reserved</p>
+            <p class="fs-12">Made with <span [ngClass]="{'': toggleIcon, 'heart-blast': !toggleIcon}" class="heart" (click)="toggleLoveIcon()"></span> by B2M</p>
         </div>
     </div>
 </div>

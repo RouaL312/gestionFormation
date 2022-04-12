@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.services;
+package com.b2m.sbsresto.services;
 
 public interface RoleService {
 }

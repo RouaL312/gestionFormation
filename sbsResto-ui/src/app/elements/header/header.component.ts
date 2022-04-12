@@ -1,46 +1,46 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbDropdownConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Router} from "@angular/router";
 import {AuthService} from "../../shared/service/auth.service";
+import {Router} from "@angular/router";
+import {Role} from "../../model/Role";
 import {LocalStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  providers: [NgbDropdownConfig]
+  styleUrls: ['./header.component.scss'],
+	providers: [NgbDropdownConfig]
 })
 export class HeaderComponent implements OnInit {
 
-  toggleChat: boolean = true;
-  toggleSingle: boolean = true;
+	toggleChat: boolean = true;
+	toggleSingle: boolean = true;
   username!: String;
-  roles!:[];
+  roles!:Role[];
+	constructor(private authService: AuthService, private router: Router,private modalService: NgbModal ,private localStorageService:LocalStorageService) { }
 
-  constructor(private router: Router, private authService: AuthService,private modalService: NgbModal,private localStorageService:LocalStorageService) {
-  }
-
-  ngOnInit(): void {
+	ngOnInit(): void {
     // @ts-ignore
-    this.username=localStorage.getItem("username");
-    // @ts-ignore
-    this.roles=JSON.parse(localStorage.getItem("roles").split(','));
-    //this.username=this.localStorageService.retrieve('username');
-    console.log(this.localStorageService);
-  }
-
-
-  togglechatbar() {
-    this.toggleChat = !this.toggleChat;
-  }
-
-  singleChatWindow() {
-    this.toggleSingle = !this.toggleSingle;
-  }
+    this.username=JSON.parse(localStorage.getItem("login"));
+    this.roles=JSON.parse(<string>localStorage.getItem('roles'));
+    console.log(this.roles[0].name)
+	}
 
   logout() {
-    localStorage.clear();
-    //this.authService.logout();
-    this.router.navigateByUrl('login')
+    this.authService.logout().then(data => {
+      if (data) {
+        localStorage.clear();
+        this.authService.token = null;
+        this.router.navigateByUrl('/login');
+      }
+    })
   }
+
+	togglechatbar() {
+		this.toggleChat = !this.toggleChat;
+	}
+	singleChatWindow() {
+		this.toggleSingle = !this.toggleSingle;
+	}
+
 }

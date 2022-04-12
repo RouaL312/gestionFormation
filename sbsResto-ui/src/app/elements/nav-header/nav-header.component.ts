@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from '../../shared.service';
 import { HostListener } from "@angular/core";
+import {SharedService} from "../../shared/shared.service";
 
 @Component({
   selector: 'app-nav-header',
   templateUrl: './nav-header.component.html',
-  styleUrls: ['./nav-header.component.css']
+  styleUrls: ['./nav-header.component.scss']
 })
 export class NavHeaderComponent implements OnInit {
 
 
   hamburgerClass: boolean = false;
-  
+
   screenHeight: any;
   screenWidth: any;
-  
-    constructor(private sharedService: SharedService) { 
+
+    constructor(private sharedService: SharedService) {
         this.getScreenSize();
     }
 
   ngOnInit(): void {
 
-  } 
-  
+  }
+
   toggleHamburgerClass(){
 	this.hamburgerClass = this.sharedService.toggleHamburgerClass();
   }
-  
+
    @HostListener('window:resize', ['$event'])
     getScreenSize() {
         this.screenHeight = window.innerHeight;

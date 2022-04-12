@@ -1,58 +1,47 @@
-package com.b2m.sbsResto.controllers;
+package com.b2m.sbsresto.controllers;
 
-import com.b2m.sbsResto.Dto.JwtResponse;
-import com.b2m.sbsResto.Dto.LoginDto;
-import com.b2m.sbsResto.models.Role;
-import com.b2m.sbsResto.models.User;
-import com.b2m.sbsResto.repository.RoleRepository;
-import com.b2m.sbsResto.repository.UserRepository;
-import com.b2m.sbsResto.security.JwtUtils;
-import com.b2m.sbsResto.services.impl.UserDetailsImpl;
-
+import com.b2m.sbsresto.dto.AuthenticationResponse;
+import com.b2m.sbsresto.dto.LoginDto;
+import com.b2m.sbsresto.dto.RefreshTokenRequest;
+import com.b2m.sbsresto.models.User;
+import com.b2m.sbsresto.services.RefreshTokenService;
+import com.b2m.sbsresto.services.UserService;
+import com.b2m.sbsresto.services.impl.AuthServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthServiceImp authServiceImp;
     @Autowired
-    UserRepository userRepository;
+    private RefreshTokenService refreshTokenService;
     @Autowired
-    RoleRepository roleRepository;
-    @Autowired
-    PasswordEncoder encoder;
-    @Autowired
-    JwtUtils jwtUtils;
-    @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginDto loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
+    private UserService userService;
+    @PostMapping("/login")
+    public AuthenticationResponse login(@RequestBody LoginDto loginDto){
+        return authServiceImp.login(loginDto);
+    }
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                roles));
+    @PostMapping("/refresh")
+    public AuthenticationResponse refreshTokens(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+        return authServiceImp.refreshToken(refreshTokenRequest);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+        refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
+        return ResponseEntity.status(HttpStatus.OK).body("Refresh Token Deleted Successfully!!");
+    }
+    @GetMapping("/getUserByLogin")
+    public ResponseEntity<User> getUserByLogin(@RequestParam(name = "login", required = true) String login) {
+        User user= userService.getUserByLogin(login);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 }

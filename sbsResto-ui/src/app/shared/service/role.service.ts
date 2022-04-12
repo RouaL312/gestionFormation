@@ -18,25 +18,25 @@ export class RoleService {
   }
   constructor(private http: HttpClient) { }
   addRole(role: Role): Observable<Role> {
-    return this.http.post<Role>(this.baseUrl + 'api/role/addRole', role, this.httpOptions)
+    return this.http.post<Role>(this.baseUrl + '/api/role/addRole', role, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError))
   }
 
   updateRole(role: Object): Observable<Object> {
-    return this.http.post(this.baseUrl + 'api/role/updateRole', role, this.httpOptions)
+    return this.http.post(this.baseUrl + '/api/role/updateRole', role, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError))
   }
 
   deleteRole(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl + 'api/role/deleteRole'}?idRole=${id}`, { responseType: 'text' })
+    return this.http.delete(`${this.baseUrl + '/api/role/deleteRole'}?idRole=${id}`, { responseType: 'text' })
   }
 
   getAllRole(): Observable<Array<Role>> {
-    return this.http.get<Array<Role>>(this.baseUrl + 'api/role/allRoles')
+    return this.http.get<Array<Role>>(this.baseUrl + '/api/role/allRoles')
       .pipe(
         retry(1),
         catchError(this.handleError))

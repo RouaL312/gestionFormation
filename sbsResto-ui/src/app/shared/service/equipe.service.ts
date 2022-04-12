@@ -17,31 +17,31 @@ export class EquipeService {
   }
   constructor(private http: HttpClient) { }
   addEquipe(equipe: Equipe): Observable<Equipe> {
-    return this.http.post<Equipe>(this.baseUrl + 'api/Equipe/addEquipe', equipe, this.httpOptions)
+    return this.http.post<Equipe>(this.baseUrl + '/api/equipes/addEquipe', equipe, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError))
   }
 
   updateEquipe(equipe: Object): Observable<Object> {
-    return this.http.post(this.baseUrl + 'api/Equipe/updateEquipe', equipe, this.httpOptions)
+    return this.http.post(this.baseUrl + '/api/equipes/updateEquipe', equipe, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError))
   }
 
   deleteEquipe(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl + 'api/Equipe/deleteEquipe'}?idEquipe=${id}`, { responseType: 'text' })
+    return this.http.delete(`${this.baseUrl + '/api/equipes/deleteEquipe'}?idEquipe=${id}`, { responseType: 'text' })
   }
 
   getAllEquipe(): Observable<Array<Equipe>> {
-    return this.http.get<Array<Equipe>>(this.baseUrl + 'api/Equipe/listEquipes')
+    return this.http.get<Array<Equipe>>(this.baseUrl + '/api/equipes/listEquipes')
       .pipe(
         retry(1),
         catchError(this.handleError))
   }
   getEquipePeriode(id: number): Observable<Equipe> {
-    return this.http.get<Equipe>(`${this.baseUrl + 'api/Equipe/getEquipe'}?idEquipe=${id}`)
+    return this.http.get<Equipe>(`${this.baseUrl + '/api/equipes/getEquipe'}?idEquipe=${id}`)
       .pipe(
         retry(1),
         catchError(this.handleError))

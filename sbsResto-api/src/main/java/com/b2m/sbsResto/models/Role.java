@@ -1,4 +1,4 @@
-package com.b2m.sbsResto.models;
+package com.b2m.sbsresto.models;
 
 
 import org.dom4j.tree.AbstractEntity;

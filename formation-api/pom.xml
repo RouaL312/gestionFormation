@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.b2m</groupId>
+	<groupId>com.projet</groupId>
 	<artifactId>formation-api</artifactId>
 	<version>formation-0.1</version>
 	<packaging>war</packaging>
@@ -67,7 +67,16 @@
 			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.bongiorno</groupId>
+			<artifactId>dto-support</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.4.5</version>
+		</dependency>
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -101,6 +110,16 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<scope>runtime</scope>
 			<version>0.10.5</version>
+		</dependency>
+        <dependency>
+            <groupId>org.bongiorno</groupId>
+            <artifactId>dto-support</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.4.5</version>
 		</dependency>
 
 	</dependencies>

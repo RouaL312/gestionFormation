@@ -20,7 +20,9 @@ public class Participant implements Serializable {
     private String prenom;
     private String email;
     private String tel;
-
+    @OneToOne()
+    @JoinColumn(name="fk_pays", referencedColumnName = "PaysId", foreignKey = @ForeignKey(name = "PaysId"))
+    private Pays pays;
     public Long getId() {
         return id;
     }
@@ -59,5 +61,13 @@ public class Participant implements Serializable {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
     }
 }

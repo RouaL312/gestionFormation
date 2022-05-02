@@ -1,0 +1,12 @@
+<div class="nav-header">
+    <a [routerLink]="['/admin']" class="brand-logo">
+      <img src="favicon.ico">
+
+        <div class="brand-title">Formation</div>
+    </a>
+    <div class="nav-control">
+        <div [ngClass]="{'is-active': hamburgerClass, '': !hamburgerClass}" class="hamburger" (click)="toggleHamburgerClass()">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+    </div>
+</div>

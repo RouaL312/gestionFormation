@@ -1,0 +1,8 @@
+<p>Pagination control can be disabled:</p>
+<div class="pagination-responsive">
+	<ngb-pagination [collectionSize]="70" [(page)]="page" [disabled]='isDisabled'></ngb-pagination>
+</div>
+<hr>
+<button class="btn btn-sm btn-outline-primary" (click)="toggleDisabled()">
+  Toggle disabled
+</button>

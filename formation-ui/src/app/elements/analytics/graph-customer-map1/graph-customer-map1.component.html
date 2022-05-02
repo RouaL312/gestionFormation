@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header border-0 pb-0">
+        <div class="separator"></div>
+        <div class="mr-auto">
+            <h4 class="text-black fs-20">Customer Map</h4>
+            <p class="fs-13 mb-0 text-black">Lorem ipsum dolor</p>
+        </div>
+    </div>
+    <div class="card-body pb-0">
+        <div id="customerMapkm" class="customer-chart">
+        
+            <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [yaxis]="chartOptions.yaxis"
+            [legend]="chartOptions.legend"
+            [fill]="chartOptions.fill"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [xaxis]="chartOptions.xaxis"
+            [colors]="chartOptions.colors"
+          ></apx-chart>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+{
+  "/api/*": {
+    "target": "http://192.168.0.18:8080/sbsferjani",
+    "secure": false
+  }
+}

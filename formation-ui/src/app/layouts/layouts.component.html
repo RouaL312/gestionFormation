@@ -1,0 +1,32 @@
+<div id="main-wrapper" [ngClass]="{'menu-toggle': sharedService.hamburgerClass, '': !sharedService.hamburgerClass}"
+     class="show">
+
+
+<!--  <app-loading></app-loading>-->
+  <app-nav-header></app-nav-header>
+  <app-header></app-header>
+
+  <app-navigation></app-navigation>
+
+
+  <!--**********************************
+    Content body start
+  ***********************************-->
+  <div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+      <div class="row">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  </div>
+  <!--**********************************
+      Content body end
+  ***********************************-->
+
+
+  <app-footer></app-footer>
+
+</div>
+<app-switcher></app-switcher>

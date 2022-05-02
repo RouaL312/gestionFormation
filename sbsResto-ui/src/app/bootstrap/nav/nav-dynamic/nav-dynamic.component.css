@@ -1,8 +1,0 @@
-.close {
-  font-size: 1.4rem;
-  opacity: 0.1;
-  transition: opacity 0.3s;
-}
-.nav-link:hover > .close {
-  opacity: 0.8;
-}

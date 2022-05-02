@@ -1,0 +1,6 @@
+<h5 class="text-primary d-inline">Interest</h5>
+	<div class="row mt-4 sp4" >
+			<a class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6" *ngFor="let item of galleryCol1; let key=index"  href="javascript:void(0);">
+					<img [src]="item.thumb" (click)="open(galleryCol1, key)" alt="" class="img-fluid">
+			</a>
+	</div>

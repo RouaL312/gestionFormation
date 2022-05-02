@@ -11,16 +11,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.b2m</groupId>
-    <artifactId>sbsResto-parent</artifactId>
-    <version>sbsResto-0.1</version>
+    <groupId>com.projet</groupId>
+    <artifactId>formation-parent</artifactId>
+    <version>formation-0.1</version>
     <packaging>pom</packaging>
-    <name>sbsResto-parent</name>
-    <description>sbsResto parent</description>
+    <name>formation-parent</name>
+    <description>formation parent</description>
 
     <modules>
-        <module>sbsResto-api</module>
-        <module>sbsResto-ui</module>
+        <module>formation-api</module>
+        <module>formation-ui</module>
     </modules>
 
     <profiles>

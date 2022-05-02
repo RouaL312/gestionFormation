@@ -1,0 +1,30 @@
+<div class="card-header border-0 pb-0">
+	<div class="clearfix">
+		<h3 class="card-title">Blood pressure</h3>
+		<span>In the normal</span>
+	</div>
+	<div class="clearfix text-center">
+		<h3 class="text-primary mb-0">120/89</h3>
+		<span>mmHG</span>
+	</div>
+</div>
+<div class="card-body text-center">
+	<div class="ico-sparkline">
+		<!-- <div id="spark-bar"></div> -->
+		
+		<apx-chart
+				[series]="chartOptions.series"
+				[chart]="chartOptions.chart"
+				[dataLabels]="chartOptions.dataLabels"
+				[plotOptions]="chartOptions.plotOptions"
+				[yaxis]="chartOptions.yaxis"
+				[legend]="chartOptions.legend"
+				[fill]="chartOptions.fill"
+				[stroke]="chartOptions.stroke"
+				[tooltip]="chartOptions.tooltip"
+				[xaxis]="chartOptions.xaxis"
+				[colors]="chartOptions.colors"
+				[grid]="chartOptions.grid"
+			  ></apx-chart>
+	</div>
+</div>

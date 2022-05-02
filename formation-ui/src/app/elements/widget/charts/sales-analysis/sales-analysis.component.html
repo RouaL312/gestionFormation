@@ -1,0 +1,35 @@
+<div class="card-body pb-0">
+	<h4 class="card-title text-uppercase font-weight-normal">Sales Analysis</h4>
+	<h2 class="font-weight-normal text-danger">
+		<span><i class="fa fa-caret-up"></i></span>
+		<span>3454664</span>
+	</h2>
+	<div class="row mt-5">
+		<div class="col text-center">
+			<h5 class="font-weight-normal">Today</h5>
+			<span class="text-success">+ 8224</span>
+		</div>
+		<div class="col text-center">
+			<h5 class="font-weight-normal">Today</h5>
+			<span class="text-danger">- 1224</span>
+		</div>
+		<div class="col text-center">
+			<h5 class="font-weight-normal">Week</h5>
+			<span class="text-success">+ 4224</span>
+		</div>
+	</div>
+</div>
+<div class="chart-wrapper">
+	<!-- <div id="chart_widget_8"></div> -->
+	<apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+	[yaxis]="chartOptions.yaxis"
+    [dataLabels]="chartOptions.dataLabels"
+    [grid]="chartOptions.grid"
+    [stroke]="chartOptions.stroke"
+    [title]="chartOptions.title"
+    [tooltip]="chartOptions.tooltip"
+  ></apx-chart>
+</div>

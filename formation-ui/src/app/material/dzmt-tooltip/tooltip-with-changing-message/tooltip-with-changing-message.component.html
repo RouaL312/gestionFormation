@@ -1,0 +1,10 @@
+<mat-form-field class="example-user-input mb-3">
+  <mat-label>Tooltip message</mat-label>
+  <input matInput [formControl]="message">
+</mat-form-field>
+
+<button mat-raised-button color="primary"
+        [matTooltip]="message.value"
+        aria-label="Button that displays a tooltip with a custom message">
+  Action
+</button>

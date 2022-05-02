@@ -1,0 +1,222 @@
+<div class="deznav">
+    <div class="deznav-scroll" [perfectScrollbar]>
+        <ul class="metismenu" id="menu" metis-menu>
+            <li [ngClass]="{'mm-active': dashboardArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-025-dashboard"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
+                    <li><a class="{{(currentHref == '/admin/index' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index']">Dashboard Light</a></li>
+                    <li><a class="{{(currentHref == '/admin/index-2' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index-2']">Dashboard Dark</a></li>
+                    <li><a class="{{(currentHref == '/admin/orders-list' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/orders-list']">Orders list</a></li>
+                    <li><a class="{{(currentHref == '/admin/order-detail' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/order-detail']">Order Detail</a></li>
+                    <li><a class="{{(currentHref == '/admin/customer-list' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/customer-list']">Customers</a></li>
+                    <li><a class="{{(currentHref == '/admin/analytics' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/analytics']">Analytics</a></li>
+                    <li><a class="{{(currentHref == '/admin/reviews' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/reviews']">Reviews</a></li>
+                </ul>
+            </li>
+          <li [ngClass]="{'mm-active': parametreArray.indexOf(currentHref) > -1}">
+            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+              <i class="flaticon-025-dashboard"></i>
+              <span class="nav-text">Paramétre</span>
+            </a>
+            <ul aria-expanded="false"  [ngClass]="{'mm-show': parametreArray.indexOf(currentHref) > -1}">
+              <li><a class="{{(currentHref == '/admin/parametre' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/parametre']">Paramétre</a></li>
+            </ul>
+          </li>
+            <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-050-info"></i>
+                    <span class="nav-text">Apps</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a [routerLink]="['/admin/app-profile']" class="{{(currentHref == '/admin/app-profile') ? 'mm-active' : ''}}">Profile</a></li>
+                    <li><a [routerLink]="['/admin/post-details']" class="{{(currentHref == '/admin/post-details') ? 'mm-active' : ''}}">Post Details</a></li>
+                    <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > 1 && apsArray.indexOf(currentHref) < 5}"><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
+                        <ul aria-expanded="false" [ngClass]="{'mm-show': apsArray.indexOf(currentHref) > 1 && apsArray.indexOf(currentHref) < 5}">
+                            <li><a [routerLink]="['/admin/email-compose']" class="{{(currentHref == '/admin/email-compose') ? 'mm-active' : ''}}">Compose</a></li>
+                            <li><a [routerLink]="['/admin/email-inbox']" class="{{(currentHref == '/admin/email-inbox') ? 'mm-active' : ''}}">Inbox</a></li>
+                            <li><a [routerLink]="['/admin/email-read']" class="{{(currentHref == '/admin/email-read') ? 'mm-active' : ''}}">Read</a></li>
+                        </ul>
+                    </li>
+                    <li><a [routerLink]="['/admin/app-calender']" class="{{(currentHref == '/admin/app-calender') ? 'mm-active' : ''}}">Calendar</a></li>
+                    <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > 4}"><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
+                        <ul aria-expanded="false" [ngClass]="{'mm-show': apsArray.indexOf(currentHref) > 4}">
+                            <li><a [routerLink]="['/admin/ecom-product-grid']" class="{{(currentHref == '/admin/ecom-product-grid') ? 'mm-active' : ''}}">Product Grid</a></li>
+                            <li><a [routerLink]="['/admin/ecom-product-list']" class="{{(currentHref == '/admin/ecom-product-list') ? 'mm-active' : ''}}">Product List</a></li>
+                            <li><a [routerLink]="['/admin/ecom-product-detail']" class="{{(currentHref == '/admin/ecom-product-detail') ? 'mm-active' : ''}}">Product Details</a></li>
+                            <li><a [routerLink]="['/admin/ecom-product-order']" class="{{(currentHref == '/admin/ecom-product-order') ? 'mm-active' : ''}}">Order</a></li>
+                            <li><a [routerLink]="['/admin/ecom-checkout']" class="{{(currentHref == '/admin/ecom-checkout') ? 'mm-active' : ''}}">Checkout</a></li>
+                            <li><a [routerLink]="['/admin/ecom-invoice']" class="{{(currentHref == '/admin/ecom-invoice') ? 'mm-active' : ''}}">Invoice</a></li>
+                            <li><a [routerLink]="['/admin/ecom-customers']" class="{{(currentHref == '/admin/ecom-customers') ? 'mm-active' : ''}}">Customers</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-041-graph"></i>
+                    <span class="nav-text">Charts</span>
+                </a>
+                <ul aria-expanded="false" [ngClass]="{'mm-show': chartsArray.indexOf(currentHref) > -1}">
+                    <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > 0}">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" >Apex Chart</a>
+                        <ul aria-expanded="false" [ngClass]="{'mm-show': chartsArray.indexOf(currentHref) > 0}">
+                            <li><a [routerLink]="['/admin/chart-apex']" class="{{(currentHref == '/admin/chart-apex') ? 'mm-active' : ''}}">All Chart Category</a></li>
+                            <li><a  [routerLink]="['/admin/apex-line']" class="{{(currentHref == '/admin/apex-line') ? 'mm-active' : ''}}" >Line Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-area']" class="{{(currentHref == '/admin/apex-area') ? 'mm-active' : ''}}" >Area Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-column']" class="{{(currentHref == '/admin/apex-column') ? 'mm-active' : ''}}" >Column Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-bar']" class="{{(currentHref == '/admin/apex-bar') ? 'mm-active' : ''}}">Bar Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-mixed']" class="{{(currentHref == '/admin/apex-mixed') ? 'mm-active' : ''}}">Mixed / Combo Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-timeline']" class="{{(currentHref == '/admin/apex-timeline') ? 'mm-active' : ''}}">Timeline Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-candlestick']" class="{{(currentHref == '/admin/apex-candlestick') ? 'mm-active' : ''}}">CandleStick Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-pie']" class="{{(currentHref == '/admin/apex-pie') ? 'mm-active' : ''}}">Pie / Donuts</a></li>
+                            <li><a [routerLink]="['/admin/apex-radar']" class="{{(currentHref == '/admin/apex-radar') ? 'mm-active' : ''}}">Radar Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-radialbar']" class="{{(currentHref == '/admin/apex-radialbar') ? 'mm-active' : ''}}">RadialBar / Circle Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-polar-area']" class="{{(currentHref == '/admin/apex-polar-area') ? 'mm-active' : ''}}">Polar Area Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-bubble']" class="{{(currentHref == '/admin/apex-bubble') ? 'mm-active' : ''}}">Bubble Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-scatter']" class="{{(currentHref == '/admin/apex-scatter') ? 'mm-active' : ''}}">Scatter Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-heatmap']" class="{{(currentHref == '/admin/apex-heatmap') ? 'mm-active' : ''}}">Heatmap Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-treemap']" class="{{(currentHref == '/admin/apex-treemap') ? 'mm-active' : ''}}">Treemap Charts</a></li>
+                            <li><a [routerLink]="['/admin/apex-sparklines']" class="{{(currentHref == '/admin/apex-sparklines') ? 'mm-active' : ''}}">Sparklines</a></li>
+                        </ul>
+
+
+                    </li>
+                    <li><a [routerLink]="['/admin/chart-chartjs']" class="{{(currentHref == '/admin/index-2') ? 'mm-active' : ''}}">Chartjs</a></li>
+                </ul>
+            </li>
+            <li [ngClass]="{'mm-active': bootstrapArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-086-star"></i>
+                    <span class="nav-text">Bootstrap</span>
+                </a>
+                <ul aria-expanded="false" [ngClass]="{'mm-show': bootstrapArray.indexOf(currentHref) > -1}">
+                    <li><a [routerLink]="['/admin/ui-accordion']" class="{{(currentHref == '/admin/ui-accordion') ? 'mm-active' : ''}}">Accordion</a></li>
+                    <li><a [routerLink]="['/admin/ui-alert']" class="{{(currentHref == '/admin/ui-alert') ? 'mm-active' : ''}}">Alert</a></li>
+                    <li><a [routerLink]="['/admin/ui-badge']" class="{{(currentHref == '/admin/ui-badge') ? 'mm-active' : ''}}">Badge</a></li>
+                    <li><a [routerLink]="['/admin/ui-button']" class="{{(currentHref == '/admin/ui-button') ? 'mm-active' : ''}}">Button</a></li>
+                    <li><a [routerLink]="['/admin/ui-datepicker']" class="{{(currentHref == '/admin/ui-datepicker') ? 'mm-active' : ''}}">Datepicker</a></li>
+                    <li><a [routerLink]="['/admin/ui-modal']" class="{{(currentHref == '/admin/ui-modal') ? 'mm-active' : ''}}">Modal</a></li>
+                    <li><a [routerLink]="['/admin/ui-button-group']" class="{{(currentHref == '/admin/ui-button-group') ? 'mm-active' : ''}}">Button Group</a></li>
+                    <li><a [routerLink]="['/admin/ui-list-group']" class="{{(currentHref == '/admin/ui-list-group') ? 'mm-active' : ''}}">List Group</a></li>
+                    <li><a [routerLink]="['/admin/ui-media-object']" class="{{(currentHref == '/admin/ui-media-object') ? 'mm-active' : ''}}">Media Object</a></li>
+                    <li><a [routerLink]="['/admin/ui-card']" class="{{(currentHref == '/admin/ui-card') ? 'mm-active' : ''}}">Cards</a></li>
+                    <li><a [routerLink]="['/admin/ui-carousel']" class="{{(currentHref == '/admin/ui-carousel') ? 'mm-active' : ''}}">Carousel</a></li>
+                    <li><a [routerLink]="['/admin/ui-dropdown']" class="{{(currentHref == '/admin/ui-dropdown') ? 'mm-active' : ''}}">Dropdown</a></li>
+                    <li><a [routerLink]="['/admin/ui-popover']" class="{{(currentHref == '/admin/ui-popover') ? 'mm-active' : ''}}">Popover</a></li>
+                    <li><a [routerLink]="['/admin/ui-progressbar']" class="{{(currentHref == '/admin/ui-progressbar') ? 'mm-active' : ''}}">Progressbar</a></li>
+                    <li><a [routerLink]="['/admin/ui-nav']" class="{{(currentHref == '/admin/ui-nav') ? 'mm-active' : ''}}">Nav</a></li>
+                    <li><a [routerLink]="['/admin/ui-rating']" class="{{(currentHref == '/admin/ui-rating') ? 'mm-active' : ''}}">Rating</a></li>
+                    <li><a [routerLink]="['/admin/ui-typography']" class="{{(currentHref == '/admin/ui-typography') ? 'mm-active' : ''}}">Typography</a></li>
+                    <li><a [routerLink]="['/admin/ui-table']" class="{{(currentHref == '/admin/ui-table') ? 'mm-active' : ''}}">Table</a></li>
+                    <li><a [routerLink]="['/admin/ui-pagination']" class="{{(currentHref == '/admin/ui-pagination') ? 'mm-active' : ''}}">Pagination</a></li>
+                    <li><a [routerLink]="['/admin/ui-timepicker']" class="{{(currentHref == '/admin/ui-timepicker') ? 'mm-active' : ''}}">Timepicker</a></li>
+                    <li><a [routerLink]="['/admin/ui-toast']" class="{{(currentHref == '/admin/ui-toast') ? 'mm-active' : ''}}">Toast</a></li>
+                    <li><a [routerLink]="['/admin/ui-tooltip']" class="{{(currentHref == '/admin/ui-tooltip') ? 'mm-active' : ''}}">Tooltip</a></li>
+                    <li><a [routerLink]="['/admin/ui-typeahead']" class="{{(currentHref == '/admin/ui-typeahead') ? 'mm-active' : ''}}">Typeahead</a></li>
+                    <li><a [routerLink]="['/admin/ui-grid']" class="{{(currentHref == '/admin/ui-grid') ? 'mm-active' : ''}}">Grid</a></li>
+
+                </ul>
+            </li>
+            <li [ngClass]="{'mm-active': materialArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-layer-1"></i>
+                    <span class="nav-text">Material</span>
+                </a>
+                <ul aria-expanded="false" [ngClass]="{'mm-show': materialArray.indexOf(currentHref) > -1}">
+                    <li><a [routerLink]="['/admin/mat-autocomplete']" class="{{(currentHref == '/admin/mat-autocomplete') ? 'mm-active' : ''}}">Autocomplete</a></li>
+                    <li><a [routerLink]="['/admin/mat-badge']" class="{{(currentHref == '/admin/mat-badge') ? 'mm-active' : ''}}">Badge</a></li>
+                    <li><a [routerLink]="['/admin/mat-bottom-sheet']" class="{{(currentHref == '/admin/mat-bottom-sheet') ? 'mm-active' : ''}}">Bottom Sheet</a></li>
+                    <li><a [routerLink]="['/admin/mat-button']" class="{{(currentHref == '/admin/mat-button') ? 'mm-active' : ''}}">Button</a></li>
+                    <li><a [routerLink]="['/admin/mat-button-toggle']" class="{{(currentHref == '/admin/mat-button-toggle') ? 'mm-active' : ''}}">Button Toggle</a></li>
+                    <li><a [routerLink]="['/admin/mat-card']" class="{{(currentHref == '/admin/mat-card') ? 'mm-active' : ''}}">Card</a></li>
+                    <li><a [routerLink]="['/admin/mat-checkbox']" class="{{(currentHref == '/admin/mat-checkbox') ? 'mm-active' : ''}}">Checkbox</a></li>
+                    <li><a [routerLink]="['/admin/mat-chips']" class="{{(currentHref == '/admin/mat-chips') ? 'mm-active' : ''}}">Chips</a></li>
+                    <li><a [routerLink]="['/admin/mat-datepicker']" class="{{(currentHref == '/admin/mat-datepicker') ? 'mm-active' : ''}}">Datepicker</a></li>
+                    <li><a [routerLink]="['/admin/mat-dialog']" class="{{(currentHref == '/admin/mat-dialog') ? 'mm-active' : ''}}">Dialog</a></li>
+                    <li><a [routerLink]="['/admin/mat-divider']" class="{{(currentHref == '/admin/mat-divider') ? 'mm-active' : ''}}">Divider</a></li>
+                    <li><a [routerLink]="['/admin/mat-expansion']" class="{{(currentHref == '/admin/mat-expansion') ? 'mm-active' : ''}}">Expansion</a></li>
+                    <li><a [routerLink]="['/admin/mat-form-field']" class="{{(currentHref == '/admin/mat-form-field') ? 'mm-active' : ''}}">Form Field</a></li>
+                    <li><a [routerLink]="['/admin/mat-grid-list']" class="{{(currentHref == '/admin/mat-grid-list') ? 'mm-active' : ''}}">Grid List</a></li>
+                    <li><a [routerLink]="['/admin/mat-icon']" class="{{(currentHref == '/admin/mat-icon') ? 'mm-active' : ''}}">Icon</a></li>
+                    <li><a [routerLink]="['/admin/mat-input']" class="{{(currentHref == '/admin/mat-input') ? 'mm-active' : ''}}">Input</a></li>
+                    <li><a [routerLink]="['/admin/mat-list']" class="{{(currentHref == '/admin/mat-list') ? 'mm-active' : ''}}">List</a></li>
+                    <li><a [routerLink]="['/admin/mat-menu']" class="{{(currentHref == '/admin/mat-menu') ? 'mm-active' : ''}}">Menu</a></li>
+                    <li><a [routerLink]="['/admin/mat-paginator']" class="{{(currentHref == '/admin/mat-paginator') ? 'mm-active' : ''}}">Paginator</a></li>
+                    <li><a [routerLink]="['/admin/mat-progress-bar']" class="{{(currentHref == '/admin/mat-progress-bar') ? 'mm-active' : ''}}">Progress Bar</a></li>
+                    <li><a [routerLink]="['/admin/mat-progress-spinner']" class="{{(currentHref == '/admin/mat-progress-spinner') ? 'mm-active' : ''}}">Progress Spinner</a></li>
+                    <li><a [routerLink]="['/admin/mat-radio']" class="{{(currentHref == '/admin/mat-radio') ? 'mm-active' : ''}}">Radio</a></li>
+                    <li><a [routerLink]="['/admin/mat-ripple']" class="{{(currentHref == '/admin/mat-ripple') ? 'mm-active' : ''}}">Ripples</a></li>
+                    <li><a [routerLink]="['/admin/mat-select']" class="{{(currentHref == '/admin/mat-select') ? 'mm-active' : ''}}">Select</a></li>
+                    <li><a [routerLink]="['/admin/mat-sidenav']" class="{{(currentHref == '/admin/mat-sidenav') ? 'mm-active' : ''}}">Sidenav</a></li>
+                    <li><a [routerLink]="['/admin/mat-slide-toggle']" class="{{(currentHref == '/admin/mat-slide-toggle') ? 'mm-active' : ''}}">Slide Toggle</a></li>
+                    <li><a [routerLink]="['/admin/mat-slider']" class="{{(currentHref == '/admin/mat-slider') ? 'mm-active' : ''}}">Slider</a></li>
+                    <li><a [routerLink]="['/admin/mat-snack-bar']" class="{{(currentHref == '/admin/mat-snack-bar') ? 'mm-active' : ''}}">Snack Bar</a></li>
+                    <li><a [routerLink]="['/admin/mat-sort']" class="{{(currentHref == '/admin/mat-sort') ? 'mm-active' : ''}}">Sort</a></li>
+                    <li><a [routerLink]="['/admin/mat-stepper']" class="{{(currentHref == '/admin/mat-stepper') ? 'mm-active' : ''}}">Stepper</a></li>
+                    <li><a [routerLink]="['/admin/mat-table']" class="{{(currentHref == '/admin/mat-table') ? 'mm-active' : ''}}">Table</a></li>
+                    <li><a [routerLink]="['/admin/mat-tab']" class="{{(currentHref == '/admin/mat-tab') ? 'mm-active' : ''}}">Tab</a></li>
+                    <li><a [routerLink]="['/admin/mat-tooltip']" class="{{(currentHref == '/admin/mat-tooltip') ? 'mm-active' : ''}}">Tooltip</a></li>
+                    <li><a [routerLink]="['/admin/mat-tree']" class="{{(currentHref == '/admin/mat-tree') ? 'mm-active' : ''}}">Tree</a></li>
+                    <li><a [routerLink]="['/admin/mat-toolbar']" class="{{(currentHref == '/admin/mat-toolbar') ? 'mm-active' : ''}}">Toolbar</a></li>
+
+                </ul>
+            </li>
+            <li [ngClass]="{'mm-active': pluginsArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-045-heart"></i>
+                    <span class="nav-text">Plugins</span>
+                </a>
+                <ul aria-expanded="false" [ngClass]="{'mm-show': pluginsArray.indexOf(currentHref) > -1}">
+                    <li><a [routerLink]="['/admin/uc-nestable']" class="{{(currentHref == '/admin/uc-nestable') ? 'mm-active' : ''}}">Nestedable</a></li>
+                    <li><a [routerLink]="['/admin/uc-lightgallery']" class="{{(currentHref == '/admin/uc-lightgallery') ? 'mm-active' : ''}}">Lightgallery</a></li>
+                </ul>
+            </li>
+            <li class="{{(currentHref == '/admin/widget-basic') ? 'mm-active' : ''}}">
+                <a [routerLink]="['/admin/widget-basic']" class="ai-icon {{(currentHref == '/admin/widget-basic') ? 'mm-active' : ''}}" aria-expanded="false">
+                    <i class="flaticon-013-checkmark"></i>
+                    <span class="nav-text">Widget</span>
+                </a>
+            </li>
+            <li [ngClass]="{'mm-active': formsArray.indexOf(currentHref) > -1}">
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-072-printer"></i>
+                    <span class="nav-text">Forms</span>
+                </a>
+                <ul aria-expanded="false" [ngClass]="{'mm-show': formsArray.indexOf(currentHref) > -1}">
+                    <li><a [routerLink]="['/admin/form-element']" class="{{(currentHref == '/admin/form-element') ? 'mm-active' : ''}}">Form Elements</a></li>
+                    <li><a [routerLink]="['/admin/form-validate']" class="{{(currentHref == '/admin/form-validate') ? 'mm-active' : ''}}">Form Validate</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-022-copy"></i>
+                    <span class="nav-text">Pages</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a [routerLink]="['/page-register']">Register</a></li>
+                    <li><a [routerLink]="['/page-login']">Login 1</a></li>
+                    <li><a [routerLink]="['/login']">Login 2</a></li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                        <ul aria-expanded="false">
+                            <li><a [routerLink]="['/page-error-400']">Error 400</a></li>
+                            <li><a [routerLink]="['/page-error-403']">Error 403</a></li>
+                            <li><a [routerLink]="['/page-error-404']">Error 404</a></li>
+                            <li><a [routerLink]="['/page-error-500']">Error 500</a></li>
+                            <li><a [routerLink]="['/page-error-503']">Error 503</a></li>
+                        </ul>
+                    </li>
+                    <li><a [routerLink]="['/page-lock-screen']">Lock Screen</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <div class="copyright">
+            <p><strong>Formation  Admin  Dashboard</strong> © 2022 All Rights Reserved</p>
+            <p class="fs-12">Made with <span [ngClass]="{'': toggleIcon, 'heart-blast': !toggleIcon}" class="heart" (click)="toggleLoveIcon()"></span> by Roua laadouz</p>
+        </div>
+    </div>
+</div>

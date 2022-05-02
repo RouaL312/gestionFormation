@@ -1,0 +1,39 @@
+<div class="card-header media border-0 pb-0">
+    <div class="media-body d-flex">
+        <div class="mr-4 mt-1">
+            <svg class="card-ico" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.9167 10.5H4.08335C2.47252 10.5 1.16669 11.8058 1.16669 13.4167V14.5833C1.16669 16.1942 2.47252 17.5 4.08335 17.5H23.9167C25.5275 17.5 26.8334 16.1942 26.8334 14.5833V13.4167C26.8334 11.8058 25.5275 10.5 23.9167 10.5Z" fill="#FF720D"/>
+                <path d="M23.9167 19.8334H4.08335C2.47252 19.8334 1.16669 21.1392 1.16669 22.75V23.9167C1.16669 25.5275 2.47252 26.8334 4.08335 26.8334H23.9167C25.5275 26.8334 26.8334 25.5275 26.8334 23.9167V22.75C26.8334 21.1392 25.5275 19.8334 23.9167 19.8334Z" fill="#FF720D"/>
+                <path d="M23.9167 1.16669H4.08335C2.47252 1.16669 1.16669 2.47252 1.16669 4.08335V5.25002C1.16669 6.86085 2.47252 8.16669 4.08335 8.16669H23.9167C25.5275 8.16669 26.8334 6.86085 26.8334 5.25002V4.08335C26.8334 2.47252 25.5275 1.16669 23.9167 1.16669Z" fill="#FF720D"/>
+            </svg>
+        </div>
+        <div>
+            <h2 class="text-black fs-32 font-w600 mb-0">524</h2>
+            <p class="mb-0 text-black font-w500">Menu</p>
+        </div>	
+    </div>
+</div>
+<div class="card-body p-0">
+    <div id="widgetChart3" class="dashboard-chart">
+    
+        <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [dataLabels]="chartOptions.dataLabels"
+            [yaxis]="chartOptions.yaxis"
+            [labels]="chartOptions.labels"
+            [legend]="chartOptions.legend"
+            [title]="chartOptions.title"
+            [subtitle]="chartOptions.subtitle"
+            [colors]="chartOptions.colors"
+            [markers]="chartOptions.markers"
+            [grid]="chartOptions.grid"
+            [states]="chartOptions.states"
+            [fill]="chartOptions.fill"
+            [tooltip]="chartOptions.tooltip"
+          ></apx-chart>
+        
+    </div>
+</div>

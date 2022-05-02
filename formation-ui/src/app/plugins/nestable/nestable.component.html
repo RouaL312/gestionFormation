@@ -1,0 +1,100 @@
+<!--**********************************
+	Content body start
+***********************************-->
+<div class="content-body">
+	<div class="container-fluid default-nestable default-mt-btn">
+		<div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Plugins</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Nestable</a></li>
+                </ol>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Nestable</h4>
+                    </div>
+					<div class="card-body">
+                        <div class="demo-content">
+                            <div class="mb-3" fxLayout.lt-sm="column"
+                            fxLayoutGap="16px"
+                            fxFlexOffset="16px">
+                                <button class="mr-2 mb-2" mat-raised-button
+                                color="primary"
+                                (click)="nestable.expandAll()">Expand All</button>
+                                <button class="mr-2 mb-2" mat-raised-button
+                                color="primary"
+                                (click)="nestable.collapseAll()">Collapse All</button>
+                                <button class="mr-2 mb-2" mat-raised-button
+                                color="primary"
+                                (click)="pushItem()">Push Item</button>
+                                <div fxFlex></div>
+                                <mat-slide-toggle class="mt-3" [checked]="options.fixedDepth"
+                                (change)="toggleFixedDepth()">
+                                    Fixed depth
+                                </mat-slide-toggle>
+                            </div>
+                            
+                            <div
+                            class="nestable-row row"
+                            fxFlex
+                            fxLayout="row"
+                            fxLayout.lt-sm="column"
+                            fxFlexOffset="16px">
+                                <ngx-nestable class="ngx-nestable col-lg-6"
+                                (drag)="drag($event)"
+                                (drop)="drop($event)"
+                                (disclosure)="onDisclosure($event)"
+                                [(list)]="list"
+                                #nestable
+                                [options]="options"
+                                [template]="$any(itemTemplate)"
+                                fxFlex="50">
+                                </ngx-nestable>
+                                
+                                <div class="result-bx col-lg-6"
+                                fxFlex="1 1 auto"
+                                fxFlexOffset="16px"
+                                fxFlexOffset.lt-sm="0px">
+                                    <textarea fxFlex>{{list | json}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ng-template #itemTemplate
+                        let-row>
+                            <button mat-icon-button
+                            [ngxNestableDragHandle]="row">
+                                <mat-icon>drag_handle</mat-icon>
+                            </button>
+                            <button mat-icon-button
+                            *ngIf="row.item.children && row.item.children.length; else empty_item"
+                            [ngxNestableExpandCollapse]="row">
+                                <mat-icon>{{row.item.$$expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}}
+                                </mat-icon>
+                            </button>
+                            <div>Item: {{row.item.id}}</div>
+                        </ng-template>
+                        
+                        <ng-template #empty_item>
+                            <span style="width: 40px"></span>
+                        </ng-template>          
+                    </div>
+                </div>
+				<!-- /# card -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+	Content body end
+***********************************-->

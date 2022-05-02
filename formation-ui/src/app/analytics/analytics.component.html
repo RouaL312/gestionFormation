@@ -1,0 +1,57 @@
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-xxl-12">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-6 col-md-6">
+                        <div class="card trending-menus pb-3">
+                            <app-daily-trending-menus [data]="trendingMenus"></app-daily-trending-menus>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <app-best-seler-menus [data]="bestSelerMenus"></app-best-seler-menus>
+                        </div>
+                    </div>
+                </div>
+              <div class=" inputBx">
+                <input type="text" required="required" >
+                <i class="fa fa-edit" ></i>
+                <span>Login</span>
+              </div>
+            </div>
+            <div class="col-xl-9 col-xxl-12">
+                <div class="row">
+                    <div class="col-xl-4 col-xxl-5 col-md-6">
+                        <div class="card pb-3">
+                            <app-loyal-customers [data]="loyalCustomers"></app-loyal-customers>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-xxl-7 col-md-6">
+                        <div class="card">
+                            <app-graph-sales-summary></app-graph-sales-summary>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <app-most-favorites-items></app-most-favorites-items>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-xl-8 col-xxl-6 col-md-6">
+                                <div class="card">
+                                    <app-graph-revenue></app-graph-revenue>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-xxl-6 col-md-6">
+                                <app-graph-customer-map1></app-graph-customer-map1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

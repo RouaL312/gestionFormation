@@ -1,0 +1,206 @@
+<p-toast position="top-right"></p-toast>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="table-responsive">
+      <div class="card">
+        <p-table #dt [value]="users" [rows]="5" [paginator]="true"
+                 [globalFilterFields]="['username','firstName','lastName','email','equipe.codeEquipe','numTelephone','authorities.name']"
+                 responsiveLayout="scroll"
+                 [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} utilisateurs"
+                 [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <div class="m-0">
+                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success mr-2"
+                        (click)="showMaximizableDialog()"></button>
+              </div>
+              <span class="p-input-icon-left"> <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." lazy="false"
+                       (input)="dt.filterGlobal($any($event.target).value, 'contains')"/>
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="userName">Nom d'utilisateur
+                <p-sortIcon field="userName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="name">Nom
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="lastName">Prénom
+                <p-sortIcon field="lastName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="email">Email
+                <p-sortIcon field="email"></p-sortIcon>
+              </th>
+              <th pSortableColumn="equipe">Equipe
+                <p-sortIcon field="equipe"></p-sortIcon>
+              </th>
+              <th pSortableColumn="tel">téléphone
+                <p-sortIcon field="tel"></p-sortIcon>
+              </th>
+              <th pSortableColumn="Authorities">Authorities
+                <p-sortIcon field="Authorities"></p-sortIcon>
+              </th>
+              <th style="width: 132px;"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+            <tr>
+              <td>{{user.login}}</td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td><span *ngIf="user.equipe!=null">{{ user!.equipe!.codeEquipe }}</span></td>
+              <td>{{ user.numTelephone}}</td>
+              <td><span *ngFor="let role of user.authorities ">{{ role.name}} </span></td>
+              <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="editUser(user)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="deleteUser(user)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <p-confirmDialog [style]="{width: '450px',height:'200px',textAlign:'center'}"></p-confirmDialog>
+  </div>
+
+
+  <!--popup Ajouter utilisateur-->
+  <div class="d-flex flex-wrap mb-3">
+    <p-dialog header="Ajouter utilisateur" [(visible)]="displayAdd" [modal]="true" [style]="{width: '50vw'}"
+              [maximizable]="true"
+              [draggable]="true">
+      <div class="container-fluid default-autocomplete default-mt-input">
+        <!-- row -->
+        <app-user-form></app-user-form>
+      </div>
+    </p-dialog>
+  </div>
+  <!--popup Modifier utilisateur-->
+
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="displayEdit" [maximizable]="true" header="Modifier Utilisateur"
+            [modal]="true"
+            styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <form class="form" [formGroup]="editUserGroup">
+        <div class="container-fluid default-autocomplete default-mt-input">
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nom</mat-label>
+                <input matInput [(ngModel)]="user.firstName"
+                       formControlName="nameControl">
+                <mat-error *ngIf="nameControl.hasError('required')">Nom est <strong>obligatoire</strong></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Prénom</mat-label>
+                <input matInput [(ngModel)]="user.lastName"
+                       formControlName="prenomControl">
+                <mat-error *ngIf="prenomControl.hasError('required')">Prénom est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nom d'utilisateur</mat-label>
+                <input matInput [(ngModel)]="user.login"
+                       formControlName="usernameControl">
+                <mat-error *ngIf="usernameControl.hasError('required')">Nom d'utilisateur est
+                  <strong>obligatoire</strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [(ngModel)]="user.email"
+                       formControlName="emailControl"
+                       placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="f.emailControl.errors?.email">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="f.emailControl.errors?.required">
+                  Email est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Roles</mat-label>
+                <mat-select multiple [(ngModel)]="user.authorities" required [compareWith]="comparer">
+                  <mat-option *ngFor="let el of roleList" [value]="el">
+                    {{el.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!user.authorities">Role est <strong>obligatoire</strong></mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              Type d'authentification
+            </div>
+            <div class="col-sm-3">
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                (click)="changePasswordType()"
+                [formControl]="typeAuthControl">
+                <mat-radio-button class="example-radio-button" *ngFor="let type of authentication" [value]="type">
+                  {{type}} &nbsp;
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 ">
+              <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
+                <mat-label>{{typeAuthControl.value}}</mat-label>
+                <input *ngIf="typeAuthControl.value=='Code Pin'" matInput [type]="hide ? 'password' : 'text'"
+                       formControlName="passwordControl" minlength="4" maxlength="4">
+                <input *ngIf="typeAuthControl.value=='Mot de passe'" matInput [type]="hide ? 'password' : 'text'"
+                       formControlName="passwordControl">
+                <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
+                                                         [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
+                </mat-icon>
+                <mat-error *ngIf="f.passwordControl.errors?.required">mot de passe est <strong>obligatoire</strong>
+                </mat-error>
+                <mat-error *ngIf="f.passwordControl.errors?.minlength">mot de passe doit etre <strong>de longueur
+                  4</strong></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3 ">
+              <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
+                <mat-label>Confirmation {{typeAuthControl.value}}</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" maxlength="4" formControlName="confirmPassword">
+                <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
+                                                         [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
+                </mat-icon>
+                <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm Password <strong>obligatoire</strong>
+                </mat-error>
+                <mat-error *ngIf="f.confirmPassword.errors?.matching">Passwords <strong>must match</strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+              (click)="displayEdit=false"></button>
+      <button pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+              (click)="saveEditUser(user)"></button>
+    </ng-template>
+  </p-dialog>
+</div>

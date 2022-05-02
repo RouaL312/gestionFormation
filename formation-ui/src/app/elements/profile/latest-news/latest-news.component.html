@@ -1,0 +1,8 @@
+<h5 class="text-primary d-inline">Our Latest News</h5>
+	<div class="media pt-3 pb-3" *ngFor = "let news of data">
+		<img src="{{news.image}}" alt="image" class="mr-3 rounded" width="75">
+		<div class="media-body">
+			<h5 class="m-b-5"><a routerLink="/{{news.url}}" class="text-black">{{news.title}}</a></h5>
+			<p class="mb-0">{{news.description}}</p>
+		</div>
+	</div>

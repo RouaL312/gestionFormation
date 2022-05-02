@@ -1,0 +1,142 @@
+<p-toast position="top-right"></p-toast>
+
+<form>
+  <section>
+
+    <div class="box">
+
+      <div class="square" style="--i:0;"></div>
+      <div class="square" style="--i:1;"></div>
+      <div class="square" style="--i:2;"></div>
+      <div class="square" style="--i:3;"></div>
+      <div class="square" style="--i:4;"></div>
+      <div class="square" style="--i:5;"></div>
+
+      <div class="container">
+        <div class="form">
+          <h2>Formation</h2>
+          <form style="text-align: center"  novalidate>
+            <div class="form-group">
+              <div class="input-group inputBx">
+                <input [formControl]="userNameControle" required="required" type="text"
+                       (ngModelChange)="checkCodePassword()">
+                <div class="input-group-append">
+                  <button (click)="checkLogin(userNameControle.value)">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <span>Login</span>
+              </div>
+            </div>
+            <div class="form-group"*ngIf="userWithCodepin">
+<!--              <div class="input-group inputBx" >-->
+                <em class="fa fa-circle" [style]="{paddingRight:'5px'}"
+                    [ngClass]="{'text-white':codePinControle.value.length < 1,'text-primary':codePinControle.value.length > 0}"></em>
+                <em class="fa fa-circle"[style]="{paddingRight:'5px'}"
+                    [ngClass]="{'text-white':codePinControle.value.length < 2,'text-primary':codePinControle.value.length > 1}"></em>
+                <em class="fa fa-circle"[style]="{paddingRight:'5px'}"
+                    [ngClass]="{'text-white':codePinControle.value.length < 3,'text-primary':codePinControle.value.length > 2}"></em>
+                <em class="fa fa-circle"[style]="{paddingRight:'5px'}"
+                    [ngClass]="{'text-white':codePinControle.value.length < 4,'text-primary':codePinControle.value.length > 3}"></em>
+<!--                <input autocomplete="new-password" [type]="hide ? 'password' : 'text'"-->
+<!--                       [formControl]="codePinControle" >-->
+<!--                <div class="input-group-append">-->
+<!--                  <button (click)="hide = !hide">-->
+<!--                    <i class="fa" [class]="{'fa-eye-slash': hide, 'fa-eye': !hide}"></i>-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+              <table>
+                <tr>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" (click)="onClickNumPad('1')" value="1"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="2" (click)="onClickNumPad('2')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="3" (click)="onClickNumPad('3')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="4" (click)="onClickNumPad('4')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="5" (click)="onClickNumPad('5')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="6" (click)="onClickNumPad('6')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="7" (click)="onClickNumPad('7')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="8" (click)="onClickNumPad('8')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="9" (click)="onClickNumPad('9')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inputBx" style="width:50px;margin:5px">
+                      <input class="inputLogin" type="submit" value="0" (click)="onClickNumPad('0')"
+                             style="border-radius:5px ">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="inputBx"style="width:50%"*ngIf="userWithCodepin" >
+              <input  type="submit" class="inputLogin" style="margin-left:50%" value="Effacer"(click)="deleteCodePin()">
+            </div>
+            <form autocomplete="off"  *ngIf="userWithPassword">
+            <div class="form-group">
+              <div class="input-group inputBx" >
+                  <input autocomplete="new-password" [class]="{'inputPassword': hideCode, 'inputText': !hideCode}"  [formControl]="passwordControle" >
+                <div class="input-group-append">
+                  <button (click)="hideCode = !hideCode">
+                    <i class="fa" [class]="{'fa-eye-slash': hideCode, 'fa-eye': !hideCode}" ></i>
+                  </button>
+                </div>
+                <span>Password</span>
+              </div>
+            </div>
+            </form>
+
+            <div class="inputBx " *ngIf="userWithPassword">
+              <input class="inputLogin" type="submit" (click)="login()" value="Login">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

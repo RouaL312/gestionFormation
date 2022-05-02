@@ -1,0 +1,43 @@
+<div class="card-header flex-wrap border-0 pb-0">
+    <div class="mb-3 d-flex">
+        <div class="separator"></div>
+        <div class="mr-auto">
+            <h4 class="card-title mb-1">Revenue</h4>
+            <p class="fs-14 mb-0">Lorem ipsum dolor sit amet,consecteture</p>
+        </div>	
+    </div>
+    
+    <mat-form-field appearance="fill" class="style-2 mb-3 dashboard-select">
+      <mat-select value="Monthly">
+        <mat-option value="Monthly">Monthly</mat-option>
+        <mat-option value="Weekly">Weekly</mat-option>
+        <mat-option value="Daily">Daily</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<div class="card-body pb-0 pt-2">
+    <div id="revenueMap">
+    
+        <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [dataLabels]="chartOptions.dataLabels"
+            [yaxis]="chartOptions.yaxis"
+            [labels]="chartOptions.labels"
+            [legend]="chartOptions.legend"
+            [title]="chartOptions.title"
+            [subtitle]="chartOptions.subtitle"
+            [colors]="chartOptions.colors"
+            [markers]="chartOptions.markers"
+            [grid]="chartOptions.grid"
+            [states]="chartOptions.states"
+            [fill]="chartOptions.fill"
+            [tooltip]="chartOptions.tooltip"
+            [plotOptions]="chartOptions.plotOptions"
+          ></apx-chart>
+        
+        
+    </div>
+</div>

@@ -36,7 +36,7 @@ export class RoleService {
   }
 
   getAllRole(): Observable<Array<Role>> {
-    return this.http.get<Array<Role>>(this.baseUrl + '/api/role/allRoles')
+    return this.http.get<Array<Role>>(this.baseUrl + '/api/role/getRoles')
       .pipe(
         retry(1),
         catchError(this.handleError))

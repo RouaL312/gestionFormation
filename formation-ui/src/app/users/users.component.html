@@ -35,15 +35,6 @@
               <th pSortableColumn="email">Email
                 <p-sortIcon field="email"></p-sortIcon>
               </th>
-              <th pSortableColumn="equipe">Equipe
-                <p-sortIcon field="equipe"></p-sortIcon>
-              </th>
-              <th pSortableColumn="tel">téléphone
-                <p-sortIcon field="tel"></p-sortIcon>
-              </th>
-              <th pSortableColumn="Authorities">Authorities
-                <p-sortIcon field="Authorities"></p-sortIcon>
-              </th>
               <th style="width: 132px;"></th>
             </tr>
           </ng-template>
@@ -53,9 +44,6 @@
               <td>{{user.firstName}}</td>
               <td>{{user.lastName}}</td>
               <td>{{user.email}}</td>
-              <td><span *ngIf="user.equipe!=null">{{ user!.equipe!.codeEquipe }}</span></td>
-              <td>{{ user.numTelephone}}</td>
-              <td><span *ngFor="let role of user.authorities ">{{ role.name}} </span></td>
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                         (click)="editUser(user)"></button>

@@ -61,8 +61,7 @@ export class LoginComponent {
           this.localStorageService.store('authResponse', data)
           let roles: Role[] | undefined;
           roles = data.authorities;
-         // if (roles!.filter(value => value.name === 'ADMIN').length > 0) {
-          if (true) {
+          if (roles!.filter(value => value.name === 'SUPER_ADMIN' || value.name === 'ADMIN').length > 0) {
 
             this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Via MessageService'});
             this.router.navigateByUrl('admin');

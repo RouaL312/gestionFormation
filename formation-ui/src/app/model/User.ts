@@ -5,7 +5,7 @@ export class User {
   email!: string ;
   firstName!: string ;
   lastName!: string ;
-  login!: string;
+  username!: string;
   password!: string;
   authorities?: Role;
   codePin!: boolean;

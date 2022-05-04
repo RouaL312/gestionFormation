@@ -41,14 +41,14 @@ public class AuthServiceImp {
         AuthenticationResponse authenticationResponse= new AuthenticationResponse();
         try{
             Authentication authenticate = authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(loginDto.getLogin(), loginDto.getPassword()));
+                    .authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authenticate);
             String authenticationToken = jwtProvider.generateToken(authenticate);
             authenticationResponse.setAuthenticationToken(authenticationToken);
-            authenticationResponse.setLogin(loginDto.getLogin());
+            authenticationResponse.setUsername(loginDto.getUsername());
             authenticationResponse.setExpiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()));
             authenticationResponse.setRefreshToken(refreshTokenService.generateRefreshToken().getToken());
-            User user = userRepository.findByLogin(loginDto.getLogin()).get();
+            User user = userRepository.findByUsername(loginDto.getUsername()).get();
             authenticationResponse.setUser(user);
             authenticationResponse.setAuthorities(user.getAuthorities());
         }catch (Exception e){
@@ -65,10 +65,10 @@ public class AuthServiceImp {
         if (value<=0) {
             try {
                 refreshTokenService.validateRefreshToken(refreshTokenRequest.getRefreshToken());
-                String token = jwtProvider.generateTokenWithLogin(refreshTokenRequest.getLogin());
+                String token = jwtProvider.generateTokenWithLogin(refreshTokenRequest.getUsername());
                 AuthenticationResponse authenticationResponse = new AuthenticationResponse();
                 authenticationResponse.setAuthenticationToken(token);
-                authenticationResponse.setLogin(refreshTokenRequest.getLogin());
+                authenticationResponse.setUsername(refreshTokenRequest.getUsername());
                 authenticationResponse.setExpiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()));
                 authenticationResponse.setRefreshToken(refreshTokenRequest.getRefreshToken());
 

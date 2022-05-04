@@ -11,11 +11,12 @@
 td {
   padding-right: 8px;
 }
-.mat-select-panel{
+
+.mat-select-panel {
   margin-top: 46px;
-}*
+}
 
-
+*
 p {
   margin: 0;
 }
@@ -29,25 +30,29 @@ p {
 
 :host ::ng-deep .p-dialog .p-dialog-content {
   padding: 0rem;
-  overflow-y:hidden;
-  height:350px;
+  overflow-y: hidden;
+  height: 350px;
 
 }
+
 :host ::ng-deep .p-dialog .p-button.p-button-text {
   color: #ffffff;
 
 }
+
 :host ::ng-deep .p-dialog .p-button.p-button-text:hover {
-   color: #ff720d;
+  color: #ff720d;
   background: white;
 
- }
+}
+
 :host ::ng-deep .p-button-edit-model {
   margin: 0 .5rem 0 0;
   min-width: 6rem;
-  background:#ff720d;
+  background: #ff720d;
   border-color: #ff720d;
 }
+
 :host ::ng-deep .p-button-edit-model:hover {
   margin: 0 .5rem 0 0;
   min-width: 6rem;
@@ -55,11 +60,19 @@ p {
   border-color: #ff720d;
   box-shadow: #ff720d;
 }
+
+:host ::ng-deep .p-button-success {
+  background: #22C55E;
+  border: #22C55E
+}
+
+
 :host ::ng-deep .p-button-edit-model:focus {
   margin: 0 .5rem 0 0;
   min-width: 6rem;
   box-shadow: 0 0 0 0.2rem #ffab7a;
 }
+
 :host ::ng-deep .p-dialog .p-button-edit-model {
   min-width: 6rem;
 

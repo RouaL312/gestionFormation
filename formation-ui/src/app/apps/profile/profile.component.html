@@ -105,7 +105,7 @@
 											<div id="my-posts" class="tab-pane fade active show">
 												<div class="my-post-content pt-3">
 													<div class="post-input">
-														<textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea> 
+														<textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea>
 														<a href="javascript:void()" class="btn btn-primary light px-3 mr-2" (click)="open(linkModal)"><i class="fa fa-link"></i> </a>
 														<!-- Modal -->
 														<ng-template #linkModal let-modal>
@@ -157,13 +157,13 @@
 															</div>
 															<div class="modal-body">
 																<textarea name="textarea" id="textarea2" cols="30" rows="5" class="form-control bg-transparent mb-3" placeholder="Please type what you want...."></textarea>
-																<a class="btn btn-primary btn-rounded" href="javascript:void(0)">Post</a>																		 
+																<a class="btn btn-primary btn-rounded" href="javascript:void(0)">Post</a>
 															</div>
 														</ng-template>
 													</div>
 													<div class="profile-uoloaded-post border-bottom-1 pb-5">
 														<img src="assets/images/profile/8.jpg" alt="" class="img-fluid">
-														<a class="post-title" [routerLink]="['/admin/post-details']"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
+														<a class="post-title" ><h3 class="text-black">Collection of textile samples lay spread</h3></a>
 														<p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
 														of spare which enjoy whole heart.</p>
 														<button class="btn btn-primary mr-2"><span class="mr-2"><i
@@ -173,7 +173,7 @@
 													</div>
 													<div class="profile-uoloaded-post border-bottom-1 pb-5">
 														<img src="assets/images/profile/9.jpg" alt="" class="img-fluid">
-														<a class="post-title" [routerLink]="['/admin/post-details']"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
+														<a class="post-title" ><h3 class="text-black">Collection of textile samples lay spread</h3></a>
 														<p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
 														of spare which enjoy whole heart.</p>
 														<button class="btn btn-primary mr-2"><span class="mr-2"><i
@@ -183,7 +183,7 @@
 													</div>
 													<div class="profile-uoloaded-post pb-3">
 														<img src="assets/images/profile/8.jpg" alt="" class="img-fluid">
-														<a class="post-title" [routerLink]="['/admin/post-details']"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
+														<a class="post-title" ><h3 class="text-black">Collection of textile samples lay spread</h3></a>
 														<p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
 														of spare which enjoy whole heart.</p>
 														<button class="btn btn-primary mr-2"><span class="mr-2"><i
@@ -194,7 +194,7 @@
 												</div>
 											</div>
 										</ng-template>
-										
+
 									</li>
 									<li class="nav-item" ngbNavItem="about-me"><a href="#about-me" data-toggle="tab" class="nav-link" ngbNavLink>About Me</a>
 										<ng-template ngbNavContent>
@@ -217,7 +217,7 @@
 												</div>
 												<div class="profile-lang  mb-5">
 													<h4 class="text-primary mb-2">Language</h4>
-													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> 
+													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a>
 													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-fr"></i> French</a>
 													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-bd"></i> Bangla</a>
 												</div>
@@ -272,7 +272,7 @@
 												</div>
 											</div>
 										</ng-template>
-										
+
 									</li>
 									<li class="nav-item" ngbNavItem="profile-settings"><a href="#profile-settings" data-toggle="tab" class="nav-link" ngbNavLink>Setting</a>
 										<ng-template ngbNavContent>
@@ -331,16 +331,16 @@
 												</div>
 											</div>
 										</ng-template>
-										
-										
+
+
 									</li>
 								</ul>
-								
+
 								<div [ngbNavOutlet]="nav" class=""></div>
 							</div>
 							<!-- Modal -->
 							<ng-template #replyModal let-modal>
-								
+
 								<div class="modal-header">
 									<h4 class="modal-title" id="modal-basic-title">Post Reply</h4>
 									<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">

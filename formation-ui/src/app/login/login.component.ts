@@ -39,7 +39,7 @@ export class LoginComponent {
 
     this.title.setTitle('login')
     this.loginPayload = new class implements LoginPayload {
-      login: string | undefined;
+      username: string | undefined;
       password: string | undefined;
     };
 
@@ -54,8 +54,8 @@ export class LoginComponent {
       this.loginPayload.password = this.passwordControle.value;
     if (this.userWithCodepin)
       this.loginPayload.password = this.codePinControle.value;
-    this.loginPayload.login = this.userNameControle.value;
-    if (this.loginPayload.login && this.loginPayload.password) {
+    this.loginPayload.username = this.userNameControle.value;
+    if (this.loginPayload.username && this.loginPayload.password) {
       return this.authService.login(this.loginPayload).subscribe(data => {
         if (data != null) {
           this.localStorageService.store('authResponse', data)

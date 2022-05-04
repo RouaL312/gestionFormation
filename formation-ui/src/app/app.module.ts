@@ -79,7 +79,6 @@ import {LayoutsComponent} from './layouts/layouts.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
 import {ParametreComponent} from './parametre/parametre.component';
 import {UsersComponent} from './users/users.component';
-import {UserFormComponent} from "./users/user-form/user-form.component";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {DialogModule} from "primeng/dialog";
@@ -124,7 +123,6 @@ FullCalendarModule.registerPlugins([
     LayoutsComponent,
     ParametreComponent,
     UsersComponent,
-    UserFormComponent,
   ],
   imports: [
     InputTextModule,

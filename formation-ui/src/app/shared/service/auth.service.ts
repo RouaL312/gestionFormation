@@ -30,9 +30,10 @@ export class AuthService {
 
   login(auth: LoginPayload): Observable<JwtAuthResponse> {
     return this.http.post<JwtAuthResponse>(this.baseUrl + '/auth/login', auth).pipe(map(data => {
+      console.log(data)
       if (data !== null){
         this.localStorageService.store('token', data.authenticationToken);
-        this.localStorageService.store('login', data.login);
+        this.localStorageService.store('login', data.username);
         this.localStorageService.store('authorities', data.authorities);
         this.refreshTokenRequest = data;
         this.localStorageService.store('refreshToken', this.refreshTokenRequest)
@@ -57,7 +58,7 @@ export class AuthService {
     return this.http.post<JwtAuthResponse>(this.baseUrl + '/auth/refresh', refreshToken!).pipe(map(data => {
       if (data !== null) {
         this.localStorageService.store('token', data.authenticationToken);
-        this.localStorageService.store('login', data.login);
+        this.localStorageService.store('login', data.username);
         this.refreshTokenRequest = data;
         this.localStorageService.store('refreshToken', this.refreshTokenRequest)
         return data;

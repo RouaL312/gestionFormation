@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByLogin(String login) {
-        return userRepository.getUserByLogin(login);
+        return userRepository.getUserByUsername(login);
     }
 
     /**
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     public Boolean verifyPassword(LoginDto loginDto) {
         Boolean check = false;
         User user = new User();
-        user = userRepository.getUserByLogin(loginDto.getLogin());
+        user = userRepository.getUserByUsername(loginDto.getUsername());
         check = checkPassword(user.getPassword(), loginDto.getPassword());
         return check;
     }

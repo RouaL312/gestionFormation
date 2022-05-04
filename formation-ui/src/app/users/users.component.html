@@ -4,7 +4,7 @@
     <div class="table-responsive">
       <div class="card">
         <p-table #dt [value]="users" [rows]="5" [paginator]="true"
-                 [globalFilterFields]="['username','firstName','lastName','email','equipe.codeEquipe','numTelephone','authorities.name']"
+                 [globalFilterFields]="['username','firstName','lastName','email','authorities.name']"
                  responsiveLayout="scroll"
                  [rowHover]="true" dataKey="id"
                  currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} utilisateurs"
@@ -13,7 +13,7 @@
             <div class="flex align-items-center justify-content-between">
               <div class="m-0">
                 <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success mr-2"
-                        (click)="showMaximizableDialog()"></button>
+                        (click)="addUser()" ></button>
               </div>
               <span class="p-input-icon-left"> <i class="pi pi-search"></i>
                 <input pInputText type="text" placeholder="Search..." lazy="false"
@@ -35,15 +35,27 @@
               <th pSortableColumn="email">Email
                 <p-sortIcon field="email"></p-sortIcon>
               </th>
+              <th pSortableColumn="equipe">Equipe
+                <p-sortIcon field="equipe"></p-sortIcon>
+              </th>
+              <th pSortableColumn="tel">téléphone
+                <p-sortIcon field="tel"></p-sortIcon>
+              </th>
+              <th pSortableColumn="Authorities">Authorities
+                <p-sortIcon field="Authorities"></p-sortIcon>
+              </th>
               <th style="width: 132px;"></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-user>
             <tr>
-              <td>{{user.login}}</td>
+              <td>{{user.username}}</td>
               <td>{{user.firstName}}</td>
               <td>{{user.lastName}}</td>
               <td>{{user.email}}</td>
+              <td><span *ngIf="user.equipe!=null">{{ user!.equipe!.codeEquipe }}</span></td>
+              <td>{{ user.numTelephone}}</td>
+              <td><span *ngFor="let role of user.authorities ">{{ role.name}} </span></td>
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                         (click)="editUser(user)"></button>
@@ -59,30 +71,17 @@
   </div>
 
 
-  <!--popup Ajouter utilisateur-->
-  <div class="d-flex flex-wrap mb-3">
-    <p-dialog header="Ajouter utilisateur" [(visible)]="displayAdd" [modal]="true" [style]="{width: '50vw'}"
-              [maximizable]="true"
-              [draggable]="true">
-      <div class="container-fluid default-autocomplete default-mt-input">
-        <!-- row -->
-        <app-user-form></app-user-form>
-      </div>
-    </p-dialog>
-  </div>
-  <!--popup Modifier utilisateur-->
-
-  <p-dialog [style]="{width: '50vw'}" [(visible)]="displayEdit" [maximizable]="true" header="Modifier Utilisateur"
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="displayEdit || displayAdd" [maximizable]="true" [header]=title
             [modal]="true"
             styleClass="p-fluid">
     <ng-template pTemplate="content">
-      <form class="form" [formGroup]="editUserGroup">
+      <form class="example"  [formGroup]="UserGroup">
         <div class="container-fluid default-autocomplete default-mt-input">
           <div class="row">
             <div class="col-sm-4">
               <mat-form-field class="example-full-width">
                 <mat-label>Nom</mat-label>
-                <input matInput [(ngModel)]="user.firstName"
+                <input matInput
                        formControlName="nameControl">
                 <mat-error *ngIf="nameControl.hasError('required')">Nom est <strong>obligatoire</strong></mat-error>
               </mat-form-field>
@@ -90,7 +89,7 @@
             <div class="col-sm-4">
               <mat-form-field class="example-full-width">
                 <mat-label>Prénom</mat-label>
-                <input matInput [(ngModel)]="user.lastName"
+                <input matInput
                        formControlName="prenomControl">
                 <mat-error *ngIf="prenomControl.hasError('required')">Prénom est <strong>obligatoire</strong>
                 </mat-error>
@@ -99,7 +98,7 @@
             <div class="col-sm-4">
               <mat-form-field class="example-full-width">
                 <mat-label>Nom d'utilisateur</mat-label>
-                <input matInput [(ngModel)]="user.login"
+                <input matInput
                        formControlName="usernameControl">
                 <mat-error *ngIf="usernameControl.hasError('required')">Nom d'utilisateur est
                   <strong>obligatoire</strong></mat-error>
@@ -110,7 +109,7 @@
             <div class="col-sm-6">
               <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput [(ngModel)]="user.email"
+                <input type="email" matInput
                        formControlName="emailControl"
                        placeholder="Ex. pat@example.com">
                 <mat-error *ngIf="f.emailControl.errors?.email">
@@ -122,16 +121,24 @@
               </mat-form-field>
             </div>
             <div class="col-sm-6">
-              <mat-form-field>
-                <mat-label>Roles</mat-label>
-                <mat-select multiple [(ngModel)]="user.authorities" required [compareWith]="comparer">
-                  <mat-option *ngFor="let el of roleList" [value]="el">
-                    {{el.name}}
-                  </mat-option>
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Role</mat-label>
+                <mat-select [(ngModel)]="user!.authorities" formControlName="authoritiesControl" multiple [compareWith]="comparer" size="1">
+                  <mat-option
+                    *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="!user.authorities">Role est <strong>obligatoire</strong></mat-error>
-
+                <mat-error *ngIf="authoritiesControl.hasError('required')">Role est <strong>obligatoire</strong>
+                </mat-error>
               </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+              <mat-label>Role</mat-label>
+              <mat-select formControlName="authoritiesControl" multiple >
+                <mat-option
+                  *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="authoritiesControl.hasError('required')">Role est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
             </div>
           </div>
           <div class="row">
@@ -185,10 +192,14 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <button pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+      <button  *ngIf="displayEdit"  pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
               (click)="displayEdit=false"></button>
-      <button pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+      <button  *ngIf="displayEdit"  pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
               (click)="saveEditUser(user)"></button>
+      <button  *ngIf="displayAdd" pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayAdd=false"></button>
+      <button  *ngIf="displayAdd" pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveNewUser()"></button>
     </ng-template>
   </p-dialog>
 </div>

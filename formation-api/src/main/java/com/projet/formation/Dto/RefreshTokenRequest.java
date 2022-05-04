@@ -11,7 +11,7 @@ import java.time.Instant;
 public class RefreshTokenRequest {
     @NotBlank
     private String refreshToken;
-    private String login;
+    private String username;
     private Instant expiresAt;
 
     public String getRefreshToken() {
@@ -22,12 +22,12 @@ public class RefreshTokenRequest {
         this.refreshToken = refreshToken;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Instant getExpiresAt() { return expiresAt; }

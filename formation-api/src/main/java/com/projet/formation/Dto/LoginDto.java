@@ -3,16 +3,16 @@ package com.projet.formation.dto;
 import javax.persistence.Column;
 
 public class LoginDto {
-    String login;
+    String username;
     String password;
     boolean codePin;
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -33,6 +33,6 @@ public class LoginDto {
 
     @Override
     public String toString() {
-        return "{ \"username\":\""+login+"\",\"password\":\""+password+"\"}";
+        return "{ \"username\":\""+username+"\",\"password\":\""+password+"\"}";
     }
 }

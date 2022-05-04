@@ -18,7 +18,7 @@
 								<form id="dz_login_signup_form" class="form-validate">
 									<h3 class="text-center mb-4 text-black">Sign up your account</h3>
 									<div class="form-group">
-										<label class="mb-1 text-black"   for="val-username"><strong>Username</strong></label>
+										<label class="mb-1 text-black"   for="val-username"><strong>Login</strong></label>
 										<div>
 											<input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
 										</div>
@@ -43,8 +43,8 @@
 									<p>Already have an account? <a class="text-primary" href="javascript:void(0);" data-toggle="tab" (click)="showForm('sign-in')">Sign in</a></p>
 								</div>
 							</div>
-                            
-                            
+
+
 							<div id="sign-in" class="auth-form1 tab-pane1 fade1  form-validation" *ngIf="selectedDiv == 'sign-in'">
 								<form   id="dz_login_signin_form"  class="form-validate">
 									<h3 class="text-center mb-4 text-black">Sign in your account</h3>
@@ -77,8 +77,8 @@
 									<p>Don't have an account? <a class="text-primary"  href="javascript:void(0);" data-toggle="tab" (click)="showForm('sign-up')">Sign up</a></p>
 								</div>
 							</div>
-                            
-                            
+
+
 							<div id="forgot-password" class="auth-form1 tab-pane1 fade1 form-validation" *ngIf="selectedDiv === 'forgot-password'">
 								<form id="dz_login_forgot_form">
 									<h3 class="text-center mb-4 text-black">Forgot Password</h3>

@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class AuthenticationResponse {
     private String authenticationToken;
-    private String login;
+    private String username;
     private Instant expiresAt;
     private String refreshToken;
     private Set<Role> authorities = new HashSet<>();
@@ -22,14 +22,6 @@ public class AuthenticationResponse {
 
     public void setAuthenticationToken(String authenticationToken) {
         this.authenticationToken = authenticationToken;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public Instant getExpiresAt() {
@@ -62,5 +54,13 @@ public class AuthenticationResponse {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

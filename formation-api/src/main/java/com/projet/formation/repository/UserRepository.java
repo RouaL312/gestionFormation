@@ -11,10 +11,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-    Optional<User> findByLogin(String username);
+    Optional<User> findByUsername(String username);
 
-    User getUserByLogin(String login);
+    User getUserByUsername(String username);
 
-    @Query(value = "SELECT * FROM utilisateur u WHERE u.login != :login", nativeQuery = true)
+    @Query(value = "SELECT * FROM utilisateur u WHERE u.username != :login", nativeQuery = true)
     List<User> getAllUsers(@Param("login") String login);
 }

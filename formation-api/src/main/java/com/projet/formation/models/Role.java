@@ -1,21 +1,20 @@
 package com.projet.formation.models;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "role")
+@SequenceGenerator(name = "id_role_seq", sequenceName = "id_role_seq", allocationSize = 1, initialValue = 1)
 public class Role implements Serializable {
-    @NotNull
-    @Size(min = 0, max = 50)
     @Id
-    @Column(length = 50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_role_seq")
+    private Long id;
+    @NotNull
+    @Column(length = 50, unique = true, nullable = false)
     private String name;
     public String getName() {
         return name;
@@ -23,6 +22,15 @@ public class Role implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

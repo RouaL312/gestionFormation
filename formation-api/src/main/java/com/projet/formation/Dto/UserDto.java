@@ -37,14 +37,6 @@ public class UserDto extends AbstractDto {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -108,4 +100,13 @@ public class UserDto extends AbstractDto {
     public void setModificationDate(Date modificationDate) {
         this.modificationDate = modificationDate;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
+

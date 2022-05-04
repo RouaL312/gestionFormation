@@ -1,4 +1,4 @@
 export interface LoginPayload {
-  login: string | undefined;
+  username: string | undefined;
   password: string | undefined;
 }

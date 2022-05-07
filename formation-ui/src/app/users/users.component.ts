@@ -4,11 +4,12 @@ import {User} from "../model/User";
 import {MatTableDataSource} from "@angular/material/table";
 import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/service/User.service";
-import {ConfirmationService, MessageService} from "primeng/api";
+import {ConfirmationService, LazyLoadEvent, MessageService} from "primeng/api";
 import {RoleService} from "../shared/service/role.service";
 import {Role} from "../model/Role";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import Validation from "../model/Validation";
+import {MatCheckboxChange} from "@angular/material/checkbox";
 
 
 let USERS: User[] = [];
@@ -32,6 +33,32 @@ export class UsersComponent implements OnInit {
   UserGroup!: FormGroup;
   UserForm!: User;
   title!: string;
+  checked: boolean = false;
+  password: any;
+  openpopup: boolean = false;
+  //FormControl
+  usernameControl = new FormControl('', [
+    Validators.required,
+  ]);
+  typeAuthControl = new FormControl('', [
+    Validators.required,
+  ]);
+  passwordControl = new FormControl('', [
+    Validators.required,
+  ]);
+  confirmPassword = new FormControl('', [
+    Validators.required,
+
+  ]);
+  nameControl = new FormControl('', [
+    Validators.required,
+  ]);
+  authoritiesControl = new FormControl('', [
+    Validators.required,
+  ]);
+  prenomControl = new FormControl('', [
+    Validators.required,
+  ]);
 
   constructor(private modalService: NgbModal, private userService: UserService, private formBuilder: FormBuilder,
               private localStorageService: LocalStorageService, private confirmationService: ConfirmationService,
@@ -59,12 +86,13 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  usernameControl = new FormControl('', [
-    Validators.required,
-  ]);
 
   ngOnInit(): void {
     this.getAllUsers();
+  }
+
+  onAffichePWD(ob: MatCheckboxChange) {
+    this.checked = ob.checked;
   }
 
   open(content: any) {
@@ -74,29 +102,16 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     return this.userService.getAllUsers().subscribe(data => {
       this.users = data;
+      console.log(data);
       USERS = this.users
     })
   }
 
-  typeAuthControl = new FormControl('', [
-    Validators.required,
-  ]);
-  passwordControl = new FormControl('', [
-    Validators.required,
-  ]);
-  confirmPassword = new FormControl('', [
-    Validators.required,
-
-  ]);
-  nameControl = new FormControl('', [
-    Validators.required,
-  ]);
-  authoritiesControl = new FormControl('', [
-    Validators.required,
-  ]);
-  prenomControl = new FormControl('', [
-    Validators.required,
-  ]);
+  getAllRoles() {
+    return this.roleService.getAllRole().subscribe(data => {
+      this.roleList = data;
+    })
+  }
 
   // convenience getter for easy access to form fields
   get f(): { [key: string]: AbstractControl } {
@@ -107,6 +122,73 @@ export class UsersComponent implements OnInit {
     this.f.passwordControl.setValue('');
   }
 
+  editUser(user: User) {
+
+    if (this.openpopup) {
+      this.openpopup = false;
+      this.openpopup=true;
+    } else {
+      this.openpopup=true;
+    }
+    this.title = 'Modifier Utlisateur';
+    this.user = {...user};
+    this.displayEdit = true;
+    this.displayAdd = false;
+    this.checked = false;
+    this.UserGroup = this.formBuilder.group({
+      usernameControl: [this.user.username, Validators.required],
+      emailControl: [this.user.email, [Validators.required, Validators.email]],
+      prenomControl: [this.user.lastName, Validators.required],
+      passwordControl: ['', Validators.required],
+      nameControl: [this.user.firstName, Validators.required],
+      authoritiesControl: [this.user.authorities, Validators.required],
+      confirmPassword: ['', Validators.required],
+    }, {
+      validators: [Validation.match('passwordControl', 'confirmPassword')]
+    });
+    if (user.codePin) {
+      this.typeAuthControl.setValue("Code Pin")
+    } else {
+      this.typeAuthControl.setValue("Mot de passe")
+    }
+    this.getAllRoles()
+  }
+
+  saveEditUser(user: User) {
+    if (this.checked) {
+      user.password = this.password;
+    } else {
+      this.UserGroup.controls.passwordControl.setValue(user.password)
+      this.UserGroup.controls.confirmPassword.setValue(user.password)
+    }
+    if (this.UserGroup.valid) {
+      this.displayEdit = true
+      user.codePin = this.typeAuthControl.value == "Code Pin";
+      this.userService.addUser(user).subscribe(data => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Modifier utilisateur',
+          detail: 'L\'utilisateur est modifié avec success'
+        });
+
+      }, error => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Probléme ajout utilisateur',
+          detail: 'Impossible de modifier l\'utilisateur'
+        });
+      })
+      console.log(user)
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Probléme ajout utilisateur',
+        detail: 'Vérifier votre données'
+      });
+      return;
+    }
+  }
+
   deleteUser(user: User) {
     this.confirmationService.confirm({
       message: 'Voulez vous supprimer l\'utilisateur ' + user.username + '?',
@@ -115,7 +197,6 @@ export class UsersComponent implements OnInit {
       accept: () => {
         if (user.id != null) {
           this.userService.deleteUser(user.id).subscribe(data => {
-            console.log(JSON.stringify(data.message))
             if (JSON.stringify(data.message == "success")) {
               this.users = this.users.filter(val => val.id !== user.id);
 
@@ -129,53 +210,21 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  saveEditUser(user: User) {
-    this.displayEdit = true
-    user.codePin = this.typeAuthControl.value == "Code Pin";
-    console.log(user);
-    this.userService.addUser(user).subscribe(data => {
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Ajouter utilisateur',
-        detail: 'L\'utilisateur est modifié avec success'
-      });
-    }, error => {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Probléme ajout utilisateur',
-        detail: 'Impossible de modifier l\'utilisateur'
-      });
-    })
-  }
-
-  editUser(user: User) {
-    this.title='Modifier Utlisateur';
-    this.user = {...user};
-    this.displayEdit = true;
-    this.displayAdd = false;
-    this.UserGroup = this.formBuilder.group({
-      usernameControl: [this.user.username, Validators.required],
-      emailControl: [this.user.email, [Validators.required, Validators.email]],
-      prenomControl: [this.user.lastName, Validators.required],
-      passwordControl: ['', Validators.required],
-      nameControl: [this.user.firstName, Validators.required],
-      authoritiesControl: [this.user.authorities!.name, Validators.required],
-      confirmPassword: ['', Validators.required],
-    }, {
-      validators: [Validation.match('passwordControl', 'confirmPassword')]
-    });
-    console.log(this.UserGroup)
-    if (user.codePin) {
-      this.typeAuthControl.setValue("Code Pin")
-    } else {
-      this.typeAuthControl.setValue("Mot de passe")
-
-    }
-
-    this.getAllRoles()
+  comparer(o1: any, o2: any): boolean {
+    // if possible compare by object's name, and not by reference.
+    return o1 && o2 ? o1.name === o2.name : o2 === o2;
   }
 
   addUser() {
+    this.displayAdd = true;
+    this.displayEdit = false;
+    if (this.openpopup) {
+      this.openpopup = false;
+      this.openpopup=true;
+    } else {
+      this.openpopup=true;
+    }
+    this.checked = true;
     this.UserGroup = this.formBuilder.group({
       usernameControl: ['', Validators.required],
       emailControl: ['', [Validators.required, Validators.email]],
@@ -187,33 +236,19 @@ export class UsersComponent implements OnInit {
     }, {
       validators: [Validation.match('passwordControl', 'confirmPassword')]
     });
-    this.displayAdd = true;
-    this.displayEdit = false;
-    this.title='Ajouter Utlisateur';
+
+    this.title = 'Ajouter Utlisateur';
     this.typeAuthControl.setValue('Code Pin')
     this.getAllRoles()
   }
 
-  showMaximizableDialog() {
-    this.displayAdd = true;
-    this.submitted = false;
-  }
-
-  getAllRoles() {
-    return this.roleService.getAllRole().subscribe(data => {
-      this.roleList = data;
-
-    })
-  }
-
-  comparer(o1: any, o2: any): boolean {
-    // if possible compare by object's name, and not by reference.
-    return o1 && o2 ? o1.label === o2.label : o2 === o2;
-  }
-
   saveNewUser() {
     if (this.UserGroup.invalid) {
-      console.log(JSON.stringify(this.UserGroup.value, null, 2));
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Probléme ajout utilisateur',
+        detail: 'Vérifier votre formulaire'
+      });
       return;
     }
     this.UserForm.firstName = this.f.nameControl.value;
@@ -230,6 +265,10 @@ export class UsersComponent implements OnInit {
         summary: 'Ajouter utilisateur',
         detail: 'L\'utilisateur est ajouté avec success'
       });
+      this.users = this.users.filter(val => {
+        return true;
+      });
+
     }, error => {
       this.messageService.add({
         severity: 'error',
@@ -239,4 +278,8 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  hideDialog() {
+    this.displayEdit = false;
+    this.displayAdd = false;
+  }
 }

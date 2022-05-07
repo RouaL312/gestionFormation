@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import org.modelmapper.ModelMapper;
@@ -27,9 +28,11 @@ public class UserController {
     ModelMapper modelMapper = new ModelMapper();
 
 
-    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<User>> getAllUsers(@RequestParam(name = "login", required = true) String login) {
-        return new ResponseEntity<>(userService.getAllUsers(login), HttpStatus.OK);
+    @GetMapping("/users")
+    public ResponseEntity <List<UserDto>> getAllUsers(@RequestParam(name = "login", required = true) String login) {
+        List<UserDto> listOfUserDTO = ObjectMapperUtils.mapAll(userService.getAllUsers(login), UserDto.class);
+        Collections.reverse(listOfUserDTO);
+        return new ResponseEntity<>(listOfUserDTO, HttpStatus.OK);
     }
     @PostMapping(value = "/addUser")
     public ResponseEntity<UserDto> addOrUpdateUser(@Valid @RequestBody UserDto userDto) {

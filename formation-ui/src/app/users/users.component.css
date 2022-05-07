@@ -31,7 +31,7 @@ p {
 :host ::ng-deep .p-dialog .p-dialog-content {
   padding: 0rem;
   overflow-y: hidden;
-  height: 350px;
+  height:32vh;
 
 }
 

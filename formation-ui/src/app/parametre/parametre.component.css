@@ -1,0 +1,15 @@
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #FF720D;
+}
+
+.svg-icon circle {
+  stroke: #FF720D;
+  stroke-width: 1px;
+}

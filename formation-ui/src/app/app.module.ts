@@ -100,6 +100,13 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {ConfirmationService} from 'primeng/api';
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {UserService} from "./shared/service/User.service";
+import { OrganismeComponent } from './organisme/organisme.component';
+import { ParticipantsComponent } from './participants/participants.component';
+import { FormateursComponent } from './formateurs/formateurs.component';
+import { PaysComponent } from './pays/pays.component';
+import { FormationsComponent } from './formations/formations.component';
+import { DomainesComponent } from './domaines/domaines.component';
+import { SessionFormationsComponent } from './session-formations/session-formations.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -123,6 +130,13 @@ FullCalendarModule.registerPlugins([
     LayoutsComponent,
     ParametreComponent,
     UsersComponent,
+    OrganismeComponent,
+    ParticipantsComponent,
+    FormateursComponent,
+    PaysComponent,
+    FormationsComponent,
+    DomainesComponent,
+    SessionFormationsComponent,
   ],
   imports: [
     InputTextModule,

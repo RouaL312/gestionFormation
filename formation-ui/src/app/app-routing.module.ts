@@ -7,6 +7,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {LayoutsComponent} from "./layouts/layouts.component";
 import {ParametreComponent} from "./parametre/parametre.component";
 import {UsersComponent} from "./users/users.component";
+import {OrganismeComponent} from "./organisme/organisme.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'admin', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: '', component: AdminComponent},
       {path: 'parametre', component: ParametreComponent},
       {path: 'users', component: UsersComponent},
+      {path: 'organisme', component: OrganismeComponent},
     ]},
 
 

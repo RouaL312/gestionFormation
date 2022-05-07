@@ -4,7 +4,7 @@
     <div class="table-responsive">
       <div class="card">
         <p-table #dt [value]="users" [rows]="5" [paginator]="true"
-                 [globalFilterFields]="['username','firstName','lastName','email','authorities.name']"
+                 [globalFilterFields]="['username','firstName','lastName','email','equipe.codeEquipe','numTelephone','authorities']"
                  responsiveLayout="scroll"
                  [rowHover]="true" dataKey="id"
                  currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} utilisateurs"
@@ -35,12 +35,6 @@
               <th pSortableColumn="email">Email
                 <p-sortIcon field="email"></p-sortIcon>
               </th>
-              <th pSortableColumn="equipe">Equipe
-                <p-sortIcon field="equipe"></p-sortIcon>
-              </th>
-              <th pSortableColumn="tel">téléphone
-                <p-sortIcon field="tel"></p-sortIcon>
-              </th>
               <th pSortableColumn="Authorities">Authorities
                 <p-sortIcon field="Authorities"></p-sortIcon>
               </th>
@@ -53,8 +47,6 @@
               <td>{{user.firstName}}</td>
               <td>{{user.lastName}}</td>
               <td>{{user.email}}</td>
-              <td><span *ngIf="user.equipe!=null">{{ user!.equipe!.codeEquipe }}</span></td>
-              <td>{{ user.numTelephone}}</td>
               <td><span *ngFor="let role of user.authorities ">{{ role.name}} </span></td>
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
@@ -71,8 +63,7 @@
   </div>
 
 
-  <p-dialog [style]="{width: '50vw'}" [(visible)]="displayEdit || displayAdd" [maximizable]="true" [header]=title
-            [modal]="true"
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="openpopup" [maximizable]="true" [header]=title (onHide)="hideDialog()"
             styleClass="p-fluid">
     <ng-template pTemplate="content">
       <form class="example"  [formGroup]="UserGroup">
@@ -123,29 +114,42 @@
             <div class="col-sm-6">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>Role</mat-label>
-                <mat-select [(ngModel)]="user!.authorities" formControlName="authoritiesControl" multiple [compareWith]="comparer" size="1">
+                <mat-select [(ngModel)]="user!.authorities" formControlName="authoritiesControl" multiple [compareWith]="comparer" >
                   <mat-option
-                    *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
+                              *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="authoritiesControl.hasError('required')">Role est <strong>obligatoire</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field *ngIf="displayAdd"class="example-full-width">
-              <mat-label>Role</mat-label>
-              <mat-select formControlName="authoritiesControl" multiple >
-                <mat-option
-                  *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
-              </mat-select>
-              <mat-error *ngIf="authoritiesControl.hasError('required')">Role est <strong>obligatoire</strong>
-              </mat-error>
-            </mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="authoritiesControl" multiple>
+                  <mat-option
+                              *ngFor="let authorities of roleList" [value]="authorities">{{authorities.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="authoritiesControl.hasError('required')">Role est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-3">
+
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+            </div>
+          </div>
+          <div *ngIf="displayEdit" >
+            <div class="example-section">
+              <mat-checkbox (change)="onAffichePWD($event)"  [color]="'primary'"
+                            class="example-margin">Changer mot de passe</mat-checkbox>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngIf="checked" class="col-sm-3">
               Type d'authentification
             </div>
-            <div class="col-sm-3">
+            <div *ngIf="checked" class="col-sm-3">
               <mat-radio-group
                 aria-labelledby="example-radio-group-label"
                 class="example-radio-group"
@@ -156,36 +160,37 @@
                 </mat-radio-button>
               </mat-radio-group>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3 ">
-              <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
-                <mat-label>{{typeAuthControl.value}}</mat-label>
-                <input *ngIf="typeAuthControl.value=='Code Pin'" matInput [type]="hide ? 'password' : 'text'"
-                       formControlName="passwordControl" minlength="4" maxlength="4">
-                <input *ngIf="typeAuthControl.value=='Mot de passe'" matInput [type]="hide ? 'password' : 'text'"
-                       formControlName="passwordControl">
-                <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
-                                                         [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
-                </mat-icon>
-                <mat-error *ngIf="f.passwordControl.errors?.required">mot de passe est <strong>obligatoire</strong>
-                </mat-error>
-                <mat-error *ngIf="f.passwordControl.errors?.minlength">mot de passe doit etre <strong>de longueur
-                  4</strong></mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-sm-3 ">
-              <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
-                <mat-label>Confirmation {{typeAuthControl.value}}</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" maxlength="4" formControlName="confirmPassword">
-                <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
-                                                         [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
-                </mat-icon>
-                <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm Password <strong>obligatoire</strong>
-                </mat-error>
-                <mat-error *ngIf="f.confirmPassword.errors?.matching">Passwords <strong>must match</strong></mat-error>
-              </mat-form-field>
-            </div>
+              <div *ngIf="checked" class="col-sm-3 ">
+                <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
+                  <mat-label>{{typeAuthControl.value}}</mat-label>
+                  <input *ngIf="typeAuthControl.value=='Code Pin'" [(ngModel)]="password"matInput [type]="hide ? 'password' : 'text'"
+                         formControlName="passwordControl" minlength="4" maxlength="4">
+                  <input *ngIf="typeAuthControl.value=='Mot de passe'" maxlength="20" [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'"
+                         formControlName="passwordControl">
+                  <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
+                                                           [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
+                  </mat-icon>
+                  <mat-error *ngIf="f.passwordControl.errors?.required">mot de passe est <strong>obligatoire</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.passwordControl.errors?.minlength">mot de passe doit etre <strong>de longueur
+                    4</strong></mat-error>
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="checked" class="col-sm-3 ">
+                <mat-form-field *ngIf="typeAuthControl.value" class="example-full-width">
+                  <mat-label>Confirmation {{typeAuthControl.value}}</mat-label>
+                  <input *ngIf="typeAuthControl.value=='Code Pin'"matInput [type]="hide ? 'password' : 'text'" maxlength="4" formControlName="confirmPassword">
+                  <input *ngIf="typeAuthControl.value=='Mot de passe'"matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+                  <mat-icon style="size:10px" matSuffix><i (click)="hide = !hide" class="m-0 pull-right fa"
+                                                           [class]=" {'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
+                  </mat-icon>
+                  <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm Password <strong>obligatoire</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.confirmPassword.errors?.matching">Passwords <strong>must match</strong></mat-error>
+                </mat-form-field>
+              </div>
+
           </div>
         </div>
       </form>
@@ -193,11 +198,11 @@
 
     <ng-template pTemplate="footer">
       <button  *ngIf="displayEdit"  pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
-              (click)="displayEdit=false"></button>
+              (click)="displayEdit=openpopup=false"></button>
       <button  *ngIf="displayEdit"  pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
               (click)="saveEditUser(user)"></button>
       <button  *ngIf="displayAdd" pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
-               (click)="displayAdd=false"></button>
+               (click)="displayEdit=openpopup=false"></button>
       <button  *ngIf="displayAdd" pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
                (click)="saveNewUser()"></button>
     </ng-template>

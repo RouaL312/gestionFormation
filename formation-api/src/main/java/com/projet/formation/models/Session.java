@@ -3,6 +3,7 @@ package com.projet.formation.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,14 +16,18 @@ import java.util.Date;
 public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="SessionId")
+    @Column(name = "SessionId")
     private Long Id;
     private String lieu;
-    @Column(name="date_debut")
+    @Column(name = "date_debut")
     private Date dateDebut;
-    @Column(name="date_fin")
+    @Column(name = "date_fin")
     private Date dateFin;
     private int nbParticipants;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "fomateur_id")
+    private Formateur formateur;
 
     public Long getId() {
         return Id;
@@ -62,5 +67,13 @@ public class Session implements Serializable {
 
     public void setNbParticipants(int nbParticipants) {
         this.nbParticipants = nbParticipants;
+    }
+
+    public Formateur getFormateur() {
+        return formateur;
+    }
+
+    public void setFormateur(Formateur formateur) {
+        this.formateur = formateur;
     }
 }

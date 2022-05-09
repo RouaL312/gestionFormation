@@ -4,6 +4,7 @@ package com.projet.formation.services;
 import com.projet.formation.dto.AjoutResponse;
 import com.projet.formation.dto.LoginDto;
 import com.projet.formation.models.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

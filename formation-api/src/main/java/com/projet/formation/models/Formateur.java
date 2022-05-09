@@ -1,11 +1,16 @@
 package com.projet.formation.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -26,10 +31,12 @@ public class Formateur implements Serializable {
     private Long tel;
     @Column(nullable = false)
     private String type;
-  /*  @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organisme_id", insertable = false, updatable = false)
-    private Organisme organisme;*/
-
+    private Organisme organisme;
+//    @JsonIgnore
+    @OneToMany(mappedBy = "formateur")
+    private List<Session> session = new ArrayList<Session>();
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -80,5 +87,21 @@ public class Formateur implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Organisme getOrganisme() {
+        return organisme;
+    }
+
+    public void setOrganisme(Organisme organisme) {
+        this.organisme = organisme;
+    }
+
+    public List<Session> getSession() {
+        return session;
+    }
+
+    public void setSession(List<Session> session) {
+        this.session = session;
     }
 }

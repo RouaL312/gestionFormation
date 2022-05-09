@@ -1,1 +1,105 @@
-<p>formateurs works!</p>
+<p-toast position="top-right"></p-toast>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="table-responsive">
+      <div class="card">
+        <p-table #dt [value]="formateurs" [rows]="5" [paginator]="true"
+                 [globalFilterFields]="['nom','prenom','email','tel','organisme.libelle','type']"
+                 responsiveLayout="scroll"
+                 [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} formateurs"
+                 [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <div class="m-0">
+                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success mr-2"
+                        (click)="addFormateur()" ></button>
+              </div>
+              <span class="p-input-icon-left"> <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." lazy="false"
+                       (input)="dt.filterGlobal($any($event.target).value, 'contains')"/>
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="nom">Nom
+                <p-sortIcon field="userName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="prenom">Prénom
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="email">E-mail
+                <p-sortIcon field="lastName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="tel">Tel
+                <p-sortIcon field="email"></p-sortIcon>
+              </th>
+              <th pSortableColumn="organisme">Organisme
+                <p-sortIcon field="organisme"></p-sortIcon>
+              </th>
+              <th style="width: 132px;"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-formateur>
+            <tr>
+              <td>{{formateur.nom}}</td>
+              <td>{{formateur.prenom}}</td>
+              <td>{{formateur.email}}</td>
+              <td>{{formateur.tel}}</td>
+              <td><span *ngFor="let session of formateur.session ">{{ session.dateDebut}} </span></td>
+              <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="editFormateur(formateur)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="deleteFormateur(formateur)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <p-confirmDialog [style]="{width: '450px',height:'200px',textAlign:'center'}"></p-confirmDialog>
+  </div>
+
+
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="openpopup" [maximizable]="true" [header]=title (onHide)="hideDialog()"
+            styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <form class="example"  [formGroup]="FormateurGroup">
+        <div class="container-fluid default-autocomplete default-mt-input">
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nom</mat-label>
+                <input matInput
+                       formControlName="nameControl">
+                <mat-error *ngIf="nameControl.hasError('required')">Nom est <strong>obligatoire</strong></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Prénom</mat-label>
+                <input matInput
+                       formControlName="prenomControl">
+                <mat-error *ngIf="prenomControl.hasError('required')">Prénom est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button  *ngIf="displayEdit"  pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayEdit"  pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveEditFormateur(formateur)"></button>
+      <button  *ngIf="displayAdd" pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayAdd" pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveNewFormateur()"></button>
+    </ng-template>
+  </p-dialog>
+</div>

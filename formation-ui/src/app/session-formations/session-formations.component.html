@@ -1,1 +1,147 @@
-<p>session-formations works!</p>
+<p-toast position="top-right"></p-toast>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="table-responsive">
+      <div class="card">
+        <p-table #dt [value]="sessions" [rows]="5" [paginator]="true"
+                 [globalFilterFields]="['lieu','dateDebut','dateFin','nbParticipants','session.nom']"
+                 responsiveLayout="scroll"
+                 [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} sessions"
+                 [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <div class="m-0">
+                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success mr-2"
+                        (click)="addSession()" ></button>
+              </div>
+              <span class="p-input-icon-left"> <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." lazy="false"
+                       (input)="dt.filterGlobal($any($event.target).value, 'contains')"/>
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="lieu">Lieu
+                <p-sortIcon field="lieu"></p-sortIcon>
+              </th>
+              <th pSortableColumn="dateDebut">dateDebut
+                <p-sortIcon field="dateDebut"></p-sortIcon>
+              </th>
+              <th pSortableColumn="dateFin">dateFin
+                <p-sortIcon field="dateFin"></p-sortIcon>
+              </th>
+              <th pSortableColumn="nbParticipants">nbParticipants
+                <p-sortIcon field="nbParticipants"></p-sortIcon>
+              </th>
+              <th pSortableColumn="session">session
+                <p-sortIcon field="session"></p-sortIcon>
+              </th>
+              <th style="width: 132px;"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-session>
+            <tr>
+              <td>{{session.lieu}}</td>
+              <td>{{session.dateDebut}}</td>
+              <td>{{session.dateFin}}</td>
+              <td>{{session.nbParticipants}}</td>
+              <td><span *ngFor="let session of session.session ">{{ session.nom}} </span></td>
+              <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="editSession(session)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="deleteSession(session)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <p-confirmDialog [style]="{width: '450px',height:'200px',textAlign:'center'}"></p-confirmDialog>
+  </div>
+
+
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="openpopup" [maximizable]="true" [header]=title (onHide)="hideDialog()"
+            styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <form class="example"  [formGroup]="SessionGroup">
+        <div class="container-fluid default-autocomplete default-mt-input">
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>lieu</mat-label>
+                <input matInput
+                       formControlName="nomControl">
+                <mat-error *ngIf="lieuControl.hasError('required')">lieu est <strong>obligatoire</strong></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>dateDebut</mat-label>
+                <input matInput type="date"
+                       formControlName="dateDebutControl">
+                <mat-error *ngIf="dateDebutControl.hasError('required')">dateDebut est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>dateFin</mat-label>
+                <input matInput type="date"
+                       formControlName="dateFinControl">
+                <mat-error *ngIf="dateFinControl.hasError('required')">dateFin est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>nbParticipants</mat-label>
+                <input type="number" matInput
+                       formControlName="nbParticipantsControl"/>
+                <mat-error *ngIf="nbParticipantsControl.hasError('required')">
+                  nbParticipants est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Formateur</mat-label>
+                <mat-select [(ngModel)]="session!.formateur" formControlName="formateurControl" >
+                  <mat-option
+                    *ngFor="let formateur of formateurList" [value]="formateur.nom"> {{formateur.nom}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formateurControl.hasError('required')">Formateur est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+                <mat-label>Formateur</mat-label>
+                <mat-select formControlName="sessionControl" >
+                  <mat-option
+                    *ngFor="let formateur of formateurList" [value]="formateur.nom"> {{formateur.nom}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formateurControl.hasError('required')">Formateur est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button  *ngIf="displayEdit"  pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayEdit"  pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveEditSession(session)"></button>
+      <button  *ngIf="displayAdd" pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayAdd" pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveNewSession()"></button>
+    </ng-template>
+  </p-dialog>
+</div>

@@ -24,16 +24,16 @@
           <ng-template pTemplate="header">
             <tr>
               <th pSortableColumn="nom">Nom
-                <p-sortIcon field="userName"></p-sortIcon>
+                <p-sortIcon field="nom"></p-sortIcon>
               </th>
               <th pSortableColumn="prenom">Prénom
-                <p-sortIcon field="name"></p-sortIcon>
+                <p-sortIcon field="prenom"></p-sortIcon>
               </th>
               <th pSortableColumn="email">E-mail
-                <p-sortIcon field="lastName"></p-sortIcon>
+                <p-sortIcon field="email"></p-sortIcon>
               </th>
               <th pSortableColumn="tel">Tel
-                <p-sortIcon field="email"></p-sortIcon>
+                <p-sortIcon field="tel"></p-sortIcon>
               </th>
               <th pSortableColumn="organisme">Organisme
                 <p-sortIcon field="organisme"></p-sortIcon>
@@ -73,8 +73,8 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Nom</mat-label>
                 <input matInput
-                       formControlName="nameControl">
-                <mat-error *ngIf="nameControl.hasError('required')">Nom est <strong>obligatoire</strong></mat-error>
+                       formControlName="nomControl">
+                <mat-error *ngIf="nomControl.hasError('required')">Nom est <strong>obligatoire</strong></mat-error>
               </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -83,6 +83,93 @@
                 <input matInput
                        formControlName="prenomControl">
                 <mat-error *ngIf="prenomControl.hasError('required')">Prénom est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>tel</mat-label>
+              <input matInput
+                     formControlName="telControl">
+              <mat-error *ngIf="telControl.hasError('required')">Prénom est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput
+                       formControlName="emailControl"
+                       placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="f.emailControl.errors?.email">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="f.emailControl.errors?.required">
+                  Email est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Session</mat-label>
+                <mat-select [(ngModel)]="formateur!.session" formControlName="sessionControl" >
+                  <mat-option
+                    *ngFor="let session of sessionList" [value]="session.dateFin">de {{session.dateDebut}} à {{session.dateFin}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sessionControl.hasError('required')">Session est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+                <mat-label>Session</mat-label>
+                <mat-select formControlName="sessionControl" >
+                  <mat-option
+                    *ngFor="let session of sessionList" [value]="session">de {{session.dateDebut}} à {{session.dateFin}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="sessionControl.hasError('required')">Session est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Type</mat-label>
+                <mat-select [(ngModel)]="formateur!.type" formControlName="typeControl" >
+                  <mat-option
+                    *ngFor="let type of typeList" [value]="type.name">{{type.name}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="organismeControl.hasError('required')">Type est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="typeControl">
+                  <mat-option
+                    *ngFor="let type of typeList" [value]="type.name">{{type.name}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="typeControl.hasError('required')">type est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Organisme</mat-label>
+                <mat-select [(ngModel)]="formateur!.organisme" formControlName="organismeControl" >
+                  <mat-option
+                    *ngFor="let organismes of organismeList" [value]="organismes.libelle">{{organismes.libelle}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="organismeControl.hasError('required')">Organisme est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+                <mat-label>Organisme</mat-label>
+                <mat-select formControlName="organismeControl" >
+                  <mat-option
+                    *ngFor="let organismes of organismeList" [value]="organismes.libelle">{{organismes.libelle}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="organismeControl.hasError('required')">Organisme est <strong>obligatoire</strong>
                 </mat-error>
               </mat-form-field>
             </div>

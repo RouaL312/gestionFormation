@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {User} from "../model/User";
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Formateurs} from "../model/Formateurs";
-import {UserService} from "../shared/service/User.service";
 import {FormateursService} from "../shared/service/formateurs.service";
+import {ConfirmationService, MessageService} from "primeng/api";
+import {Session} from "../model/Session";
+import {SessionService} from "../shared/service/session.service";
+import {Organismes} from "../model/Organismes";
+import {OrganismesService} from "../shared/service/organisme.service";
 
 let FORMATEURS: Formateurs[] = [];
 
@@ -13,53 +16,251 @@ let FORMATEURS: Formateurs[] = [];
   styleUrls: ['./formateurs.component.scss']
 })
 export class FormateursComponent implements OnInit {
-  openpopup: boolean=false;
+  openpopup: boolean = false;
   FormateurGroup!: FormGroup;
   FormateurForm!: Formateurs;
-  nameControl: any;
-  prenomControl: any;
-  displayEdit: boolean=false;
-  displayAdd: any;
-  title!: 'formateurs';
+  displayEdit: boolean = false;
+  displayAdd: boolean = false;
+  title!: string;
   formateurs!: Formateurs[];
   formateur!: Formateurs;
+  sessionList: Session[] = [];
+  organismeList: Organismes[] = [];
+  typeList = [{
+    name: "INTERNATIONAL"
+  },
+    {
+  name: "NATIONAL"
+}
+]
 
-  constructor(private formateursService: FormateursService, ) {
+nomControl = new FormControl('', [Validators.required]);
+prenomControl = new FormControl('', [Validators.required]);
+telControl = new FormControl('', [Validators.required]);
+sessionControl = new FormControl('', [Validators.required]);
+organismeControl = new FormControl('', [Validators.required]);
+typeControl = new FormControl('', [Validators.required]);
 
+constructor(private organismeService:OrganismesService , private confirmationService: ConfirmationService, private formBuilder: FormBuilder,
+            private formateursService: FormateursService, private messageService: MessageService,
+            private sessionService: SessionService
+)
+{
+  this.FormateurGroup = this.formBuilder.group({
+    nomControl: ['', Validators.required],
+    emailControl: ['', [Validators.required, Validators.email]],
+    prenomControl: ['', Validators.required],
+    telControl: ['', Validators.required],
+    sessionControl: ['', Validators.required],
+    organismeControl: ['', Validators.required],
+    typeControl: ['', Validators.required],
+  });
+  this.FormateurForm = {
+    idFormateur: undefined,
+    nom: '',
+    prenom: '',
+    email: '',
+    session: undefined,
+    tel: '',
+    type: '',
+    organisme: undefined,
+  }
+}
+ngOnInit()
+:
+void {
+  this.getAllFormateurs()
+}
+
+getAllFormateurs()
+{
+  return this.formateursService.getAllFormateurs().subscribe(data => {
+    this.formateurs = data;
+    console.log(data);
+    FORMATEURS = this.formateurs
+  })
+}
+
+editFormateur(formateur
+:
+Formateurs
+)
+{
+
+  if (this.openpopup) {
+    this.openpopup = false;
+    this.openpopup = true;
+  } else {
+    this.openpopup = true;
+  }
+  this.title = 'Modifier Formateur';
+  this.formateur = {...formateur};
+  this.displayEdit = true;
+  this.displayAdd = false;
+  this.FormateurGroup = this.formBuilder.group({
+    nomControl: [this.formateur.nom, Validators.required],
+    emailControl: [this.formateur.email, [Validators.required, Validators.email]],
+    prenomControl: [this.formateur.prenom, Validators.required],
+    telControl: [this.formateur.tel, Validators.required],
+    sessionControl: [this.formateur.session, Validators.required],
+    typeControl: [this.formateur.type, Validators.required],
+    organismeControl: [this.formateur.organisme, Validators.required],
+  });
+  this.getAllOrganisme();
+  this.getAllSession();
+}
+
+deleteFormateur(formateur
+:
+Formateurs
+)
+{
+  this.confirmationService.confirm({
+    message: 'Voulez vous supprimer le formateur ' + formateur.nom + '?',
+    header: 'Confirmation de suppression',
+    icon: 'pi pi-exclamation-triangle',
+    accept: () => {
+      if (formateur.idFormateur != null) {
+        this.formateursService.deleteFormateur(formateur.idFormateur).subscribe(data => {
+          if (JSON.stringify(data.message == "success")) {
+            this.formateurs = this.formateurs.filter(val => val.idFormateur !== formateur.idFormateur);
+
+            this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
+          } else {
+            this.messageService.add({severity: 'error', summary: 'Probléme de suppression', detail: data.message});
+          }
+        })
+      }
+    }
+  });
+}
+
+addFormateur()
+{
+  this.displayAdd = true;
+  this.displayEdit = false;
+  if (this.openpopup) {
+    this.openpopup = false;
+    this.openpopup = true;
+  } else {
+    this.openpopup = true;
+  }
+  this.FormateurGroup = this.formBuilder.group({
+    nomControl: ['', Validators.required],
+    emailControl: ['', [Validators.required, Validators.email]],
+    prenomControl: ['', Validators.required],
+    telControl: ['', Validators.required],
+    typeControl: ['', Validators.required],
+    sessionControl: ['', Validators.required],
+    organismeControl: ['', Validators.required],
+  });
+
+  this.title = 'Ajouter Formateur';
+  this.getAllSession();
+  console.log('organisme')
+  this.getAllOrganisme()
+}
+
+saveEditFormateur(formateur
+:
+Formateurs
+)
+{
+  if (this.FormateurGroup.invalid) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Probléme ajout formateur',
+      detail: 'Vérifier votre formulaire'
+    });
+    return;
+  }
+  this.FormateurForm.nom = this.f.nomControl.value;
+  this.FormateurForm.prenom = this.f.prenomControl.value;
+  this.FormateurForm.type = this.f.typeControl.value;
+  this.FormateurForm.email = this.f.emailControl.value;
+  this.FormateurForm.session = this.f.sessionControl.value;
+  this.FormateurForm.organisme = this.f.organismeControl.value;
+  this.FormateurForm.tel = this.telControl.value;
+  console.log(this.FormateurForm);
+  this.formateursService.addFormateur(this.FormateurForm).subscribe(data => {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Ajouter formateur',
+      detail: 'Le formateur est ajouté avec success'
+    });
+
+  }, error => {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Probléme ajout formateur',
+      detail: 'Impossible d\'ajouter le formateur'
+    });
+  })
+}
+
+// convenience getter for easy access to form fields
+  get f(): { [key: string]: AbstractControl } {
+    return this.FormateurGroup.controls;
   }
 
-  ngOnInit(): void {
-    this.getAllFormateurs()
+saveNewFormateur()
+{
+  if (this.FormateurGroup.invalid) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Probléme ajout formateur',
+      detail: 'Vérifier votre formulaire'
+    });
+    return;
   }
-  getAllFormateurs() {
-    return this.formateursService.getAllFormateurs().subscribe(data => {
-      this.formateurs = data;
-      console.log(data);
-      FORMATEURS = this.formateurs
-    })
-  }
+  this.FormateurForm.nom = this.f.nomControl.value;
+  this.FormateurForm.prenom = this.f.prenomControl.value;
+  this.FormateurForm.email = this.f.emailControl.value;
+  this.FormateurForm.organisme = this.f.organismeControl.value;
+  this.FormateurForm.tel = this.f.telControl.value;
+  this.FormateurForm.session = this.f.sessionControl.value;
+  this.FormateurForm.type = this.f.typeControl.value;
 
-  editFormateur(formateur: any) {
+  console.log(this.FormateurForm);
+  this.formateursService.addFormateur(this.FormateurForm).subscribe(data => {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Ajouter formateur',
+      detail: 'le formateur est ajouté avec success'
+    });
+    this.formateurs = this.formateurs.filter(val => {
+      return true;
+    });
 
-  }
+  }, error => {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Probléme ajout formateur',
+      detail: 'Impossible d\'ajouter le formateur'
+    });
+  })
+}
 
-  deleteFormateur(formateur: any) {
+hideDialog()
+{
+  this.displayEdit = false;
+  this.displayAdd = false;
+}
 
-  }
+getAllSession()
+{
+  this.sessionService.getAllSession().subscribe(data => {
+    console.log(data)
+    this.sessionList = data;
+  })
+}
 
-  addFormateur() {
+getAllOrganisme()
+{
+  this.organismeService.getAllOrganismes().subscribe(data => {
+    console.log(this.typeList)
+    this.organismeList = data;
+  })
 
-  }
-
-  saveNewFormateur() {
-
-  }
-
-  saveEditFormateur(formateur: any) {
-
-  }
-
-  hideDialog() {
-
-  }
+}
 }

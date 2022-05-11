@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Organismes} from "../../model/Organismes";
+import {Formateurs} from "../../model/Formateurs";
+import {Session} from "../../model/Session";
+import {environment} from "../../../environments/environment";
 import {AjoutResponse} from "../../model/AjoutResponse";
 import {catchError, retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrganismesService {
+export class SessionService {
   private baseUrl = environment.baseUrl;
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,15 +21,15 @@ export class OrganismesService {
   constructor(private http: HttpClient) {
   }
 
-  getAllOrganismes(): Observable<Array<Organismes>> {
-    return this.http.get<Array<Organismes>>(this.baseUrl + '/api/organisme/organismes')
+  getAllSession(): Observable<Array<Session>> {
+    return this.http.get<Array<Session>>(this.baseUrl + '/api/session/sessions')
   }
-  addOrganisme(organisme: Organismes): Observable<Organismes> {
-    return this.http.post<Organismes>(this.baseUrl + '/api/organisme/addOrganisme', organisme, this.httpOptions);
+  addSession(session: Session): Observable<Session> {
+    return this.http.post<Session>(this.baseUrl + '/api/session/addSession', session, this.httpOptions);
   }
 
-  deleteOrganisme(id: number ): Observable<AjoutResponse> {
-    return this.http.post<AjoutResponse>(this.baseUrl + '/api/organisme/deleteOrganisme', JSON.stringify(id), this.httpOptions)
+  deleteSession(id: number ): Observable<AjoutResponse> {
+    return this.http.post<AjoutResponse>(this.baseUrl + '/api/session/deleteSession', JSON.stringify(id), this.httpOptions)
       .pipe(retry(1),
         catchError(this.handleError))
   }
@@ -45,4 +46,5 @@ export class OrganismesService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
+
 }

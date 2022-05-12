@@ -11,6 +11,7 @@ import {OrganismeComponent} from "./organisme/organisme.component";
 import {FormateursComponent} from "./formateurs/formateurs.component";
 import {SessionFormationsComponent} from "./session-formations/session-formations.component";
 import {PaysComponent} from "./pays/pays.component";
+import {DomainesComponent} from "./domaines/domaines.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'admin', pathMatch: 'full'},
@@ -23,7 +24,8 @@ const routes: Routes = [
       {path: 'organisme', component: OrganismeComponent},
       {path: 'formateurs', component: FormateursComponent},
       {path: 'formations', component: SessionFormationsComponent},
-      {path : 'pays',component:PaysComponent}
+      {path : 'pays',component:PaysComponent},
+      {path: 'domaines',component: DomainesComponent}
     ]},
 
 

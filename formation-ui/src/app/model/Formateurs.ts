@@ -7,7 +7,6 @@ export class Formateurs {
   prenom!: string ;
   email!: string ;
   tel!: string ;
-  organisme?: Organismes ;
-  session?: Session ;
+  organisme: Organismes= new Organismes();
   type!: string ;
 }

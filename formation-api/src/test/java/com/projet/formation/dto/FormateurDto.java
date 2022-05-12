@@ -1,5 +1,4 @@
-package com.projet.formation.Dto;
-
+package com.projet.formation.dto;
 
 import com.projet.formation.models.Organisme;
 import com.projet.formation.models.Session;
@@ -13,13 +12,13 @@ import java.util.List;
 @Getter
 @Setter
 public class FormateurDto extends AbstractDto {
-    Long FormateurId;
-    String Nom;
-    String Prenom;
-    String email;
-    Long tel;
-    String type;
-    Organisme organisme;
+     Long FormateurId;
+     String Nom;
+     String Prenom;
+     String email;
+     Long tel;
+     String type;
+     Organisme organisme;
 
 
 

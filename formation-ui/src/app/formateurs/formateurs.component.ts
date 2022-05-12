@@ -24,8 +24,8 @@ export class FormateursComponent implements OnInit {
   title!: string;
   formateurs!: Formateurs[];
   formateur!: Formateurs;
-  sessionList: Session[] = [];
   organismeList: Organismes[] = [];
+  organisme!: Organismes;
   typeList = [{
     name: "INTERNATIONAL"
   },
@@ -37,13 +37,11 @@ export class FormateursComponent implements OnInit {
 nomControl = new FormControl('', [Validators.required]);
 prenomControl = new FormControl('', [Validators.required]);
 telControl = new FormControl('', [Validators.required]);
-sessionControl = new FormControl('', [Validators.required]);
 organismeControl = new FormControl('', [Validators.required]);
 typeControl = new FormControl('', [Validators.required]);
 
 constructor(private organismeService:OrganismesService , private confirmationService: ConfirmationService, private formBuilder: FormBuilder,
             private formateursService: FormateursService, private messageService: MessageService,
-            private sessionService: SessionService
 )
 {
   this.FormateurGroup = this.formBuilder.group({
@@ -51,7 +49,6 @@ constructor(private organismeService:OrganismesService , private confirmationSer
     emailControl: ['', [Validators.required, Validators.email]],
     prenomControl: ['', Validators.required],
     telControl: ['', Validators.required],
-    sessionControl: ['', Validators.required],
     organismeControl: ['', Validators.required],
     typeControl: ['', Validators.required],
   });
@@ -60,10 +57,9 @@ constructor(private organismeService:OrganismesService , private confirmationSer
     nom: '',
     prenom: '',
     email: '',
-    session: undefined,
     tel: '',
     type: '',
-    organisme: undefined,
+    organisme : new Organismes(),
   }
 }
 ngOnInit()
@@ -102,18 +98,13 @@ Formateurs
     emailControl: [this.formateur.email, [Validators.required, Validators.email]],
     prenomControl: [this.formateur.prenom, Validators.required],
     telControl: [this.formateur.tel, Validators.required],
-    sessionControl: [this.formateur.session, Validators.required],
     typeControl: [this.formateur.type, Validators.required],
     organismeControl: [this.formateur.organisme, Validators.required],
   });
   this.getAllOrganisme();
-  this.getAllSession();
 }
 
-deleteFormateur(formateur
-:
-Formateurs
-)
+deleteFormateur(formateur:Formateurs)
 {
   this.confirmationService.confirm({
     message: 'Voulez vous supprimer le formateur ' + formateur.nom + '?',
@@ -151,12 +142,10 @@ addFormateur()
     prenomControl: ['', Validators.required],
     telControl: ['', Validators.required],
     typeControl: ['', Validators.required],
-    sessionControl: ['', Validators.required],
     organismeControl: ['', Validators.required],
   });
 
   this.title = 'Ajouter Formateur';
-  this.getAllSession();
   console.log('organisme')
   this.getAllOrganisme()
 }
@@ -178,8 +167,7 @@ Formateurs
   this.FormateurForm.prenom = this.f.prenomControl.value;
   this.FormateurForm.type = this.f.typeControl.value;
   this.FormateurForm.email = this.f.emailControl.value;
-  this.FormateurForm.session = this.f.sessionControl.value;
-  this.FormateurForm.organisme = this.f.organismeControl.value;
+    this.FormateurForm.organisme = this.f.organismeControl.value;
   this.FormateurForm.tel = this.telControl.value;
   console.log(this.FormateurForm);
   this.formateursService.addFormateur(this.FormateurForm).subscribe(data => {
@@ -218,7 +206,6 @@ saveNewFormateur()
   this.FormateurForm.email = this.f.emailControl.value;
   this.FormateurForm.organisme = this.f.organismeControl.value;
   this.FormateurForm.tel = this.f.telControl.value;
-  this.FormateurForm.session = this.f.sessionControl.value;
   this.FormateurForm.type = this.f.typeControl.value;
 
   console.log(this.FormateurForm);
@@ -247,13 +234,6 @@ hideDialog()
   this.displayAdd = false;
 }
 
-getAllSession()
-{
-  this.sessionService.getAllSession().subscribe(data => {
-    console.log(data)
-    this.sessionList = data;
-  })
-}
 
 getAllOrganisme()
 {

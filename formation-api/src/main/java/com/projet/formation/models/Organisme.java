@@ -15,16 +15,16 @@ public class Organisme implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="OrganismeId")
-    private Long Id;
+    private Long OrganismeId;
     @Column(unique = true,nullable = false)
     private String libelle;
 
-    public Long getId() {
-        return Id;
+    public Long getOrganismeId() {
+        return OrganismeId;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setOrganismeId(Long organismeId) {
+        OrganismeId = organismeId;
     }
 
     public String getLibelle() {

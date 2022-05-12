@@ -22,7 +22,7 @@ public class Formateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="FormateurId")
-    private Long IdFormateur;
+    private Long FormateurId;
     private String Nom;
     private String Prenom;
     @Column(unique=true,nullable = false)
@@ -34,19 +34,17 @@ public class Formateur implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organisme_id", insertable = false, updatable = false)
     private Organisme organisme;
-//    @JsonIgnore
-    @OneToMany(mappedBy = "formateur")
-    private List<Session> session = new ArrayList<Session>();
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Long getIdFormateur() {
-        return IdFormateur;
+    public Long getFormateurId() {
+        return FormateurId;
     }
 
-    public void setIdFormateur(Long idFormateur) {
-        IdFormateur = idFormateur;
+    public void setFormateurId(Long idFormateur) {
+        FormateurId = idFormateur;
     }
 
     public String getNom() {
@@ -97,11 +95,4 @@ public class Formateur implements Serializable {
         this.organisme = organisme;
     }
 
-    public List<Session> getSession() {
-        return session;
-    }
-
-    public void setSession(List<Session> session) {
-        this.session = session;
-    }
 }

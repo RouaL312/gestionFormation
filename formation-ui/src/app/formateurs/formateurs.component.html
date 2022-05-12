@@ -47,7 +47,7 @@
               <td>{{formateur.prenom}}</td>
               <td>{{formateur.email}}</td>
               <td>{{formateur.tel}}</td>
-              <td><span *ngFor="let session of formateur.session ">{{ session.dateDebut}} </span></td>
+
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                         (click)="editFormateur(formateur)"></button>
@@ -111,26 +111,7 @@
                 </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-sm-6">
-              <mat-form-field *ngIf="displayEdit"class="example-full-width">
-                <mat-label>Session</mat-label>
-                <mat-select [(ngModel)]="formateur!.session" formControlName="sessionControl" >
-                  <mat-option
-                    *ngFor="let session of sessionList" [value]="session.dateFin">de {{session.dateDebut}} à {{session.dateFin}} </mat-option>
-                </mat-select>
-                <mat-error *ngIf="sessionControl.hasError('required')">Session est <strong>obligatoire</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field *ngIf="displayAdd"class="example-full-width">
-                <mat-label>Session</mat-label>
-                <mat-select formControlName="sessionControl" >
-                  <mat-option
-                    *ngFor="let session of sessionList" [value]="session">de {{session.dateDebut}} à {{session.dateFin}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="sessionControl.hasError('required')">Session est <strong>obligatoire</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
+
           </div>
           <div class="row">
             <div class="col-sm-6">
@@ -158,7 +139,7 @@
                 <mat-label>Organisme</mat-label>
                 <mat-select [(ngModel)]="formateur!.organisme" formControlName="organismeControl" >
                   <mat-option
-                    *ngFor="let organismes of organismeList" [value]="organismes.libelle">{{organismes.libelle}} </mat-option>
+                    *ngFor="let organismes of organismeList" [value]="organismes">{{organismes.libelle}} </mat-option>
                 </mat-select>
                 <mat-error *ngIf="organismeControl.hasError('required')">Organisme est <strong>obligatoire</strong>
                 </mat-error>
@@ -167,7 +148,7 @@
                 <mat-label>Organisme</mat-label>
                 <mat-select formControlName="organismeControl" >
                   <mat-option
-                    *ngFor="let organismes of organismeList" [value]="organismes.libelle">{{organismes.libelle}}</mat-option>
+                    *ngFor="let organismes of organismeList" [value]="organismes">{{organismes.libelle}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="organismeControl.hasError('required')">Organisme est <strong>obligatoire</strong>
                 </mat-error>

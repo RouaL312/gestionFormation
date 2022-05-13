@@ -17,7 +17,7 @@ public class Formation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="formationId")
-    private Long id;
+    private Long FormationId;
     private String titre;
     private String typeFormation;
     private int nbSession;
@@ -28,12 +28,12 @@ public class Formation implements Serializable {
     @JoinColumn(name = "domaine_id", insertable = false, updatable = false)
     private Domaine domaine;
 
-    public Long getId() {
-        return id;
+    public Long getFormationId() {
+        return FormationId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFormationId(Long formationId) {
+        FormationId = formationId;
     }
 
     public String getTitre() {

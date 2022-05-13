@@ -1,6 +1,6 @@
 package com.projet.formation.controllers;
 
-import com.projet.formation.Dto.FormateurDto;
+import com.projet.formation.dto.FormateurDto;
 import com.projet.formation.dto.AjoutResponse;
 
 import com.projet.formation.dto.LoginDto;
@@ -46,7 +46,7 @@ public class FormateursController {
     public ResponseEntity<FormateurDto> addOrUpdateFormateur(@Valid @RequestBody FormateurDto formateurDto) {
 
         Formateur formateur = ObjectMapperUtils.map(formateurDto, Formateur.class);
-        FormateurDto formateurDto1 = ObjectMapperUtils.map(formateurRepository.saveAndFlush(formateur),FormateurDto.class);
+        FormateurDto formateurDto1 = ObjectMapperUtils.map(formateurRepository.save(formateur),FormateurDto.class);
         return new ResponseEntity<>(formateurDto1, HttpStatus.OK);
     }
 

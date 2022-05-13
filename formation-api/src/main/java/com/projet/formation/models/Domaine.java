@@ -15,9 +15,8 @@ public class Domaine implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	@Column(name="DomaineId")
-	private Long IdDomaine;
+	@Column(name="domaineId")
+	private Long domaineId;
 	@Column(unique = true,nullable = false)
 	private String libelle;
 
@@ -25,12 +24,12 @@ public class Domaine implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Long getIdDomaine() {
-		return IdDomaine;
+	public Long getDomaineId() {
+		return domaineId;
 	}
 
-	public void setIdDomaine(Long idDomaine) {
-		IdDomaine = idDomaine;
+	public void setDomaineId(Long domaineId) {
+		this.domaineId = domaineId;
 	}
 
 	public String getLibelle() {

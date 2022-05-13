@@ -38,6 +38,9 @@
               <th pSortableColumn="organisme">Organisme
                 <p-sortIcon field="organisme"></p-sortIcon>
               </th>
+              <th pSortableColumn="type">Type
+              <p-sortIcon field="type"></p-sortIcon>
+            </th>
               <th style="width: 132px;"></th>
             </tr>
           </ng-template>
@@ -47,6 +50,8 @@
               <td>{{formateur.prenom}}</td>
               <td>{{formateur.email}}</td>
               <td>{{formateur.tel}}</td>
+              <td><span *ngIf="formateur.organisme!=null">{{ formateur!.organisme!.libelle }}</span></td>
+              <td>{{formateur.type}}</td>
 
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
@@ -89,7 +94,7 @@
             <div class="col-sm-4">
             <mat-form-field class="example-full-width">
               <mat-label>tel</mat-label>
-              <input matInput
+              <input matInput type="number"
                      formControlName="telControl">
               <mat-error *ngIf="telControl.hasError('required')">Prénom est <strong>obligatoire</strong>
               </mat-error>

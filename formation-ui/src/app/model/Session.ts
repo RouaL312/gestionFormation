@@ -1,7 +1,7 @@
 import {Formateurs} from "./Formateurs";
 
 export class Session {
-  SessionId?:number;
+  sessionId?:number;
   lieu!: string ;
   dateDebut?: Date ;
   dateFin?: Date ;

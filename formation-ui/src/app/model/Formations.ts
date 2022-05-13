@@ -1,10 +1,11 @@
 import {Domaine} from "./Domaine";
 
 export class Formations {
+  formationId?: number ;
   titre!: string ;
   typeFormation!: string ;
-  nbSession!: number ;
+  nbSession?: number ;
   duree!: string ;
-  domaine!: Domaine ;
-  budget!: number ;
+  domaine?: Domaine ;
+  budget?: number ;
 }

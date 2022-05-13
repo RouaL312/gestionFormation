@@ -31,7 +31,7 @@ export class PaysComponent implements OnInit {
       libelleControl:['',Validators.required]
     });
     this.PaysForm={
-      IdPays:undefined,
+      paysId:undefined,
       libelle:''
     }
   }
@@ -68,10 +68,10 @@ getAllPays(){
       header: 'Confirmation de suppression',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (pays.IdPays != null) {
-          this.paysService.deletePays(pays.IdPays).subscribe(data => {
+        if (pays.paysId != null) {
+          this.paysService.deletePays(pays.paysId).subscribe(data => {
             if (JSON.stringify(data.message == "success")) {
-              this.payss = this.payss.filter(val => val.IdPays !== pays.IdPays);
+              this.payss = this.payss.filter(val => val.paysId !== pays.paysId);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
             } else {
@@ -99,6 +99,7 @@ getAllPays(){
     console.log('organisme')
   }
   saveEditPays(pays: Pays) {
+    console.log(pays)
     if (this.PaysGroup.invalid) {
       this.messageService.add({
         severity: 'error',
@@ -108,7 +109,7 @@ getAllPays(){
       return;
     }
     this.PaysForm.libelle = this.f.libelleControl.value;
-
+    this.PaysForm.paysId=pays.paysId;
     console.log(this.PaysForm);
     this.paysService.addPays(this.PaysForm).subscribe(data => {
       this.messageService.add({

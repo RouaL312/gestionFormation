@@ -22,12 +22,12 @@ export class DomainesService {
     return this.http.get<Array<Domaine>>(this.baseUrl+'/api/domaine/domaine',this.httpOptions);
   }
 
-  addDomaine(domaine: Domaine):Observable<Pays>{
+  addDomaine(domaine: Domaine):Observable<Domaine>{
     return this.http.post<Domaine>(this.baseUrl+'/api/domaine/addDomaine',domaine,this.httpOptions);
   }
 
   deleteDomaine(id:number):Observable<AjoutResponse>{
-    return this.http.post<AjoutResponse>(this.baseUrl+'/api/pays/deleteDomaine',JSON.stringify(id),this.httpOptions).pipe(retry(1),
+    return this.http.post<AjoutResponse>(this.baseUrl+'/api/domaine/deleteDomaine',JSON.stringify(id),this.httpOptions).pipe(retry(1),
       catchError(this.handleError))
   }
 

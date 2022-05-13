@@ -164,6 +164,7 @@ export class UsersComponent implements OnInit {
     if (this.UserGroup.valid) {
       this.displayEdit = true
       user.codePin = this.typeAuthControl.value == "Code Pin";
+      console.log(user)
       this.userService.addUser(user).subscribe(data => {
         this.messageService.add({
           severity: 'success',

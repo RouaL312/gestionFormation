@@ -1,11 +1,12 @@
-
-import {Component,OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfirmationService, MessageService} from "primeng/api";
-import { Domaine } from '../model/Domaine';
-import { DomainesService } from '../shared/service/domaines.service';
-let DOMAINE: Domaine[]=[];
+import {Domaine} from '../model/Domaine';
+import {DomainesService} from '../shared/service/domaines.service';
+
+let DOMAINE: Domaine[] = [];
+
 @Component({
   selector: 'app-domaines',
   templateUrl: './domaines.component.html',
@@ -26,12 +27,12 @@ export class DomainesComponent implements OnInit {
   constructor(private confirmationService: ConfirmationService, private formBuilder: FormBuilder,
               private messageService: MessageService,
               private domaineService: DomainesService) {
-    this.DomaineGroup=this.formBuilder.group({
-      libelleControl:['',Validators.required]
+    this.DomaineGroup = this.formBuilder.group({
+      libelleControl: ['', Validators.required]
     });
-    this.DomaineForm={
-      IdDomaine:undefined,
-      libelle:''
+    this.DomaineForm = {
+      domaineId: undefined,
+      libelle: ''
     }
 
   }
@@ -41,9 +42,9 @@ export class DomainesComponent implements OnInit {
 
   }
 
-  getAllDomaine(){
-    return this.domaineService.getAllDomaine().subscribe(data=>{
-      this.domaines=data;
+  getAllDomaine() {
+    return this.domaineService.getAllDomaine().subscribe(data => {
+      this.domaines = data;
       DOMAINE = this.domaines;
 
     })
@@ -72,10 +73,10 @@ export class DomainesComponent implements OnInit {
       header: 'Confirmation de suppression',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (domaine.IdDomaine != null) {
-          this.domaineService.deleteDomaine(domaine.IdDomaine).subscribe(data => {
+        if (domaine.domaineId != null) {
+          this.domaineService.deleteDomaine(domaine.domaineId).subscribe(data => {
             if (JSON.stringify(data.message == "success")) {
-              this.domaines = this.domaines.filter(val => val.IdDomaine !== domaine.IdDomaine);
+              this.domaines = this.domaines.filter(val => val.domaineId !== domaine.domaineId);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
             } else {
@@ -108,19 +109,19 @@ export class DomainesComponent implements OnInit {
     if (this.DomaineGroup.invalid) {
       this.messageService.add({
         severity: 'error',
-        summary: 'Probléme ajout Domaine',
+        summary: 'Probléme de modifier le Domaine',
         detail: 'Vérifier votre formulaire'
       });
       return;
     }
     this.DomaineForm.libelle = this.f.libelleControl.value;
-
+    this.DomaineForm.domaineId = domaine.domaineId;
     console.log(this.DomaineForm);
     this.domaineService.addDomaine(this.DomaineForm).subscribe(data => {
       this.messageService.add({
         severity: 'success',
-        summary: 'Ajouter Domaine',
-        detail: 'Le Domaine est ajouté avec success'
+        summary: 'Modifier Domaine',
+        detail: 'Le Domaine est modifié avec success'
       });
 
     }, error => {
@@ -131,10 +132,12 @@ export class DomainesComponent implements OnInit {
       });
     })
   }
+
   hideDialog() {
     this.displayEdit = false;
     this.displayAdd = false;
   }
+
   get f(): { [key: string]: AbstractControl } {
     return this.DomaineGroup.controls;
   }
@@ -154,7 +157,7 @@ export class DomainesComponent implements OnInit {
       this.messageService.add({
         severity: 'success',
         summary: 'Ajouter domaine',
-        detail: 'le pays est ajouté avec success'
+        detail: 'le domaine est ajouté avec success'
       });
       this.domaines = this.domaines.filter(val => {
         return true;

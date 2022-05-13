@@ -6,13 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bongiorno.dto.support.AbstractDto;
 
+import java.util.Date;
+
 @Getter
 @Setter
 public class SessionDto extends AbstractDto {
-    Long SessionId;
+    Long sessionId;
     String lieu;
-    Data dateDebut;
-    Data dateFin;
+    Date dateDebut;
+    Date dateFin;
     int nbParticipants;
     Formateur formateur;
 }

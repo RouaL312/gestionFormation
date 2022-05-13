@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Formateurs} from "../model/Formateurs";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {Organismes} from "../model/Organismes";
 import {OrganismesService} from "../shared/service/organisme.service";
+
 let ORGANISMES: Organismes[] = [];
 
 @Component({
@@ -33,7 +34,7 @@ export class OrganismeComponent implements OnInit {
       libelleControl: ['', Validators.required],
     });
     this.OrganismeForm = {
-      OrganismeId: undefined,
+      id: undefined,
       libelle: '',
     }
   }
@@ -62,6 +63,7 @@ export class OrganismeComponent implements OnInit {
     }
     this.title = 'Modifier Organisme';
     this.organisme = {...organisme};
+    console.log(this.organisme)
     this.displayEdit = true;
     this.displayAdd = false;
     this.OrganismeGroup = this.formBuilder.group({
@@ -75,10 +77,10 @@ export class OrganismeComponent implements OnInit {
       header: 'Confirmation de suppression',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (organisme.OrganismeId != null) {
-          this.organismeService.deleteOrganisme(organisme.OrganismeId).subscribe(data => {
+        if (organisme.id != null) {
+          this.organismeService.deleteOrganisme(organisme.id).subscribe(data => {
             if (JSON.stringify(data.message == "success")) {
-              this.organismes = this.organismes.filter(val => val.OrganismeId !== organisme.OrganismeId);
+              this.organismes = this.organismes.filter(val => val.id !== organisme.id);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
             } else {
@@ -117,7 +119,7 @@ export class OrganismeComponent implements OnInit {
       return;
     }
     this.OrganismeForm.libelle = this.f.libelleControl.value;
-
+    this.OrganismeForm.id = this.organisme.id;
     console.log(this.OrganismeForm);
     this.organismeService.addOrganisme(this.OrganismeForm).subscribe(data => {
       this.messageService.add({

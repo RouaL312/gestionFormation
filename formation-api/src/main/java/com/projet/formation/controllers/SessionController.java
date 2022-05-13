@@ -39,7 +39,7 @@ public class SessionController {
     public ResponseEntity<SessionDto> addOrUpdateSession(@Valid @RequestBody SessionDto sessionDto) {
 
         Session session = ObjectMapperUtils.map(sessionDto, Session.class);
-        SessionDto SessionDto1 = ObjectMapperUtils.map(sessionRepository.saveAndFlush(session),SessionDto.class);
+        SessionDto SessionDto1 = ObjectMapperUtils.map(sessionRepository.save(session),SessionDto.class);
         return new ResponseEntity<>(SessionDto1, HttpStatus.OK);
     }
 

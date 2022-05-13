@@ -1,6 +1,6 @@
 package com.projet.formation.controllers;
 
-import com.projet.formation.Dto.DomaineDto;
+import com.projet.formation.dto.DomaineDto;
 import com.projet.formation.dto.AjoutResponse;
 import com.projet.formation.mapper.ObjectMapperUtils;
 import com.projet.formation.models.Domaine;

@@ -1,4 +1,4 @@
 export class Pays {
-  IdPays?:number;
+  paysId?:number;
   libelle!: string ;
 }

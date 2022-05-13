@@ -1,5 +1,5 @@
 
 export class Organismes {
-  OrganismeId?:number;
+  id?:number;
   libelle!: string ;
 }

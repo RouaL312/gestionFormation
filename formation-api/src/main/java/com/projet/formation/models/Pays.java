@@ -17,7 +17,7 @@ public class Pays implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PaysId")
-    private Long IdPays;
+    private Long PaysId;
     @Column(unique = true,nullable = false)
     private String libelle;
 
@@ -26,11 +26,11 @@ public class Pays implements Serializable {
     }
 
     public Long getIdPays() {
-        return IdPays;
+        return PaysId;
     }
 
     public void setIdPays(Long idPays) {
-        IdPays = idPays;
+        PaysId = idPays;
     }
 
     public String getLibelle() {

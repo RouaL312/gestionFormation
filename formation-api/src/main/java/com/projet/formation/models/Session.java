@@ -16,8 +16,8 @@ import java.util.Date;
 public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SessionId")
-    private Long Id;
+    @Column(name = "sessionId")
+    private Long sessionId;
     private String lieu;
     @Column(name = "date_debut")
     private Date dateDebut;
@@ -29,12 +29,12 @@ public class Session implements Serializable {
     @JoinColumn(name = "fomateur_id")
     private Formateur formateur;
 
-    public Long getId() {
-        return Id;
+    public Long getSessionId() {
+        return sessionId;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setSessionId(Long sessionId) {
+        this.sessionId = sessionId;
     }
 
     public String getLieu() {

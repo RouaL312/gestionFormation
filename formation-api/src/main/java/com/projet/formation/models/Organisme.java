@@ -7,24 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 @Entity
+@Table(name = "organisme")
+@SequenceGenerator(name = "id_organisme_seq", sequenceName = "id_organisme_seq", allocationSize = 1, initialValue = 1)
 public class Organisme implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="OrganismeId")
-    private Long OrganismeId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_organisme_seq")
+    private Long id;
     @Column(unique = true,nullable = false)
     private String libelle;
 
-    public Long getOrganismeId() {
-        return OrganismeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrganismeId(Long organismeId) {
-        OrganismeId = organismeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLibelle() {

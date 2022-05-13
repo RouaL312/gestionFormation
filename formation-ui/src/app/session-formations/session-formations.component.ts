@@ -37,16 +37,14 @@ export class SessionFormationsComponent implements OnInit {
   )
   {
     this.SessionGroup = this.formBuilder.group({
-      nomControl: ['', Validators.required],
-      emailControl: ['', [Validators.required, Validators.email]],
-      prenomControl: ['', Validators.required],
-      telControl: ['', Validators.required],
-      sessionControl: ['', Validators.required],
-      organismeControl: ['', Validators.required],
-      typeControl: ['', Validators.required],
+      lieuControl: ['', Validators.required],
+      dateDebutControl: ['', Validators.required],
+      dateFinControl: ['', Validators.required],
+      nbParticipantsControl: ['', Validators.required],
+      formateurControl: ['', Validators.required],
     });
     this.SessionForm = {
-      SessionId: undefined,
+      sessionId: undefined,
       lieu: '',
       dateDebut: undefined,
       dateFin: undefined,
@@ -86,7 +84,7 @@ export class SessionFormationsComponent implements OnInit {
     this.displayAdd = false;
     this.SessionGroup = this.formBuilder.group({
       lieuControl: [this.session.lieu, Validators.required],
-      dateDebutControl: [this.session.dateDebut, [Validators.required, Validators.email]],
+      dateDebutControl: [this.session.dateDebut, Validators.required],
       dateFinControl: [this.session.dateFin, Validators.required],
       nbParticipantsControl: [this.session.nbParticipants, Validators.required],
       formateurControl: [this.session.formateur, Validators.required],
@@ -94,18 +92,17 @@ export class SessionFormationsComponent implements OnInit {
     this.getAllFormateur();
   }
 
-  deleteSession(session:Session
-  )
+  deleteSession(session:Session)
   {
     this.confirmationService.confirm({
       message: 'Voulez vous supprimer le session ' + session.lieu + '?',
       header: 'Confirmation de suppression',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (session.SessionId != null) {
-          this.sessionService.deleteSession(session.SessionId).subscribe(data => {
+        if (session.sessionId != null) {
+          this.sessionService.deleteSession(session.sessionId).subscribe(data => {
             if (JSON.stringify(data.message == "success")) {
-              this.sessions = this.sessions.filter(val => val.SessionId !== session.SessionId);
+              this.sessions = this.sessions.filter(val => val.sessionId !== session.sessionId);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
             } else {
@@ -128,13 +125,12 @@ export class SessionFormationsComponent implements OnInit {
       this.openpopup = true;
     }
     this.SessionGroup = this.formBuilder.group({
-      nomControl: ['', Validators.required],
-      emailControl: ['', [Validators.required, Validators.email]],
-      prenomControl: ['', Validators.required],
-      telControl: ['', Validators.required],
-      typeControl: ['', Validators.required],
-      sessionControl: ['', Validators.required],
-      organismeControl: ['', Validators.required],
+      lieuControl: ['', Validators.required],
+      dateDebutControl: ['', Validators.required],
+      dateFinControl: ['', Validators.required],
+      nbParticipantsControl: ['', Validators.required],
+      formateurControl: ['', Validators.required],
+
     });
 
     this.title = 'Ajouter Session';
@@ -142,8 +138,7 @@ export class SessionFormationsComponent implements OnInit {
     console.log('session')
   }
 
-  saveEditSession(session: Session
-  )
+  saveEditSession(session: Session)
   {
     if (this.SessionGroup.invalid) {
       this.messageService.add({
@@ -158,19 +153,20 @@ export class SessionFormationsComponent implements OnInit {
     this.SessionForm.dateFin = this.f.dateFinControl.value;
     this.SessionForm.nbParticipants = this.f.nbParticipantsControl.value;
     this.SessionForm.formateur = this.f.formateurControl.value;
-    console.log(this.SessionForm);
+    this.SessionForm.sessionId=session.sessionId;
+    console.log(this.SessionForm)
     this.sessionService.addSession(this.SessionForm).subscribe(data => {
       this.messageService.add({
         severity: 'success',
-        summary: 'Ajouter session',
-        detail: 'Le session est ajouté avec success'
+        summary: 'Modifier session',
+        detail: 'La session est modifié avec success'
       });
 
     }, error => {
       this.messageService.add({
         severity: 'error',
-        summary: 'Probléme ajout session',
-        detail: 'Impossible d\'ajouter le session'
+        summary: 'Probléme de modification de session',
+        detail: 'Impossible d\'ajouter la session'
       });
     })
   }

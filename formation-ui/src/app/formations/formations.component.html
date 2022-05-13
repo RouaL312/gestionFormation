@@ -1,1 +1,162 @@
-<p>formations works!</p>
+<p-toast position="top-right"></p-toast>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="table-responsive">
+      <div class="card">
+        <p-table #dt [value]="formations" [rows]="5" [paginator]="true"
+                 [globalFilterFields]="['titre','typeFormation','nbSession','duree','formation.domaine.libelle','budget']"
+                 responsiveLayout="scroll"
+                 [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} formations"
+                 [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <div class="m-0">
+                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success mr-2"
+                        (click)="addFormation()" ></button>
+              </div>
+              <span class="p-input-icon-left"> <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." lazy="false"
+                       (input)="dt.filterGlobal($any($event.target).value, 'contains')"/>
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="titre">titre
+                <p-sortIcon field="titre"></p-sortIcon>
+              </th>
+              <th pSortableColumn="typeFormation">typeFormation
+                <p-sortIcon field="typeFormation"></p-sortIcon>
+              </th>
+              <th pSortableColumn="nbSession">nbSession
+                <p-sortIcon field="nbSession"></p-sortIcon>
+              </th>
+              <th pSortableColumn="duree">duree
+                <p-sortIcon field="duree"></p-sortIcon>
+              </th>
+              <th pSortableColumn="domaine">domaine
+                <p-sortIcon field="domaine"></p-sortIcon>
+              </th>
+              <th pSortableColumn="budget">budget
+                <p-sortIcon field="budget"></p-sortIcon>
+              </th>
+              <th style="width: 132px;"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-formations>
+            <tr>
+              <td>{{formations.titre}}</td>
+              <td>{{formations.typeFormation}}</td>
+              <td>{{formations.nbSession}}</td>
+              <td>{{formations.duree}}</td>
+              <td><span *ngIf="formations.domaine!=null">{{ formations!.domaine!.libelle }}</span></td>
+              <td>{{formations.budget}}</td>
+
+              <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="editFormation(formation)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="deleteFormation(formation)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <p-confirmDialog [style]="{width: '450px',height:'200px',textAlign:'center'}"></p-confirmDialog>
+  </div>
+
+
+  <p-dialog [style]="{width: '50vw'}" [(visible)]="openpopup" [maximizable]="true" [header]=title (onHide)="hideDialog()"
+            styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <form class="example"  [formGroup]="FormationGroup">
+        <div class="container-fluid default-autocomplete default-mt-input">
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>titre</mat-label>
+                <input matInput
+                       formControlName="titreControl">
+                <mat-error *ngIf="titreControl.hasError('required')">titre est <strong>obligatoire</strong></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>typeFormation</mat-label>
+                <input matInput
+                       formControlName="typeFormationControl">
+                <mat-error *ngIf="typeFormationControl.hasError('required')">typeFormation est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>nbSession</mat-label>
+                <input matInput type="number"
+                       formControlName="nbSessionControl">
+                <mat-error *ngIf="nbSessionControl.hasError('required')">nbSession est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>duree en jour</mat-label>
+                <input matInput
+                       formControlName="dureeControl"/>
+                <mat-error *ngIf="dureeControl.hasError('required')">
+                  duree est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+            <mat-form-field class="example-full-width">
+            <mat-label>budget</mat-label>
+            <input matInput type="number" step="0.1"
+                   formControlName="budgetControl"/>
+            <mat-error *ngIf="budgetControl.hasError('required')">
+              budget est <strong>obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+          </div>
+            <div class="col-sm-4">
+              <mat-form-field *ngIf="displayEdit"class="example-full-width">
+                <mat-label>Domaine</mat-label>
+                <mat-select [(ngModel)]="formation!.domaine" formControlName="domaineControl" >
+                  <mat-option
+                    *ngFor="let domaine of domaineList" [value]="domaine"> {{domaine.libelle}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="domaineControl.hasError('required')">Domaine est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf="displayAdd"class="example-full-width">
+                <mat-label>Domaine</mat-label>
+                <mat-select formControlName="domaineControl" >
+                  <mat-option
+                    *ngFor="let domaine of domaineList" [value]="domaine"> {{domaine.libelle}} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="domaineControl.hasError('required')">Domaine est <strong>obligatoire</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button  *ngIf="displayEdit"  pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayEdit"  pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveEditFormation(formation)"></button>
+      <button  *ngIf="displayAdd" pButton label="Cancel" icon="pi pi-times" class="p-button-edit-model p-button-text"
+               (click)="displayEdit=openpopup=false"></button>
+      <button  *ngIf="displayAdd" pButton label="Save" icon="pi pi-check" class="p-button-edit-model p-button-text"
+               (click)="saveNewFormation()"></button>
+    </ng-template>
+  </p-dialog>
+</div>

@@ -4,7 +4,7 @@
     <div class="table-responsive">
       <div class="card">
         <p-table #dt [value]="organismes" [rows]="5" [paginator]="true"
-                 [globalFilterFields]="['lieu','dateDebut','dateFin','nbParticipants','organisme.nom']"
+                 [globalFilterFields]="['libelle']"
                  responsiveLayout="scroll"
                  [rowHover]="true" dataKey="id"
                  currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} organismes"

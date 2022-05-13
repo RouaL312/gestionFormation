@@ -21,7 +21,7 @@ public class Formateur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="FormateurId")
+    @Column(name="formateurId")
     private Long FormateurId;
     private String Nom;
     private String Prenom;

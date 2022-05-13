@@ -2,11 +2,11 @@ import {Organismes} from './Organismes';
 import {Session} from "./Session";
 
 export class Formateurs {
-  idFormateur?:number;
+  formateurId?:number;
   nom!: string ;
   prenom!: string ;
   email!: string ;
-  tel!: string ;
-  organisme: Organismes= new Organismes();
+  tel?: number ;
+  organisme?: Organismes;
   type!: string ;
 }

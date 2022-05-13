@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Participant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ParticipantID")
+    @Column(name="participantID")
     private Long id;
     private String nom;
     private String prenom;

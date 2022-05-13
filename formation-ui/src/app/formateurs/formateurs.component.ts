@@ -53,11 +53,11 @@ constructor(private organismeService:OrganismesService , private confirmationSer
     typeControl: ['', Validators.required],
   });
   this.FormateurForm = {
-    idFormateur: undefined,
+    formateurId: undefined,
     nom: '',
     prenom: '',
     email: '',
-    tel: '',
+    tel: undefined,
     type: '',
     organisme : new Organismes(),
   }
@@ -111,10 +111,10 @@ deleteFormateur(formateur:Formateurs)
     header: 'Confirmation de suppression',
     icon: 'pi pi-exclamation-triangle',
     accept: () => {
-      if (formateur.idFormateur != null) {
-        this.formateursService.deleteFormateur(formateur.idFormateur).subscribe(data => {
+      if (formateur.formateurId != null) {
+        this.formateursService.deleteFormateur(formateur.formateurId).subscribe(data => {
           if (JSON.stringify(data.message == "success")) {
-            this.formateurs = this.formateurs.filter(val => val.idFormateur !== formateur.idFormateur);
+            this.formateurs = this.formateurs.filter(val => val.formateurId !== formateur.formateurId);
 
             this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
           } else {
@@ -150,10 +150,7 @@ addFormateur()
   this.getAllOrganisme()
 }
 
-saveEditFormateur(formateur
-:
-Formateurs
-)
+saveEditFormateur(formateur: Formateurs)
 {
   if (this.FormateurGroup.invalid) {
     this.messageService.add({
@@ -168,8 +165,8 @@ Formateurs
   this.FormateurForm.type = this.f.typeControl.value;
   this.FormateurForm.email = this.f.emailControl.value;
     this.FormateurForm.organisme = this.f.organismeControl.value;
-  this.FormateurForm.tel = this.telControl.value;
-  console.log(this.FormateurForm);
+  this.FormateurForm.tel = this.f.telControl.value;
+  this.FormateurForm.formateurId=formateur.formateurId;
   this.formateursService.addFormateur(this.FormateurForm).subscribe(data => {
     this.messageService.add({
       severity: 'success',

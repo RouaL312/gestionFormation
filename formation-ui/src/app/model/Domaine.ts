@@ -1,4 +1,4 @@
 export class Domaine {
-  IdDomaine?:number;
+  domaineId?:number;
   libelle!: string ;
 }

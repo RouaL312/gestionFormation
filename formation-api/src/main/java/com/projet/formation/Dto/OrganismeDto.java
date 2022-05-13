@@ -7,6 +7,7 @@ import org.bongiorno.dto.support.AbstractDto;
 @Getter
 @Setter
 public class OrganismeDto extends AbstractDto {
-    Long OrganismeId;
+    Long id;
     String libelle;
+
 }

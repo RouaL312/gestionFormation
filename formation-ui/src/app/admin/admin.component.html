@@ -1,4 +1,172 @@
-<button type="button" class="btn btn-info" (click)="displayDialog = true">
-  Ajouter une publication
-  <span class="btn-icon-right"><em class="fa fa-bullhorn"></em></span>
-</button>
+<!--**********************************
+    Content body start
+***********************************-->
+
+<!-- row -->
+<div class="row">
+  <div *ngIf="role=='ADMIN'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+    <button class="widget-stat card" [routerLink]="['/admin/users']">
+      <div class="card-body p-4" style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+                                <svg id="icon-customers" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Utilisateurs</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6">
+    <button class="widget-stat card" [routerLink]="['/admin/organisme']">
+      <div class="card-body p-4" style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+<svg class="svg-icon" viewBox="0 0 20 20" stroke="currentColor" fill="none" stroke-width="1"
+>
+							<path
+                d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Organisme</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6"
+  >
+    <button class="widget-stat card" [routerLink]="['/admin/paticipants']">
+      <div class="card-body p-4" style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+<svg class="svg-icon" viewBox="0 0 20 20">
+							<path
+                d="M15.573,11.624c0.568-0.478,0.947-1.219,0.947-2.019c0-1.37-1.108-2.569-2.371-2.569s-2.371,1.2-2.371,2.569c0,0.8,0.379,1.542,0.946,2.019c-0.253,0.089-0.496,0.2-0.728,0.332c-0.743-0.898-1.745-1.573-2.891-1.911c0.877-0.61,1.486-1.666,1.486-2.812c0-1.79-1.479-3.359-3.162-3.359S4.269,5.443,4.269,7.233c0,1.146,0.608,2.202,1.486,2.812c-2.454,0.725-4.252,2.998-4.252,5.685c0,0.218,0.178,0.396,0.395,0.396h16.203c0.218,0,0.396-0.178,0.396-0.396C18.497,13.831,17.273,12.216,15.573,11.624 M12.568,9.605c0-0.822,0.689-1.779,1.581-1.779s1.58,0.957,1.58,1.779s-0.688,1.779-1.58,1.779S12.568,10.427,12.568,9.605 M5.06,7.233c0-1.213,1.014-2.569,2.371-2.569c1.358,0,2.371,1.355,2.371,2.569S8.789,9.802,7.431,9.802C6.073,9.802,5.06,8.447,5.06,7.233 M2.309,15.335c0.202-2.649,2.423-4.742,5.122-4.742s4.921,2.093,5.122,4.742H2.309z M13.346,15.335c-0.067-0.997-0.382-1.928-0.882-2.732c0.502-0.271,1.075-0.429,1.686-0.429c1.828,0,3.338,1.385,3.535,3.161H13.346z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Participant</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+<div class="row">
+
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6" >
+    <button class="widget-stat card" [routerLink]="['/admin/formateurs']">
+      <div class="card-body p-4" style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+<svg class="svg-icon" viewBox="0 0 20 20">
+							<path fill="none" d="M10.001,9.658c-2.567,0-4.66-2.089-4.66-4.659c0-2.567,2.092-4.657,4.66-4.657s4.657,2.09,4.657,4.657
+							C14.658,7.569,12.569,9.658,10.001,9.658z M10.001,1.8c-1.765,0-3.202,1.437-3.202,3.2c0,1.766,1.437,3.202,3.202,3.202
+							c1.765,0,3.199-1.436,3.199-3.202C13.201,3.236,11.766,1.8,10.001,1.8z"></path>
+							<path fill="none" d="M9.939,19.658c-0.091,0-0.179-0.017-0.268-0.051l-7.09-2.803c-0.276-0.108-0.461-0.379-0.461-0.678
+							c0-4.343,3.535-7.876,7.881-7.876c4.343,0,7.878,3.533,7.878,7.876c0,0.302-0.182,0.572-0.464,0.68l-7.213,2.801
+							C10.118,19.64,10.03,19.658,9.939,19.658z M3.597,15.639l6.344,2.507l6.464-2.512c-0.253-3.312-3.029-5.927-6.404-5.927
+							C6.623,9.707,3.848,12.326,3.597,15.639z"></path>
+							<path fill="none" d="M9.939,19.658c0,0-0.003,0-0.006,0c-0.347-0.003-0.646-0.253-0.709-0.596L7.462,9.567
+							C7.389,9.172,7.65,8.79,8.046,8.718C8.442,8.643,8.82,8.906,8.894,9.301l1.076,5.796l1.158-5.741
+							c0.08-0.394,0.461-0.655,0.86-0.569c0.396,0.08,0.649,0.464,0.569,0.859l-1.904,9.427C10.585,19.413,10.286,19.658,9.939,19.658z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Formateurs</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6" >
+    <button class="widget-stat card" [routerLink]="['/admin/sessions']">
+      <div class="card-body p-4"style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+<svg class="svg-icon" viewBox="0 0 20 20">
+							<path
+                d="M17.237,3.056H2.93c-0.694,0-1.263,0.568-1.263,1.263v8.837c0,0.694,0.568,1.263,1.263,1.263h4.629v0.879c-0.015,0.086-0.183,0.306-0.273,0.423c-0.223,0.293-0.455,0.592-0.293,0.92c0.07,0.139,0.226,0.303,0.577,0.303h4.819c0.208,0,0.696,0,0.862-0.379c0.162-0.37-0.124-0.682-0.374-0.955c-0.089-0.097-0.231-0.252-0.268-0.328v-0.862h4.629c0.694,0,1.263-0.568,1.263-1.263V4.319C18.5,3.625,17.932,3.056,17.237,3.056 M8.053,16.102C8.232,15.862,8.4,15.597,8.4,15.309v-0.89h3.366v0.89c0,0.303,0.211,0.562,0.419,0.793H8.053z M17.658,13.156c0,0.228-0.193,0.421-0.421,0.421H2.93c-0.228,0-0.421-0.193-0.421-0.421v-1.263h15.149V13.156z M17.658,11.052H2.509V4.319c0-0.228,0.193-0.421,0.421-0.421h14.308c0.228,0,0.421,0.193,0.421,0.421V11.052z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Session</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6" >
+    <button class="widget-stat card" [routerLink]="['/admin/domaines']">
+      <div class="card-body p-4"style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+<svg class="svg-icon" viewBox="0 0 20 20" stroke-width="2">
+							<path d="M17.283,5.549h-5.26V4.335c0-0.222-0.183-0.404-0.404-0.404H8.381c-0.222,0-0.404,0.182-0.404,0.404v1.214h-5.26c-0.223,0-0.405,0.182-0.405,0.405v9.71c0,0.223,0.182,0.405,0.405,0.405h14.566c0.223,0,0.404-0.183,0.404-0.405v-9.71C17.688,5.731,17.506,5.549,17.283,5.549 M8.786,4.74h2.428v0.809H8.786V4.74z M16.879,15.26H3.122v-4.046h5.665v1.201c0,0.223,0.182,0.404,0.405,0.404h1.618c0.222,0,0.405-0.182,0.405-0.404v-1.201h5.665V15.26z M9.595,9.583h0.81v2.428h-0.81V9.583zM16.879,10.405h-5.665V9.19c0-0.222-0.183-0.405-0.405-0.405H9.191c-0.223,0-0.405,0.183-0.405,0.405v1.215H3.122V6.358h13.757V10.405z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Domaines</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6" >
+    <button class="widget-stat card" [routerLink]="['/admin/pays']">
+      <div class="card-body p-4" style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+                                <!-- <i class="ti-user"></i> -->
+<svg class="svg-icon" viewBox="0 0 20 20">
+							<path
+                d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Pays</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div *ngIf="role=='USER'" class="col-xl-3 col-xxl-4 col-lg-6 col-sm-6" >
+    <button class="widget-stat card" [routerLink]="['/admin/formations']">
+      <div class="card-body p-4"style="width: 300px">
+        <div class="media ai-icon">
+                            <span class="mr-3 bgl-primary text-primary">
+<svg class="svg-icon" viewBox="0 0 20 20">
+							<path
+                d="M17.237,3.056H2.93c-0.694,0-1.263,0.568-1.263,1.263v8.837c0,0.694,0.568,1.263,1.263,1.263h4.629v0.879c-0.015,0.086-0.183,0.306-0.273,0.423c-0.223,0.293-0.455,0.592-0.293,0.92c0.07,0.139,0.226,0.303,0.577,0.303h4.819c0.208,0,0.696,0,0.862-0.379c0.162-0.37-0.124-0.682-0.374-0.955c-0.089-0.097-0.231-0.252-0.268-0.328v-0.862h4.629c0.694,0,1.263-0.568,1.263-1.263V4.319C18.5,3.625,17.932,3.056,17.237,3.056 M8.053,16.102C8.232,15.862,8.4,15.597,8.4,15.309v-0.89h3.366v0.89c0,0.303,0.211,0.562,0.419,0.793H8.053z M17.658,13.156c0,0.228-0.193,0.421-0.421,0.421H2.93c-0.228,0-0.421-0.193-0.421-0.421v-1.263h15.149V13.156z M17.658,11.052H2.509V4.319c0-0.228,0.193-0.421,0.421-0.421h14.308c0.228,0,0.421,0.193,0.421,0.421V11.052z"></path>
+						</svg>
+                            </span>
+          <div class="media-body">
+            <h4 class="mb-0">Formations</h4>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+
+</div>
+
+
+<!--**********************************
+    Content body end
+***********************************-->

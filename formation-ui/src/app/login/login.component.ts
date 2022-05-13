@@ -64,7 +64,7 @@ export class LoginComponent {
           if (roles!.filter(value => value.name === 'SUPER_ADMIN' || value.name === 'ADMIN').length > 0) {
 
             this.messageService.add({severity: 'success', summary: 'Service Message', detail: 'Via MessageService'});
-            this.router.navigateByUrl('admin');
+            this.router.navigateByUrl('/admin');
             this.soundService.playAudio('../assets/sounds/intro.wav');
           }
         } else {

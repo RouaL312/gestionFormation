@@ -75,6 +75,8 @@ export class DomainesComponent implements OnInit {
       accept: () => {
         if (domaine.domaineId != null) {
           this.domaineService.deleteDomaine(domaine.domaineId).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
               this.domaines = this.domaines.filter(val => val.domaineId !== domaine.domaineId);
 
@@ -131,9 +133,11 @@ export class DomainesComponent implements OnInit {
         detail: 'Impossible d\'ajouter le domaine'
       });
     })
-  }
+    this.hideDialog();
+    this.ngOnInit();  }
 
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }
@@ -170,6 +174,8 @@ export class DomainesComponent implements OnInit {
         detail: 'Impossible d\'ajouter le domaine'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
 }

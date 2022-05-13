@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import {Role} from "../../model/Role";
+import {LocalStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-navigation',
@@ -8,11 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
+    username!:string;
+    roles!:Role[];
+    role!:string;
     public currentHref: string = "";
 
 
-    constructor(location: Location, router: Router) {
+    constructor(location: Location, router: Router, private localStorageService: LocalStorageService
+    ) {
         router.events.subscribe((val) => {
           if(location.path() != ''){
             this.currentHref = location.path();
@@ -23,6 +28,10 @@ export class NavigationComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      this.username=this.localStorageService.retrieve("login");
+      this.roles=this.localStorageService.retrieve('authorities');
+      this.role=this.roles[0].name;
+
     }
 
     toggleIcon: boolean = true;

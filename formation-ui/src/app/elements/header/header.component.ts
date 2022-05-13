@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
 	toggleChat: boolean = true;
 	toggleSingle: boolean = true;
-  username!: String;
+  username!: string;
   roles!:Role[];
 
 	constructor(private authService: AuthService, private router: Router,

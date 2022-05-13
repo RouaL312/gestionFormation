@@ -110,6 +110,8 @@ deleteFormateur(formateur:Formateurs)
     accept: () => {
       if (formateur.formateurId != null) {
         this.formateursService.deleteFormateur(formateur.formateurId).subscribe(data => {
+          this.hideDialog();
+          this.ngOnInit();
           if (JSON.stringify(data.message == "success")) {
             this.formateurs = this.formateurs.filter(val => val.formateurId !== formateur.formateurId);
 
@@ -178,6 +180,8 @@ saveEditFormateur(formateur: Formateurs)
       detail: 'Impossible d\'ajouter le formateur'
     });
   })
+  this.hideDialog();
+  this.ngOnInit();
 }
 
 // convenience getter for easy access to form fields
@@ -220,10 +224,13 @@ saveNewFormateur()
       detail: 'Impossible d\'ajouter le formateur'
     });
   })
+  this.hideDialog();
+  this.ngOnInit();
 }
 
 hideDialog()
 {
+  this.openpopup=false;
   this.displayEdit = false;
   this.displayAdd = false;
 }

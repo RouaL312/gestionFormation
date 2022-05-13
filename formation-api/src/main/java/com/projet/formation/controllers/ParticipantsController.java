@@ -1,7 +1,7 @@
 package com.projet.formation.controllers;
 
+import com.projet.formation.Dto.ParticipantDto;
 import com.projet.formation.dto.AjoutResponse;
-import com.projet.formation.dto.ParticipantDto;
 import com.projet.formation.mapper.ObjectMapperUtils;
 import com.projet.formation.models.Participant;
 import com.projet.formation.repository.ParticipantRepository;

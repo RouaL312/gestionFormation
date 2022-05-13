@@ -70,6 +70,8 @@ getAllPays(){
       accept: () => {
         if (pays.paysId != null) {
           this.paysService.deletePays(pays.paysId).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
               this.payss = this.payss.filter(val => val.paysId !== pays.paysId);
 
@@ -125,8 +127,11 @@ getAllPays(){
         detail: 'Impossible d\'ajouter le pays'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }
@@ -161,5 +166,7 @@ getAllPays(){
         detail: 'Impossible d\'ajouter le pays'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 }

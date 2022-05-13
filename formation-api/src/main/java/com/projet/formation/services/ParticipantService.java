@@ -4,5 +4,4 @@ import com.projet.formation.dto.AjoutResponse;
 
 public interface ParticipantService {
     AjoutResponse deleteById(long id);
-
 }

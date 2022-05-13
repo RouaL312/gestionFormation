@@ -79,6 +79,8 @@ export class OrganismeComponent implements OnInit {
       accept: () => {
         if (organisme.organismeId != null) {
           this.organismeService.deleteOrganisme(organisme.organismeId).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
               this.organismes = this.organismes.filter(val => val.organismeId !== organisme.organismeId);
 
@@ -135,6 +137,8 @@ export class OrganismeComponent implements OnInit {
         detail: 'Impossible d\'ajouter le organisme'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
 // convenience getter for easy access to form fields
@@ -170,9 +174,12 @@ export class OrganismeComponent implements OnInit {
         detail: 'Impossible d\'ajouter le organisme'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }

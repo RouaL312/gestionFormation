@@ -94,6 +94,8 @@ export class ParticipantsComponent implements OnInit {
       accept: () => {
         if (participant.participantId != null) {
           this.participantsService.deleteParticipant(participant.participantId).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
               this.participants = this.participants.filter(val => val.participantId !== participant.participantId);
 
@@ -156,6 +158,8 @@ export class ParticipantsComponent implements OnInit {
         detail: 'Impossible d\'ajouter le participant'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
 // convenience getter for easy access to form fields
@@ -196,9 +200,12 @@ export class ParticipantsComponent implements OnInit {
         detail: 'Impossible d\'ajouter le participant'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }

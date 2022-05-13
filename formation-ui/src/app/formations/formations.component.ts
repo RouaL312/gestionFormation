@@ -101,7 +101,10 @@ export class FormationsComponent implements OnInit {
       accept: () => {
         if (formation.formationId != null) {
           this.formationService.deleteFormation(formation.formationId).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
+
               this.formations = this.formations.filter(val => val.formationId !== formation.formationId);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
@@ -169,6 +172,8 @@ export class FormationsComponent implements OnInit {
         detail: 'Impossible de modifier la formation'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
 // convenience getter for easy access to form fields
@@ -210,9 +215,12 @@ export class FormationsComponent implements OnInit {
         detail: 'Impossible d\'ajouter le formation'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }

@@ -188,6 +188,8 @@ export class UsersComponent implements OnInit {
       });
       return;
     }
+    this.hideDialog();
+    this.ngOnInit();
   }
 
   deleteUser(user: User) {
@@ -198,6 +200,8 @@ export class UsersComponent implements OnInit {
       accept: () => {
         if (user.id != null) {
           this.userService.deleteUser(user.id).subscribe(data => {
+            this.hideDialog();
+            this.ngOnInit();
             if (JSON.stringify(data.message == "success")) {
               this.users = this.users.filter(val => val.id !== user.id);
 
@@ -277,9 +281,12 @@ export class UsersComponent implements OnInit {
         detail: 'Impossible d\'ajouter l\'utilisateur'
       });
     })
+    this.hideDialog();
+    this.ngOnInit();
   }
 
   hideDialog() {
+    this.openpopup=false;
     this.displayEdit = false;
     this.displayAdd = false;
   }

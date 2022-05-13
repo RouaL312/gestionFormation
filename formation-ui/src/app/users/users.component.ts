@@ -162,6 +162,11 @@ export class UsersComponent implements OnInit {
       this.UserGroup.controls.confirmPassword.setValue(user.password)
     }
     if (this.UserGroup.valid) {
+      user.firstName = this.f.nameControl.value;
+      user.lastName = this.f.prenomControl.value;
+      user.username = this.f.usernameControl.value;
+      user.email = this.f.emailControl.value;
+      user.authorities = this.f.authoritiesControl.value;
       this.displayEdit = true
       user.codePin = this.typeAuthControl.value == "Code Pin";
       console.log(user)

@@ -81,7 +81,7 @@ export class ParticipantsComponent implements OnInit {
       emailControl: [this.participant.email, [Validators.required, Validators.email]],
       prenomControl: [this.participant.prenom, Validators.required],
       telControl: [this.participant.tel, Validators.required],
-      paysControl: [this.participant.pays, Validators.required],
+      paysControl: [this.participant.pays!.libelle, Validators.required],
     });
     this.getAllPays()
   }

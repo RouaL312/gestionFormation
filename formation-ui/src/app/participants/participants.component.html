@@ -118,9 +118,9 @@
             <div class="col-sm-6">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>pays</mat-label>
-                <mat-select [(ngModel)]="participant!.pays" formControlName="paysControl" >
-                  <mat-option
-                    *ngFor="let pays of paysList" [value]="pays.libelle">{{pays.libelle}} </mat-option>
+                <mat-select [(value)]="participant!.pays!.libelle" formControlName="paysControl" >
+                  <mat-option [value]="pays.libelle"
+                    *ngFor="let pays of paysList" >{{pays.libelle}} </mat-option>
                 </mat-select>
                 <mat-error *ngIf="paysControl.hasError('required')">pays est <strong>obligatoire</strong>
                 </mat-error>

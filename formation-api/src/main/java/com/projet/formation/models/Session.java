@@ -26,7 +26,7 @@ public class Session implements Serializable {
     private int nbParticipants;
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "fomateur_id")
+    @JoinColumn(name = "formateur_id")
     private Formateur formateur;
 
     public Long getSessionId() {

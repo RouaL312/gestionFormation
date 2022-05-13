@@ -8,12 +8,12 @@ import org.bongiorno.dto.support.AbstractDto;
 @Getter
 @Setter
 public class FormationDto extends AbstractDto {
-    private Long formationId;
-    private String titre;
-    private String typeFormation;
-    private int nbSession;
-    private int duree;
-    private double budget;
+     Long formationId;
+     String titre;
+     String typeFormation;
+     int nbSession;
+     int duree;
+     double budget;
      Domaine domaine;
 
 }

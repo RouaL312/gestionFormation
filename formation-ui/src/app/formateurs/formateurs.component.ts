@@ -59,7 +59,7 @@ constructor(private organismeService:OrganismesService , private confirmationSer
     email: '',
     tel: undefined,
     type: '',
-    organisme : new Organismes(),
+    organisme : undefined,
   }
 }
 ngOnInit()
@@ -77,10 +77,7 @@ getAllFormateurs()
   })
 }
 
-editFormateur(formateur
-:
-Formateurs
-)
+editFormateur(formateur: Formateurs)
 {
 
   if (this.openpopup) {

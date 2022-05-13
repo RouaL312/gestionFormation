@@ -31,8 +31,9 @@ public class Formateur implements Serializable {
     private Long tel;
     @Column(nullable = false)
     private String type;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organisme_id", insertable = false, updatable = false)
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "organisme_id")
     private Organisme organisme;
 
     public static long getSerialVersionUID() {

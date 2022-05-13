@@ -1,8 +1,10 @@
+import {Pays} from "./Pays";
+
 export class Participants {
+  participantId?: number;
   nom!: string ;
   prenom!: string ;
-  profile!: number ;
   email!: string ;
-  tel!: string ;
-  type:string;
+  tel?: number ;
+  pays?:Pays;
 }

@@ -126,7 +126,7 @@
                   <mat-option
                     *ngFor="let type of typeList" [value]="type.name">{{type.name}} </mat-option>
                 </mat-select>
-                <mat-error *ngIf="organismeControl.hasError('required')">Type est <strong>obligatoire</strong>
+                <mat-error *ngIf="typeControl.hasError('required')">Type est <strong>obligatoire</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field *ngIf="displayAdd"class="example-full-width">

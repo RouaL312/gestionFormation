@@ -25,7 +25,7 @@ public class Formation implements Serializable {
     private double budget;
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "domaine_id", insertable = false, updatable = false)
+    @JoinColumn(name = "domaine_id")
     private Domaine domaine;
 
     public Long getFormationId() {

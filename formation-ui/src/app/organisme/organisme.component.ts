@@ -34,7 +34,7 @@ export class OrganismeComponent implements OnInit {
       libelleControl: ['', Validators.required],
     });
     this.OrganismeForm = {
-      id: undefined,
+      organismeId: undefined,
       libelle: '',
     }
   }
@@ -77,10 +77,10 @@ export class OrganismeComponent implements OnInit {
       header: 'Confirmation de suppression',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (organisme.id != null) {
-          this.organismeService.deleteOrganisme(organisme.id).subscribe(data => {
+        if (organisme.organismeId != null) {
+          this.organismeService.deleteOrganisme(organisme.organismeId).subscribe(data => {
             if (JSON.stringify(data.message == "success")) {
-              this.organismes = this.organismes.filter(val => val.id !== organisme.id);
+              this.organismes = this.organismes.filter(val => val.organismeId !== organisme.organismeId);
 
               this.messageService.add({severity: 'success', summary: 'Successful', detail: data.message, life: 1000});
             } else {
@@ -119,7 +119,7 @@ export class OrganismeComponent implements OnInit {
       return;
     }
     this.OrganismeForm.libelle = this.f.libelleControl.value;
-    this.OrganismeForm.id = this.organisme.id;
+    this.OrganismeForm.organismeId = this.organisme.organismeId;
     console.log(this.OrganismeForm);
     this.organismeService.addOrganisme(this.OrganismeForm).subscribe(data => {
       this.messageService.add({

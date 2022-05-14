@@ -112,15 +112,12 @@
                 </mat-error>
               </mat-form-field>
             </div>
-
-          </div>
-          <div class="row">
             <div class="col-sm-6">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>pays</mat-label>
-                <mat-select [(value)]="participant!.pays!.libelle" formControlName="paysControl" >
-                  <mat-option [value]="pays.libelle"
-                    *ngFor="let pays of paysList" >{{pays.libelle}} </mat-option>
+                <mat-select [(ngModel)]="participant!.pays" formControlName="paysControl" [compareWith]="comparer">
+                  <mat-option [value]="pays"
+                              *ngFor="let pays of paysList" >{{pays.libelle}} </mat-option>
                 </mat-select>
                 <mat-error *ngIf="paysControl.hasError('required')">pays est <strong>obligatoire</strong>
                 </mat-error>
@@ -135,6 +132,7 @@
                 </mat-error>
               </mat-form-field>
             </div>
+
           </div>
         </div>
       </form>

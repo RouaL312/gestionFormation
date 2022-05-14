@@ -111,7 +111,7 @@
             <div class="col-sm-6">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>Formateur</mat-label>
-                <mat-select [(ngModel)]="session!.formateur" formControlName="formateurControl" >
+                <mat-select [(ngModel)]="session!.formateur" formControlName="formateurControl" [compareWith]="comparer">
                   <mat-option
                     *ngFor="let formateur of formateurList" [value]="formateur"> {{formateur.nom}} </mat-option>
                 </mat-select>

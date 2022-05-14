@@ -115,7 +115,7 @@ export class OrganismeComponent implements OnInit {
     if (this.OrganismeGroup.invalid) {
       this.messageService.add({
         severity: 'error',
-        summary: 'Probléme ajout organisme',
+        summary: 'Probléme de modification d\'organisme',
         detail: 'Vérifier votre formulaire'
       });
       return;
@@ -126,15 +126,15 @@ export class OrganismeComponent implements OnInit {
     this.organismeService.addOrganisme(this.OrganismeForm).subscribe(data => {
       this.messageService.add({
         severity: 'success',
-        summary: 'Ajouter organisme',
-        detail: 'Le organisme est ajouté avec success'
+        summary: 'Modifier organisme',
+        detail: 'L\'organisme est modifié avec success'
       });
 
     }, error => {
       this.messageService.add({
         severity: 'error',
-        summary: 'Probléme ajout organisme',
-        detail: 'Impossible d\'ajouter le organisme'
+        summary: 'Probléme de modification d\'organisme',
+        detail: 'Impossible de modifier l\'organisme'
       });
     })
     this.hideDialog();

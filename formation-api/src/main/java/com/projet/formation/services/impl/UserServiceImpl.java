@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
     /**
      * Encode Password before saving user using BCryptPasswordEncoder
      */
-    private String ecnodePassword(String password) {
+    public String ecnodePassword(String password) {
         return passwordEncoder.encode(password);
     }
 }

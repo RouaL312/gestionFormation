@@ -6,6 +6,7 @@ import com.projet.formation.dto.UserDto;
 import com.projet.formation.mapper.ObjectMapperUtils;
 import com.projet.formation.models.User;
 import com.projet.formation.services.UserService;
+import com.projet.formation.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserServiceImpl userServiceImpl;
     ModelMapper modelMapper = new ModelMapper();
 
 
@@ -36,6 +39,9 @@ public class UserController {
     }
     @PostMapping(value = "/addUser")
     public ResponseEntity<UserDto> addOrUpdateUser(@Valid @RequestBody UserDto userDto) {
+        if (userDto.getPassword().length() < 20) {
+            userDto.setPassword(userServiceImpl.ecnodePassword(userDto.getPassword()));
+        }
         if (userDto.getId() == null) {
             userDto.setCreationDate(new Date());
         } else {

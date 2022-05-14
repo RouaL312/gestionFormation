@@ -55,9 +55,9 @@
 
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
-                        (click)="editFormation(formation)"></button>
+                        (click)="editFormation(formations)"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
-                        (click)="deleteFormation(formation)"></button>
+                        (click)="deleteFormation(formations)"></button>
               </td>
             </tr>
           </ng-template>
@@ -126,7 +126,7 @@
             <div class="col-sm-4">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>Domaine</mat-label>
-                <mat-select [(ngModel)]="formation!.domaine" formControlName="domaineControl" >
+                <mat-select [(ngModel)]="formation!.domaine" formControlName="domaineControl" [compareWith]="comparer">
                   <mat-option
                     *ngFor="let domaine of domaineList" [value]="domaine"> {{domaine.libelle}} </mat-option>
                 </mat-select>

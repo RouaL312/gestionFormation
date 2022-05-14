@@ -63,7 +63,10 @@ export class ParticipantsComponent implements OnInit {
       FORMATEURS = this.participants
     })
   }
-
+  comparer(o1: any, o2: any): boolean {
+    // if possible compare by object's name, and not by reference.
+    return o1 && o2 ? o1.libelle === o2.libelle : o2 === o2;
+  }
   editParticipant(participant: Participants) {
 
     if (this.openpopup) {

@@ -142,7 +142,7 @@
             <div class="col-sm-6">
               <mat-form-field *ngIf="displayEdit"class="example-full-width">
                 <mat-label>Organisme</mat-label>
-                <mat-select [(ngModel)]="formateur!.organisme" formControlName="organismeControl" >
+                <mat-select [(ngModel)]="formateur!.organisme" formControlName="organismeControl" [compareWith]="comparer" >
                   <mat-option
                     *ngFor="let organismes of organismeList" [value]="organismes">{{organismes.libelle}} </mat-option>
                 </mat-select>

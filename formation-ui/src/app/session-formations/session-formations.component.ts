@@ -137,7 +137,10 @@ export class SessionFormationsComponent implements OnInit {
     this.getAllFormateur();
     console.log('session')
   }
-
+  comparer(o1: any, o2: any): boolean {
+    // if possible compare by object's name, and not by reference.
+    return o1 && o2 ? o1.nom === o2.nom : o2 === o2;
+  }
   saveEditSession(session: Session)
   {
     if (this.SessionGroup.invalid) {

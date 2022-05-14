@@ -76,7 +76,10 @@ getAllFormateurs()
     FORMATEURS = this.formateurs
   })
 }
-
+  comparer(o1: any, o2: any): boolean {
+    // if possible compare by object's name, and not by reference.
+    return o1 && o2 ? o1.libelle === o2.libelle : o2 === o2;
+  }
 editFormateur(formateur: Formateurs)
 {
 
@@ -96,7 +99,7 @@ editFormateur(formateur: Formateurs)
     prenomControl: [this.formateur.prenom, Validators.required],
     telControl: [this.formateur.tel, Validators.required],
     typeControl: [this.formateur.type, Validators.required],
-    organismeControl: [this.formateur.organisme, Validators.required],
+    organismeControl: [this.formateur.organisme!.libelle, Validators.required],
   });
   this.getAllOrganisme();
 }

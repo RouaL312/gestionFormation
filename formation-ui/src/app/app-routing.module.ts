@@ -29,7 +29,7 @@ const routes: Routes = [
       {path: 'formations', component: FormationsComponent},
       {path : 'pays',component:PaysComponent},
       {path: 'domaines',component: DomainesComponent},
-      {path: 'paticipants',component: ParticipantsComponent}
+      {path: 'participants',component: ParticipantsComponent}
     ]},
 
 

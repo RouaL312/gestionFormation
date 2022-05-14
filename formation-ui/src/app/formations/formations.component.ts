@@ -69,9 +69,12 @@ export class FormationsComponent implements OnInit {
       FORMATIONS = this.formations
     })
   }
-
+  comparer(o1: any, o2: any): boolean {
+    // if possible compare by object's name, and not by reference.
+    return o1 && o2 ? o1.libelle === o2.libelle : o2 === o2;
+  }
   editFormation(formation: Formations) {
-
+console.log(formation)
     if (this.openpopup) {
       this.openpopup = false;
       this.openpopup = true;
@@ -87,7 +90,7 @@ export class FormationsComponent implements OnInit {
       typeFormationControl: [this.formation.typeFormation, Validators.required],
       nbSessionControl: [this.formation.nbSession, Validators.required],
       dureeControl: [this.formation.duree, Validators.required],
-      domaineControl: [this.formation.domaine, Validators.required],
+      domaineControl: [this.formation.domaine!.libelle, Validators.required],
       budgetControl: [this.formation.budget, Validators.required],
     });
     this.getAllDomaine();

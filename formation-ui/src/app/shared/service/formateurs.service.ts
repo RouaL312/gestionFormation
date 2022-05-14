@@ -27,6 +27,7 @@ export class FormateursService {
   }
 
   addFormateur(formateur: Formateurs): Observable<Formateurs> {
+    console.log(formateur)
       return this.http.post<Formateurs>(this.baseUrl + '/api/formateur/addFormateur', formateur, this.httpOptions);
   }
 
